@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import ru.lani.at.utils.ErrorMessage;
-import ru.lani.at.utils.Waiter;
+import ru.lani.at.utils.Sleep;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +61,7 @@ public class WebActions {
     public static void fillInputByCharacter(SelenideElement element, String text) {
         for (char character : text.toCharArray()) {
             element.sendKeys(String.valueOf(character));
-            Waiter.sleepSeconds(0.2);
+            Sleep.pauseSec(0.2);
         }
     }
 

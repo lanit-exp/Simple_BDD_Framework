@@ -5,6 +5,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.И;
+import io.cucumber.java.ru.Когда;
 import ru.lani.at.pagecontext.Environment;
 import ru.lani.at.pagecontext.PageManager;
 import ru.lani.at.pagecontext.WebPage;
@@ -22,7 +23,7 @@ public class WindowSteps {
      *
      * @param url url
      */
-    @Если("открыть url \"([^\"]*)\"$")
+    @Если("открыть url {string}")
     public void open(String url) {
         Selenide.open(url);
     }
@@ -32,7 +33,7 @@ public class WindowSteps {
      *
      * @param url url
      */
-    @И("открыть новую вкладку с url \"([^\"]*)\"$")
+    @И("открыть новую вкладку с url {string}")
     public void openNewTab(String url) {
         WebActions.openUrlOnNewTab(url);
     }
@@ -51,7 +52,7 @@ public class WindowSteps {
      *
      * @param number порядковый номер вкладки в браузере
      */
-    @И("пеерключиться на вкладку по порядковому номеру (\\d+)")
+    @И("пеерключиться на вкладку по порядковому номеру {int}")
     public void switchNextTabByNumber(int number) {
         WebActions.switchToNextTab(number);
     }
@@ -78,7 +79,8 @@ public class WindowSteps {
      *
      * @param pageName наименование страницы
      */
-    @Если("пользователь на странице \"([^\"]*)\"$")
+    @Если("пользователь на странице {string}")
+    @Когда("инициализация страницы {string}")
     public void setPage(String pageName) {
         WebPage page = Environment.getPage(pageName);
         pageManager.setCurrentWebPage(page);

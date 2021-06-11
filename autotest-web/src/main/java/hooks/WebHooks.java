@@ -32,7 +32,9 @@ public class WebHooks {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 break;
-
+            case "edge":
+                WebDriverManager.edgedriver().setup();
+                break;
             default: {
                 throw new IllegalArgumentException(String.format(ErrorMessage.BROWSER_NOT_SUPPORTED, cfg.webDriverBrowserName()));
             }

@@ -5,11 +5,11 @@ import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
-public class Waiter {
+public class Sleep {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(Waiter.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(Sleep.class);
 
-    public static void sleepSeconds(double sec) {
+    public static void pauseSec(double sec) {
         LOGGER.info("Ожидание {} секунд", sec);
         try {
             TimeUnit.MILLISECONDS.sleep((long) (sec * 1000));
@@ -18,7 +18,7 @@ public class Waiter {
         }
     }
 
-    public static void sleepMs(double ms) {
+    public static void pauseMs(double ms) {
         LOGGER.info("Ожидание {} миллисекунд", ms);
         try {
             TimeUnit.MILLISECONDS.sleep((long) ms);
