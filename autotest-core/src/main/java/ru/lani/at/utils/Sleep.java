@@ -11,15 +11,15 @@ public class Sleep {
 
     public static void pauseSec(double sec) {
         LOGGER.info("Ожидание {} секунд", sec);
-        try {
-            TimeUnit.MILLISECONDS.sleep((long) (sec * 1000));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep(sec * 1000);
     }
 
     public static void pauseMs(double ms) {
         LOGGER.info("Ожидание {} миллисекунд", ms);
+        sleep(ms);
+    }
+
+    private static void sleep(double ms) {
         try {
             TimeUnit.MILLISECONDS.sleep((long) ms);
         } catch (InterruptedException e) {

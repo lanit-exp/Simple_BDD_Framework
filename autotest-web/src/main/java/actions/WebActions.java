@@ -64,5 +64,4 @@ public class WebActions {
             Sleep.pauseSec(0.2);
         }
     }
-
 }

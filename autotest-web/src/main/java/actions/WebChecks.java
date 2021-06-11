@@ -154,23 +154,6 @@ public class WebChecks {
     }
 
     /**
-     * Проверяет, появился ли элемент за переданное время
-     *
-     * @param xpath          - xpath веб-элемента
-     * @param timeoutSeconds -   таймаут ожидания(может быть null)
-     * @return -   появился ли элемент
-     */
-    public static boolean isElementWillAppear(String xpath, Integer timeoutSeconds) {
-        try {
-            SelenideElement element = $(Selectors.byXpath(xpath));
-            elementVisibleOnPage(element, timeoutSeconds);
-            return true;
-        } catch (ElementNotFound elementNotFound) {
-            return false;
-        }
-    }
-
-    /**
      * Проверяет, исчез ли элемент за переданное время
      *
      * @param element        веб-элемент

@@ -83,6 +83,6 @@ public class WindowSteps {
     @Когда("инициализация страницы {string}")
     public void setPage(String pageName) {
         WebPage page = Environment.getPage(pageName);
-        pageManager.setCurrentWebPage(page);
+        pageManager.setCurrentPage(page);
     }
 }

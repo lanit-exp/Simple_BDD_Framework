@@ -8,23 +8,23 @@ public class PageManager {
     public PageManager() {
     }
 
-    private WebPage currentWebPage;
+    private WebPage currentPage;
 
     /**
      * Возвращает текущую страницу, на которой в текущий момент производится тестирование
      */
-    public WebPage getCurrentWebPage() {
-        if (currentWebPage == null) {
+    public WebPage getCurrentPage() {
+        if (currentPage == null) {
             throw new IllegalStateException("Текущая страница не задана");
         }
-        return currentWebPage.initialize();
+        return currentPage.initialize();
     }
 
     /**
      * Задает текущую страницу по ее имени
      */
-    public void setCurrentWebPage(WebPage webPage) {
-        this.currentWebPage = webPage;
+    public void setCurrentPage(WebPage webPage) {
+        this.currentPage = webPage;
     }
 
 }
