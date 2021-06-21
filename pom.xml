@@ -30,6 +30,8 @@
         <allure.version>2.13.8</allure.version>
         <allure.maven.version>2.10.0</allure.maven.version>
         <common-lang3.version>3.12.0</common-lang3.version>
+        <restassured.version>4.4.0</restassured.version>
+        <jackson.version>2.12.3</jackson.version>
     </properties>
 
     <build>

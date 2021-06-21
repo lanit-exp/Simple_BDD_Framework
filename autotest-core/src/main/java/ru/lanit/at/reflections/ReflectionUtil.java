@@ -1,4 +1,4 @@
-package ru.lani.at.reflections;
+package ru.lanit.at.reflections;
 
 import org.reflections.Reflections;
 

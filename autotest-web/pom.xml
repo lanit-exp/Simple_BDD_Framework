@@ -11,10 +11,6 @@
 
     <artifactId>autotest-web</artifactId>
 
-    <properties>
-        <tag></tag>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -39,7 +35,6 @@
                     <skipTests>false</skipTests>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                        -Dcucumber.filter.tags="${tag}"
                     </argLine>
                     <systemPropertyVariables>
                         <base.dir>${project.parent.basedir}/</base.dir>
@@ -69,11 +64,6 @@
 
 
     <dependencies>
-        <dependency>
-            <groupId>org.aeonbits.owner</groupId>
-            <artifactId>owner-java8</artifactId>
-            <version>${owner.version}</version>
-        </dependency>
         <dependency>
             <groupId>ru.lanit.at</groupId>
             <artifactId>autotest-core</artifactId>

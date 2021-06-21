@@ -1,4 +1,4 @@
-package ru.lani.at.utils;
+package ru.lanit.at.utils;
 
 public class ErrorMessage {
 

@@ -1,8 +1,8 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import ru.lani.at.annotations.Name;
-import ru.lani.at.pagecontext.WebPage;
+import ru.lanit.at.annotations.Name;
+import ru.lanit.at.pagecontext.WebPage;
 
 import static com.codeborne.selenide.Selenide.$x;
 

@@ -1,4 +1,4 @@
-package ru.lani.at.utils;
+package ru.lanit.at.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
