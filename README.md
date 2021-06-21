@@ -30,14 +30,14 @@ public class MySteps {
 ```
 Более подробно о подходе можно ознакомиться по ссылке [Cucumber PicoContainer](https://cucumber.io/docs/cucumber/state/) <br/>
 **2.2** Пример инициализации страницы:<br/>
-**pageName** - это value аннотации **Name** класса ***PageObject***
+**pageName** - это value аннотации **Name** класса ***PageObject*** - в нашем примере *"Google"*
 ```java
 public void setPage(String pageName) {
     WebPage page = Environment.getPage(pageName);
     pageManager.setCurrentPage(page);
 }
 ```
-**2.3** После чего конктекст теста перейдет на данную пейджу и можно получать доступ к элементам по его имени(value)<br/>
+**2.3** Теперь страница проинициализированна и получить доступ к элементам можно по его имени(value)<br/>
 ```java
 SelenideElement element = pageManager.getCurrentPage().getElement("поле поиска");
 element.shouldBe(visible).click();
