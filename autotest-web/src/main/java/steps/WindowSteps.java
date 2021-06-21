@@ -81,6 +81,7 @@ public class WindowSteps {
      */
     @Если("пользователь на странице {string}")
     @Когда("инициализация страницы {string}")
+    @И("переход на страницу {string}")
     public void setPage(String pageName) {
         WebPage page = Environment.getPage(pageName);
         pageManager.setCurrentPage(page);

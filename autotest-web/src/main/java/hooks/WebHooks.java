@@ -2,6 +2,7 @@ package hooks;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.logevents.LogEventListener;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -21,8 +22,8 @@ public class WebHooks {
                 System.getenv());
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
-                .screenshots(true)
-                .savePageSource(true)
+                .screenshots(false)
+                .savePageSource(false)
         );
 
         switch (cfg.webDriverBrowserName()) {
@@ -43,8 +44,8 @@ public class WebHooks {
         Configuration.browser = cfg.webDriverBrowserName();
         Configuration.browserSize = cfg.webDriverBrowserSize();
         Configuration.browserVersion = cfg.webDriverVersion();
-        Configuration.savePageSource = true;
-        Configuration.screenshots = true;
+        Configuration.savePageSource = false;
+        Configuration.screenshots = false;
         Configuration.webdriverLogsEnabled = false;
         Configuration.pageLoadTimeout = cfg.webDriverTimeoutMs();
         Configuration.timeout = cfg.webDriverTimeoutMs();

@@ -6,13 +6,9 @@ import ru.lani.at.pagecontext.WebPage;
 
 import static com.codeborne.selenide.Selenide.$x;
 
-@Name("Google")
+@Name(value = "Google")
 public class GooglePage extends WebPage {
 
     @Name("поле поиска")
     private SelenideElement searchField = $x("//input[@name='q']");
-
-    @Name("список результатов")
-    private SelenideElement fastResultContainer = $x("//*[@role='listbox']");
-
 }

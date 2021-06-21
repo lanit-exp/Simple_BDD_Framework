@@ -31,7 +31,7 @@ public class Environment {
                     if (WebPage.class.isAssignableFrom(it)) {
                         return (Class<? extends WebPage>) it;
                     } else {
-                        throw new IllegalStateException("Класс " + it.getName() + " должен наследоваться от PageCore");
+                        throw new IllegalStateException("Класс " + it.getName() + " должен наследоваться от WebPage");
                     }
                 })
                 .forEach(clazz -> pages.put(getClassAnnotationValue(clazz), clazz));

@@ -12,7 +12,7 @@
     <artifactId>autotest-web</artifactId>
 
     <properties>
-        <tags></tags>
+        <tag></tag>
     </properties>
 
     <build>
@@ -39,8 +39,7 @@
                     <skipTests>false</skipTests>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                        -Dcucumber.filter.tags="${tags}"
-                        -Dcucumber.publish.quiet=true
+                        -Dcucumber.filter.tags="${tag}"
                     </argLine>
                     <systemPropertyVariables>
                         <base.dir>${project.parent.basedir}/</base.dir>

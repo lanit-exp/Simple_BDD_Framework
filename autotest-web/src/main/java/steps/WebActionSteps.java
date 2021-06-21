@@ -1,6 +1,5 @@
 package steps;
 
-import actions.WebActions;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
@@ -37,7 +36,7 @@ public class WebActionSteps {
         LOGGER.info("клик на элемент по тексту '{}'", text);
     }
 
-    @Если("нажать на элемент {string}")
+    @Если("кликнуть на элемент {string}")
     public void clickOnElement(String elementName) {
         SelenideElement element = pageManager
                 .getCurrentPage()
@@ -76,7 +75,6 @@ public class WebActionSteps {
 
     @И("подождать {int} сек")
     public void waitSeconds(int timeout) {
-        LOGGER.info("пауза '{}' сек", timeout);
         Sleep.pauseSec(timeout);
     }
 
