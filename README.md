@@ -5,7 +5,7 @@
 **1.2** Над классом необходимо проставить аннотацию *@Name(**value** = "<имя страницы>")*<br/>
 Пример:<br/>
 ```java
-@Name(value = "Главная страница Google")
+@Name(value = "Google")
 public class GooglePage extends WebPage {
     
     @Name("поле поиска") 
