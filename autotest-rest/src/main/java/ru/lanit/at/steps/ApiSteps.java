@@ -12,6 +12,7 @@ import ru.lanit.at.api.testcontext.ContextHolder;
 import ru.lanit.at.utils.CompareUtil;
 import ru.lanit.at.utils.DataGenerator;
 import ru.lanit.at.utils.JsonUtil;
+import ru.lanit.at.utils.Sleep;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -89,5 +90,10 @@ public class ApiSteps {
             Assert.assertTrue(String.format("Ожидаемое: '%s'\nФактическое: '%s'\nОператор сравнения: '%s'\n", expect, actual, it.get(1)), compareResult);
             LOG.info("Сравнение значений: {} {} {}", expect, it.get(1), actual);
         });
+    }
+
+    @И("подождать {int} сек")
+    public void waitSeconds(int timeout) {
+        Sleep.pauseSec(timeout);
     }
 }

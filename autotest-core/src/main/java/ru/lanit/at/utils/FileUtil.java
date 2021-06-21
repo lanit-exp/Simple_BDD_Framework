@@ -6,7 +6,6 @@ import java.nio.file.FileSystemNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,16 +20,24 @@ public class FileUtil {
      * @return возвращает один файл
      */
     public static File searchFileInDirectory(String path, String fileName) {
-        File dir = new File(path);
-        List<File> files = Arrays.asList(dir.listFiles(((dir1, name) -> name.equals(fileName))));
-        if (files.isEmpty()) {
-            throw new FileSystemNotFoundException(String.format("Не найден файл '%s' в директории '%s'", fileName, path));
+        List<Path> paths;
+        try {
+            paths = Files.find(Paths.get(path),
+                    Integer.MAX_VALUE,
+                    (path1, basicFileAttributes) -> path1.toFile().getName().equals(fileName))
+                    .collect(Collectors.toList());
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new FileSystemNotFoundException("Файл не найден");
         }
 
-        if (files.size() > 1) {
-            throw new AssertionError(String.format("Найдено более 1 файла с наименованием %s по пути: ", fileName, path));
+        if (paths.size() > 1) {
+            throw new AssertionError("В каталоге более 1 файла с именем " + fileName);
+        } else if (paths.size() == 0) {
+            throw new FileSystemNotFoundException("Файл не найден");
+        } else {
+            return paths.get(0).toFile();
         }
-        return files.get(0);
     }
 
     /**
@@ -83,6 +90,6 @@ public class FileUtil {
      * @return -   содержание файла
      */
     public static String readBodyFromJsonDir(String fileName) {
-        return readBodyFromFile(fileName, "data", "json");
+        return readBodyFromFile(fileName, "src", "test", "resources", "json");
     }
 }
