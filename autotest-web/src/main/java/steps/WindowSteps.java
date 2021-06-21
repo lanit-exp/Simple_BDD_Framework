@@ -6,9 +6,9 @@ import com.codeborne.selenide.WebDriverRunner;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Когда;
-import ru.lani.at.pagecontext.Environment;
-import ru.lani.at.pagecontext.PageManager;
-import ru.lani.at.pagecontext.WebPage;
+import ru.lanit.at.pagecontext.Environment;
+import ru.lanit.at.pagecontext.PageManager;
+import ru.lanit.at.pagecontext.WebPage;
 
 public class WindowSteps {
 

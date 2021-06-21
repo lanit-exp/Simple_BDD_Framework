@@ -8,8 +8,8 @@ import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Когда;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.lani.at.pagecontext.PageManager;
-import ru.lani.at.utils.Sleep;
+import ru.lanit.at.pagecontext.PageManager;
+import ru.lanit.at.utils.Sleep;
 
 import static com.codeborne.selenide.Selenide.$;
 

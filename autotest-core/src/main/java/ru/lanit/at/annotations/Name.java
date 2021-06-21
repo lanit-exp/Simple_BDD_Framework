@@ -1,4 +1,4 @@
-package ru.lani.at.annotations;
+package ru.lanit.at.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

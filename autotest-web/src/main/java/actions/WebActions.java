@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import ru.lani.at.utils.ErrorMessage;
-import ru.lani.at.utils.Sleep;
+import ru.lanit.at.utils.ErrorMessage;
+import ru.lanit.at.utils.Sleep;
 
 import java.util.ArrayList;
 import java.util.List;

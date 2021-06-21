@@ -2,7 +2,6 @@ package hooks;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
-import com.codeborne.selenide.logevents.LogEventListener;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -10,8 +9,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
 import properties.WebConfigurations;
-import ru.lani.at.pagecontext.Environment;
-import ru.lani.at.utils.ErrorMessage;
+import ru.lanit.at.pagecontext.Environment;
+import ru.lanit.at.utils.ErrorMessage;
 
 public class WebHooks {
 

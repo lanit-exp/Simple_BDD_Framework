@@ -1,7 +1,7 @@
-package ru.lani.at.pagecontext;
+package ru.lanit.at.pagecontext;
 
-import ru.lani.at.annotations.Name;
-import ru.lani.at.reflections.ReflectionUtil;
+import ru.lanit.at.annotations.Name;
+import ru.lanit.at.reflections.ReflectionUtil;
 
 import java.util.Arrays;
 
