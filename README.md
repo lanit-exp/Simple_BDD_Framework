@@ -39,8 +39,13 @@ public void setPage(String pageName) {
 ```
 **2.3** Теперь страница проинициализированна и получить доступ к элементам можно по его имени(value)<br/>
 ```java
-SelenideElement element = pageManager.getCurrentPage().getElement("поле поиска");
-element.shouldBe(visible).click();
+@Если("кликнуть на элемент {string}")
+public void clickOnElement(String elementName) {
+    SelenideElement element = pageManager
+                        .getCurrentPage()
+                        .getElement(elementName);
+    element.shouldBe(visible).click();
+}
 ```
 
 ## 3. Тесты

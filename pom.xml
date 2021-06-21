@@ -11,6 +11,7 @@
     <modules>
         <module>autotest-core</module>
         <module>autotest-web</module>
+        <module>autotest-rest</module>
     </modules>
 
     <properties>
