@@ -14,7 +14,6 @@ public class DataTableTypeContainer {
                 entry.get("path"),
                 entry.get("bodyFromFile"),
                 entry.get("body")
-
         );
     }
 }
