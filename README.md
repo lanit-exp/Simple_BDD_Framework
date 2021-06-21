@@ -29,7 +29,8 @@ public class MySteps {
 }
 ```
 Более подробно о подходе можно ознакомиться по ссылке [Cucumber PicoContainer](https://cucumber.io/docs/cucumber/state/) <br/>
-**2.2** Пример инициализации страницы:
+**2.2** Пример инициализации страницы:<br/>
+**pageName** - это value аннотации **Name** класса ***PageObject***
 ```java
 public void setPage(String pageName) {
     WebPage page = Environment.getPage(pageName);
