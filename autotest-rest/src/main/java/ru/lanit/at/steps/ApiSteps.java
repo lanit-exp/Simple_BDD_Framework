@@ -3,16 +3,13 @@ package ru.lanit.at.steps;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.ru.И;
 import io.restassured.response.Response;
-import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 import ru.lanit.at.api.ApiRequest;
 import ru.lanit.at.api.models.RequestModel;
 import ru.lanit.at.api.testcontext.ContextHolder;
-import ru.lanit.at.utils.CompareUtil;
-import ru.lanit.at.utils.DataGenerator;
-import ru.lanit.at.utils.JsonUtil;
-import ru.lanit.at.utils.Sleep;
+import ru.lanit.at.utils.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,6 +17,7 @@ import java.util.Map;
 import static ru.lanit.at.api.StorageKeys.RESPONSE;
 import static ru.lanit.at.api.StorageKeys.RESPONSE_BODY;
 import static ru.lanit.at.api.testcontext.ContextHolder.replaceVarsIfPresent;
+import static ru.lanit.at.utils.JsonUtil.getFieldFromJson;
 
 public class ApiSteps {
 
@@ -55,10 +53,32 @@ public class ApiSteps {
         LOG.info("Тело ответа:\n{}", json);
     }
 
+    @И("отправлять запрос пока не вернется статус {int}")
+    public void sendUntilStatus(int status) {
+        int iteration = 0;
+        int pause = 2;
+        Response response = null;
+        for (int i = 0; i < 10; i++) {
+            response = apiRequest.sendRequest();
+            if (response.statusCode() == status) {
+                String json = JsonUtil.jsonToUtf(response.body().asPrettyString());
+                ContextHolder.put(RESPONSE, response);
+                ContextHolder.put(RESPONSE_BODY, json);
+                LOG.info("Тело ответа:\n{}", json);
+                break;
+            } else {
+                LOG.info("Status code != {}, pause {} sec", status, pause);
+                Sleep.pauseSec(pause);
+            }
+            iteration++;
+        }
+        Assert.assertEquals(response.statusCode(), status, String.format("По прошествии %s секунд полученный статус код = %s", iteration * pause, response.statusCode()));
+    }
+
     @И("статус код {int}")
     public void expectStatusCode(int code) {
         Response response = ContextHolder.getValue(RESPONSE);
-        Assert.assertEquals(code, response.statusCode());
+        Assert.assertEquals(response.statusCode(), code);
         LOG.info("Статус код: {}", response.statusCode());
     }
 
@@ -66,7 +86,7 @@ public class ApiSteps {
     public void extractVariables(Map<String, String> vars) {
         String responseBody = ContextHolder.getValue(RESPONSE_BODY);
         vars.forEach((k, jsonPath) -> {
-            String extractedValue = JsonUtil.getFieldFromJson(responseBody, jsonPath);
+            String extractedValue = VariableUtil.extractBrackets(getFieldFromJson(responseBody, jsonPath));
             ContextHolder.put(k, extractedValue);
             LOG.info("Извлечены данные: {}={}", k, extractedValue);
         });
@@ -86,8 +106,8 @@ public class ApiSteps {
         table.asLists().forEach(it -> {
             String expect = replaceVarsIfPresent(it.get(0));
             String actual = replaceVarsIfPresent(it.get(2));
-            boolean compareResult = CompareUtil.compare(actual, expect, it.get(1));
-            Assert.assertTrue(String.format("Ожидаемое: '%s'\nФактическое: '%s'\nОператор сравнения: '%s'\n", expect, actual, it.get(1)), compareResult);
+            boolean compareResult = CompareUtil.compare(expect, actual, it.get(1));
+            Assert.assertTrue(compareResult, String.format("Ожидаемое: '%s'\nФактическое: '%s'\nОператор сравнения: '%s'\n", expect, actual, it.get(1)));
             LOG.info("Сравнение значений: {} {} {}", expect, it.get(1), actual);
         });
     }

@@ -9,7 +9,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
 import properties.WebConfigurations;
-import ru.lanit.at.pagecontext.Environment;
+import ru.lanit.at.web.pagecontext.Environment;
 import ru.lanit.at.utils.ErrorMessage;
 
 public class WebHooks {

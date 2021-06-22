@@ -5,7 +5,8 @@ import org.testng.annotations.DataProvider;
 @CucumberOptions(
         plugin = {"pretty", "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm"},
         features = "classpath:features",
-        glue = {"steps"}
+        glue = {"ru.lanit.at.steps"},
+        tags = "@test"
 )
 public class Runner extends AbstractTestNGCucumberTests {
 

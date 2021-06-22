@@ -7,8 +7,6 @@ import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.spi.json.JacksonJsonProvider;
 import com.jayway.jsonpath.spi.mapper.JacksonMappingProvider;
 import io.qameta.allure.Allure;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.nio.charset.StandardCharsets;
 
@@ -22,12 +20,7 @@ public class JsonUtil {
      * @return текст в utf-8 (насколько это возможно)
      */
     public static String jsonToUtf(String text) {
-        JSONParser jsonParser = new JSONParser();
-        try {
-            return jsonParser.parse(text).toString();
-        } catch (ParseException e) {
-            return new String(text.getBytes(), StandardCharsets.UTF_8);
-        }
+        return new String(text.getBytes(), StandardCharsets.UTF_8);
     }
 
     /**

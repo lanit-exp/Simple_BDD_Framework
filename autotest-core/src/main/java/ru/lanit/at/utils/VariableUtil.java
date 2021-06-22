@@ -1,6 +1,9 @@
 package ru.lanit.at.utils;
 
 
+import org.apache.commons.lang3.StringUtils;
+
+import java.math.BigDecimal;
 import java.util.Map;
 
 public class VariableUtil {
@@ -32,5 +35,42 @@ public class VariableUtil {
             }
         }
         return replacedText.toString();
+    }
+
+    /**
+     * убирает лишние символы (обычно для json)
+     *
+     * @param in текст
+     * @return текст
+     */
+    public static String extractBrackets(Object in) {
+        if (in == null) {
+            return "null";
+        }
+        String op = in.toString();
+        String replace;
+        String replace2;
+        if (op.startsWith("[") && op.endsWith("]") && !op.contains(",")) {
+            replace = StringUtils.replace(StringUtils.replace(op, "[", ""), "]", "");
+            if (StringUtils.startsWith(replace, "\"") && StringUtils.endsWith(replace, "\"")) {
+                replace2 = StringUtils.replace(replace, "\"", "");
+                try {
+                    if (replace2.matches("^[0-9]+$")) {
+                        new BigDecimal(replace2);
+                    }
+                    return replace2;
+                } catch (NumberFormatException n) {
+                    return replace;
+                }
+            } else {
+                return replace;
+            }
+        }
+        if (op.startsWith("[[") && op.endsWith("]]") || op.startsWith("[") && op.endsWith("]")) {
+            op = op.replaceFirst("\\[", "");
+            int lastIndex = op.lastIndexOf("]");
+            return op.substring(0, lastIndex);
+        }
+        return op;
     }
 }

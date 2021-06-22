@@ -6,7 +6,7 @@ import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.lanit.at.pagecontext.PageManager;
+import ru.lanit.at.web.pagecontext.PageManager;
 
 public class WebCheckSteps {
 

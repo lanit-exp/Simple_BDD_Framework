@@ -1,8 +1,6 @@
 package ru.lanit.at.api.testcontext;
 
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import ru.lanit.at.utils.VariableUtil;
 
 import java.util.HashMap;
@@ -14,13 +12,12 @@ import java.util.Map;
  */
 public class ContextHolder {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ContextHolder.class);
-    private static final ThreadLocal<Map<String, Object>> THREAD = new ThreadLocal();
+    private static final ThreadLocal<Map<String, Object>> THREAD = new ThreadLocal<>();
 
     private static Map<String, Object> getThread() {
         Map<String, Object> vault = THREAD.get();
         if (vault == null) {
-            vault = new HashMap();
+            vault = new HashMap<>();
             THREAD.set(vault);
         }
         return vault;

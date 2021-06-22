@@ -1,4 +1,4 @@
-package ru.lanit.at.pagecontext;
+package ru.lanit.at.web.pagecontext;
 
 /**
  * Класс, который хранит текущую страницу теста

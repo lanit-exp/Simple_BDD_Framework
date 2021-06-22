@@ -10,9 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.lanit.at.api.models.RequestModel;
 import ru.lanit.at.api.properties.RestConfigurations;
-import ru.lanit.at.api.testcontext.ContextHolder;
 import ru.lanit.at.utils.FileUtil;
-import ru.lanit.at.utils.VariableUtil;
 
 import java.net.URI;
 import java.util.Map;
@@ -31,6 +29,7 @@ public class ApiRequest {
     private String method;
     private String body;
     private String bodyFromFile;
+    private String fullUrl;
 
     private RequestSpecBuilder builder;
 
@@ -38,16 +37,22 @@ public class ApiRequest {
         this.builder = new RequestSpecBuilder();
 
         this.baseUrl = CONFIGURATIONS.getBaseUrl();
-        this.path = requestModel.getPath();
+        this.path = replaceVarsIfPresent(requestModel.getPath());
         this.method = requestModel.getMethod();
         this.body = requestModel.getBody();
         this.bodyFromFile = requestModel.getBodyFromFile();
+        this.fullUrl = requestModel.getUrl();
 
-        URI uri = URI.create(baseUrl);
+        URI uri;
 
-        this.builder
-                .setBaseUri(uri)
-                .setBasePath(replaceVarsIfPresent(path));
+        if (fullUrl != null) {
+            uri = URI.create(fullUrl);
+        } else {
+            uri = URI.create(baseUrl);
+            builder.setBasePath(path);
+        }
+
+        this.builder.setBaseUri(uri);
         setBodyFromFile();
     }
 

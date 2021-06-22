@@ -1,8 +1,8 @@
-package ru.lanit.at.pagecontext;
+package ru.lanit.at.web.pagecontext;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import ru.lanit.at.annotations.Name;
+import ru.lanit.at.web.annotations.Name;
 import ru.lanit.at.reflections.ReflectionUtil;
 
 import java.lang.reflect.Field;

@@ -11,9 +11,10 @@ public class DataTableTypeContainer {
     public RequestModel requestModel(Map<String, String> entry) {
         return new RequestModel(
                 entry.get("method"),
-                entry.get("path"),
+                entry.get("body"),
                 entry.get("bodyFromFile"),
-                entry.get("body")
+                entry.get("path"),
+                entry.get("url")
         );
     }
 }

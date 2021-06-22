@@ -1,4 +1,4 @@
-package ru.lanit.at.pagecontext;
+package ru.lanit.at.web.pagecontext;
 
 import com.codeborne.selenide.Selenide;
 import com.google.common.collect.Maps;

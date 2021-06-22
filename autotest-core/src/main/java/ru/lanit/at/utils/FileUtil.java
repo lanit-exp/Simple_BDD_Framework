@@ -49,8 +49,8 @@ public class FileUtil {
     public static StringBuilder getParentPath(String... packages) {
         StringBuilder pathBuilder = new StringBuilder();
         String separator = System.getProperty("file.separator");
-        if (!System.getProperty("base.dir", "").isEmpty()) {
-            pathBuilder.append(System.getProperty("base.dir"));
+        if (!System.getProperty("project.dir", "").isEmpty()) {
+            pathBuilder.append(System.getProperty("project.dir"));
         } else {
             pathBuilder.append(System.getProperty("user.dir"));
         }

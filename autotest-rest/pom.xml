@@ -38,6 +38,7 @@
                     </argLine>
                     <systemPropertyVariables>
                         <base.dir>${project.parent.basedir}/</base.dir>
+                        <project.dir>${project.basedir}/</project.dir>
                         <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
                     </systemPropertyVariables>
                 </configuration>
