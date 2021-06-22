@@ -76,16 +76,16 @@ public void clickOnElement(String elementName) {
 Например:
 ```gherkin
 * создать запрос  
-  | method | path | body |  
-  | POST | /user | createUser.json |
+  | method | path  | body            |  
+  | POST   | /user | createUser.json |
 ИЛИ
 * создать запрос  
-  | method | path | body |  
-  | POST | /user | {<тело запроса>} |
+  | method | path  |      body        |  
+  | POST   | /user | {<тело запроса>} |
 ИЛИ
 * создать запрос  
-  | method | url |   
-  | GET | https://petstore.swagger.io/v2/user/<username> |
+  | method |                  url                           |   
+  | GET    | https://petstore.swagger.io/v2/user/<username> |
 ```
 * Можно указать ***basePath*** через одноименную системную переменную или в файле конфигурации ***configuration.properties***. Тогда вместо столбца url можно указывать просто path. И наоборот, если указать столбец url с полным url хоста и path то basePath не учитывается, даже если указан с системных переменных.
 * Тело запроса -  в качестве тела можно передать в таблицу, как просто текст, так и название файла ***json***, которое будет лежать по пути ***autotest-rest/src/test/resources/json***
