@@ -26,7 +26,7 @@ public abstract class WebPage {
      */
     public SelenideElement getElement(String name) {
         Object instance = namedElements.get(name);
-        if (!(instance instanceof SelenideElement)) {
+        if (instance != null && !(instance instanceof SelenideElement)) {
             throw new ClassCastException(String.format("Элемент [%s] должен иметь тип 'SelenideElement'", name));
         }
         return (SelenideElement) Optional.ofNullable(namedElements.get(name))
@@ -39,7 +39,7 @@ public abstract class WebPage {
      */
     public ElementsCollection getElementsCollection(String name) {
         Object instance = namedElements.get(name);
-        if (!(instance instanceof ElementsCollection)) {
+        if (instance != null && !(instance instanceof ElementsCollection)) {
             throw new ClassCastException(String.format("Элемент [%s] должен иметь тип 'ElementsCollection'", name));
         }
         return (ElementsCollection) Optional.ofNullable(namedElements.get(name))
