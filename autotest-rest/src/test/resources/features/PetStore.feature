@@ -26,7 +26,7 @@
 
     # Создаем юзера
     * создать запрос
-      | method | path  | bodyFromFile    |
+      | method | path  | body            |
       | POST   | /user | createUser.json |
     * добавить header
       | Content-Type | application/json |
@@ -34,7 +34,8 @@
     * статус код 200
     * извлечь данные
       | user_id | $.message |
-
+    * сравнить значения
+      | ${user_id} | != | null |
 
     # Вторая часть теста - запрос юзера и проверка его данных
     * создать запрос

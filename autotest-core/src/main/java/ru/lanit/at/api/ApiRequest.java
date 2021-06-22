@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import ru.lanit.at.api.models.RequestModel;
 import ru.lanit.at.api.properties.RestConfigurations;
 import ru.lanit.at.utils.FileUtil;
+import ru.lanit.at.utils.RegexUtil;
 
 import java.net.URI;
 import java.util.Map;
@@ -28,7 +29,6 @@ public class ApiRequest {
     private String path;
     private String method;
     private String body;
-    private String bodyFromFile;
     private String fullUrl;
 
     private RequestSpecBuilder builder;
@@ -40,7 +40,6 @@ public class ApiRequest {
         this.path = replaceVarsIfPresent(requestModel.getPath());
         this.method = requestModel.getMethod();
         this.body = requestModel.getBody();
-        this.bodyFromFile = requestModel.getBodyFromFile();
         this.fullUrl = requestModel.getUrl();
 
         URI uri;
@@ -80,10 +79,10 @@ public class ApiRequest {
     }
 
     private void setBodyFromFile() {
-        if (bodyFromFile != null) {
-            body = replaceVarsIfPresent(FileUtil.readBodyFromJsonDir(bodyFromFile));
+        if (body != null && RegexUtil.getMatch(body, ".*\\.json")) {
+            body = replaceVarsIfPresent(FileUtil.readBodyFromJsonDir(body));
             builder.setBody(body);
+            LOG.info("Body: \n{}", body);
         }
-        LOG.info("Body: \n{}", body);
     }
 }

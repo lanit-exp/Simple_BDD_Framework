@@ -6,14 +6,12 @@ public class RequestModel {
 
     private String method;
     private String body;
-    private String bodyFromFile;
     private String path;
     private String url;
 
-    public RequestModel(String method, String body, String bodyFromFile, String path, String url) {
+    public RequestModel(String method, String body, String path, String url) {
         this.method = method;
         this.body = body;
-        this.bodyFromFile = bodyFromFile;
         this.path = path;
         this.url = url;
     }
@@ -24,10 +22,6 @@ public class RequestModel {
 
     public String getBody() {
         return body;
-    }
-
-    public String getBodyFromFile() {
-        return bodyFromFile;
     }
 
     public String getPath() {

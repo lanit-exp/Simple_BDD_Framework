@@ -12,7 +12,6 @@ public class DataTableTypeContainer {
         return new RequestModel(
                 entry.get("method"),
                 entry.get("body"),
-                entry.get("bodyFromFile"),
                 entry.get("path"),
                 entry.get("url")
         );
