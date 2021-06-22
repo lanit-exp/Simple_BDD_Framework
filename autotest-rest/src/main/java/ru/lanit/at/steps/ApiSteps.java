@@ -53,28 +53,6 @@ public class ApiSteps {
         LOG.info("Тело ответа:\n{}", json);
     }
 
-    @И("отправлять запрос пока не вернется статус {int}")
-    public void sendUntilStatus(int status) {
-        int iteration = 0;
-        int pause = 2;
-        Response response = null;
-        for (int i = 0; i < 10; i++) {
-            response = apiRequest.sendRequest();
-            if (response.statusCode() == status) {
-                String json = JsonUtil.jsonToUtf(response.body().asPrettyString());
-                ContextHolder.put(RESPONSE, response);
-                ContextHolder.put(RESPONSE_BODY, json);
-                LOG.info("Тело ответа:\n{}", json);
-                break;
-            } else {
-                LOG.info("Status code != {}, pause {} sec", status, pause);
-                Sleep.pauseSec(pause);
-            }
-            iteration++;
-        }
-        Assert.assertEquals(response.statusCode(), status, String.format("По прошествии %s секунд полученный статус код = %s", iteration * pause, response.statusCode()));
-    }
-
     @И("статус код {int}")
     public void expectStatusCode(int code) {
         Response response = ContextHolder.getValue(RESPONSE);
