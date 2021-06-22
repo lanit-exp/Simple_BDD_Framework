@@ -27,7 +27,7 @@ public class ApiRequest {
 
     private String baseUrl;
     private String path;
-    private String method;
+    private Method method;
     private String body;
     private String fullUrl;
 
@@ -38,7 +38,7 @@ public class ApiRequest {
 
         this.baseUrl = CONFIGURATIONS.getBaseUrl();
         this.path = replaceVarsIfPresent(requestModel.getPath());
-        this.method = requestModel.getMethod();
+        this.method = Method.valueOf(requestModel.getMethod());
         this.body = requestModel.getBody();
         this.fullUrl = requestModel.getUrl();
 
@@ -75,7 +75,7 @@ public class ApiRequest {
         return RestAssured
                 .given()
                 .spec(requestSpecification)
-                .request(Method.valueOf(this.method));
+                .request(method);
     }
 
     private void setBodyFromFile() {
