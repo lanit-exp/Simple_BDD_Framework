@@ -142,3 +142,9 @@ public void clickOnElement(String elementName) {
 Другие символы с строке игнорятся и остаются неизменяемыми
 Сгенерированные значения хранятся в контексте теста. Их можно подставлять в запросы, тела запросов. Достать их можно используя синтаксис ***${username}***
 По итогу прогонов можно сгенерить Allure отчет
+
+### Запуск API
+mvn -am -pl autotest-rest test -Dcucumber.filters.tag=@test -Ddataproviderthreadcount=5
+
+### Запуск WEB
+mvn -am -pl autotest-web test -Dcucumber.filters.tag=@google -Ddataproviderthreadcount=5
