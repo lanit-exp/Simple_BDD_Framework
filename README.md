@@ -1,3 +1,9 @@
+## Типовой фреймворк для автотестов
+BDD фреймворк для автотестов на Java, использующий:
+- [Selenide](https://ru.selenide.org) для тестирования Web UI
+- [REST assured](https://rest-assured.io) для тестирования REST API
+- [Cucumber](https://cucumber.io) для написания сценариев в стиле BDD
+
 ## Как начать писать WEB автотесты
 ## 1.  Page Objects
 В модуле ***autotest-web*** в директории ***src/main/java/pages*** находятся классы ***PageObjects***<br/>
