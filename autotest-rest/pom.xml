@@ -34,6 +34,7 @@
                     <testFailureIgnore>false</testFailureIgnore>
                     <skipTests>false</skipTests>
                     <argLine>
+                        -Dfile.encoding=UTF-8
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <systemPropertyVariables>
