@@ -35,9 +35,10 @@ public class MySteps {
 }
 ```
 * ссылка ***pageManager*** хранит в себе инициализированный контекст текущей страницы, с помощью которой можно достать элемент через ***value*** аннотации  ***@Name*** элемента <br/>
-Более подробно о подходе можно ознакомиться по ссылке [Cucumber PicoContainer](https://cucumber.io/docs/cucumber/state/) <br/>
+* Более подробно о подходе можно ознакомиться по ссылке [Cucumber PicoContainer](https://cucumber.io/docs/cucumber/state/) <br/>
+
 **2.2** Пример инициализации страницы:<br/>
-Для того, чтобы получить доступ к элементу, нам необходимо проинициализировать ***PageObject***
+Для того, чтобы получить доступ к элементу, нам необходимо перед этим проинициализировать ***PageObject*** <br/>
 **pageName** - это value аннотации **Name** класса ***PageObject*** - в нашем примере *"Google"*
 ```java
 public void setPage(String pageName) {
