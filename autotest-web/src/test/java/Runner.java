@@ -8,7 +8,8 @@ import org.testng.annotations.DataProvider;
                 "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm"
         },
         features = "classpath:features",
-        glue = {"steps", "hooks"}
+        glue = {"steps", "hooks"},
+        tags = "@google"
 )
 public class Runner extends AbstractTestNGCucumberTests {
 

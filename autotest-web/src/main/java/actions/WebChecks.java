@@ -11,8 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import properties.WebConfigurations;
 import ru.lanit.at.utils.ErrorMessage;
+import ru.lanit.at.web.properties.WebConfigurations;
 
 import java.time.Duration;
 

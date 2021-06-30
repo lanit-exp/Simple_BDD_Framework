@@ -8,9 +8,9 @@ import io.cucumber.java.Before;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
-import properties.WebConfigurations;
 import ru.lanit.at.utils.ErrorMessage;
 import ru.lanit.at.web.pagecontext.Environment;
+import ru.lanit.at.web.properties.WebConfigurations;
 
 public class WebHooks {
 

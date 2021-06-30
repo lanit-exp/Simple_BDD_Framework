@@ -1,4 +1,4 @@
-package properties;
+package ru.lanit.at.web.properties;
 
 import org.aeonbits.owner.Config;
 
@@ -30,6 +30,10 @@ public interface WebConfigurations extends Config {
     @Key("webdriver.timeoutMs")
     @DefaultValue("10000")
     int webDriverTimeoutMs();
+
+    @Key("screenAfterStep")
+    @DefaultValue("false")
+    boolean screenAfterStep();
 
     @Key("hub.url")
     @DefaultValue("")
