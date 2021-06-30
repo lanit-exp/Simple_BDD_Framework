@@ -1,3 +1,10 @@
+
+## Типовой фреймворк для автотестов
+BDD фреймворк для автотестов на Java, использующий:
+- [Selenide](https://ru.selenide.org) для тестирования Web UI
+- [REST assured](https://rest-assured.io) для тестирования REST API
+- [Cucumber](https://cucumber.io) для написания сценариев в стиле BDD
+
 ## Как начать писать WEB автотесты
 ## 1.  Page Objects
 В модуле ***autotest-web*** в директории ***src/main/java/pages*** находятся классы ***PageObjects***<br/>
@@ -17,7 +24,6 @@ public class GooglePage extends WebPage {
 ```
 ## 2. Степы
 **2.1** В классе со степами необходимо объявить поле PageManager следующим образом:<br/>
-* ссылка ***pageManager*** хранит в себе инициализированный контекст текущей страницы<br/>
 ```java
 public class MySteps {
     private PageManager pageManager;
@@ -28,8 +34,10 @@ public class MySteps {
     // steps
 }
 ```
+* ссылка ***pageManager*** хранит в себе инициализированный контекст текущей страницы, с помощью которой можно достать элемент через ***value*** аннотации  ***@Name*** элемента <br/>
 Более подробно о подходе можно ознакомиться по ссылке [Cucumber PicoContainer](https://cucumber.io/docs/cucumber/state/) <br/>
 **2.2** Пример инициализации страницы:<br/>
+Для того, чтобы получить доступ к элементу, нам необходимо проинициализировать ***PageObject***
 **pageName** - это value аннотации **Name** класса ***PageObject*** - в нашем примере *"Google"*
 ```java
 public void setPage(String pageName) {
@@ -37,7 +45,7 @@ public void setPage(String pageName) {
     pageManager.setCurrentPage(page);
 }
 ```
-**2.3** Теперь страница проинициализированна и получить доступ к элементам можно по его имени(value)<br/>
+**2.3** Теперь страница проинициализированна и получить доступ к элементам можно по его имени ***(value)***<br/>
 ```java
 @Если("кликнуть на элемент {string}")
 public void clickOnElement(String elementName) {
@@ -63,7 +71,22 @@ public void clickOnElement(String elementName) {
     * инициализация страницы "страница результатов поиска"
     * на странице присутствует текст "Погода в Москве"
 ```
+* Шаг 1 - открытие веб страницы
+* Шаг 2 - инициализация ***PageObject*** через его ***value*** аннотации ***@Name***
+* Шаг 3 - как в примере **2.3** получаем текущий элемент по его ***value*** аннотации ***@Name*** и производим действия/проверки
 
+## 4. Настройки
+В директории ***autotest-web/src/test/resources/config*** имеются примеры *config-файлов* для разных браузеров.
+```properties
+webdriver.browser.size=1920x1080 - разрешение браузера
+webdriver.browser.name=chrome  - название браузера
+webdriver.timeoutSeconds=4  - таймаут ожидания состояния веб-элементов
+polling.timeoutMs=200  - периодичность опроса веб-элемента
+webdriver.version=91.0  - версия веб-драйвера
+pages.package=pages  - пакет в котором находятся пейджи
+screenAfterStep=false - необходимость аттачить скриншот к каждому шагу
+```
+Так же с помощью одноименных переменных окружения можно переопределить данные настройки
 
 ## Как начать писать API тесты
 ### Принцип написания тестов похож на подход создания и отправки запроса в Postman
