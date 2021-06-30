@@ -27,10 +27,6 @@ public interface WebConfigurations extends Config {
     @DefaultValue("10")
     int webDriverTimeoutSeconds();
 
-    @Key("webdriver.timeoutMs")
-    @DefaultValue("10000")
-    int webDriverTimeoutMs();
-
     @Key("screenAfterStep")
     @DefaultValue("false")
     boolean screenAfterStep();

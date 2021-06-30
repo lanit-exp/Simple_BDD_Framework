@@ -12,6 +12,8 @@ import ru.lanit.at.utils.ErrorMessage;
 import ru.lanit.at.web.pagecontext.Environment;
 import ru.lanit.at.web.properties.WebConfigurations;
 
+import java.util.concurrent.TimeUnit;
+
 public class WebHooks {
 
     @Before
@@ -46,8 +48,7 @@ public class WebHooks {
         Configuration.savePageSource = true;
         Configuration.screenshots = true;
         Configuration.webdriverLogsEnabled = false;
-        Configuration.pageLoadTimeout = cfg.webDriverTimeoutMs();
-        Configuration.timeout = cfg.webDriverTimeoutMs();
+        Configuration.timeout = TimeUnit.SECONDS.toMillis(cfg.webDriverTimeoutSeconds());
         Configuration.pollingInterval = cfg.pollingTimeoutMs();
         Configuration.reportsFolder = System.getProperty("selenide.report.folder");
         Configuration.downloadsFolder = System.getProperty("selenide.download.folder");
