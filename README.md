@@ -171,7 +171,7 @@ mvn -am -pl autotest-rest test -Dcucumber.filters.tag=@test -Ddataproviderthread
 mvn -am -pl autotest-web test -Dcucumber.filters.tag=@google -Ddataproviderthreadcount=5
 
 ### Генерация отчета
-По итогу прогонов можно сгенерить л_Allure отчет_, для этого необходимо в Intellij Idea кликнуть на строку **Maven** в правом верхнем углу IDE и следовать инструкции по пунктам ниже:<br/>
+По итогу прогонов можно сгенерить _Allure отчет_, для этого необходимо в Intellij Idea кликнуть на строку **Maven** в правом верхнем углу IDE и следовать инструкции по пунктам ниже:<br/>
 В **п.1** необходимо выбрать тот модуль, в котором запускались тесты.<br/>
 ![allure](images/allure.png)<br/>
 По итогу сформируется Html страница с отчетом.<br/>
