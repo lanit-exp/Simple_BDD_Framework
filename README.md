@@ -46,7 +46,7 @@ public void setPage(String pageName) {
     pageManager.setCurrentPage(page);
 }
 ```
-**2.3** Теперь страница проинициализированна и получить доступ к элементам можно по его имени ***(value)***<br/>
+**2.3** Теперь страница проинициализирована и получить доступ к элементам можно по его имени ***(value)***<br/>
 ```java
 @Если("кликнуть на элемент {string}")
 public void clickOnElement(String elementName) {
