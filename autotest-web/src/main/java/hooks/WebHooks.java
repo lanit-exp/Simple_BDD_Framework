@@ -8,9 +8,11 @@ import io.cucumber.java.Before;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
-import properties.WebConfigurations;
-import ru.lanit.at.web.pagecontext.Environment;
 import ru.lanit.at.utils.ErrorMessage;
+import ru.lanit.at.web.pagecontext.Environment;
+import ru.lanit.at.web.properties.WebConfigurations;
+
+import java.util.concurrent.TimeUnit;
 
 public class WebHooks {
 
@@ -21,8 +23,8 @@ public class WebHooks {
                 System.getenv());
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
-                .screenshots(false)
-                .savePageSource(false)
+                .screenshots(true)
+                .savePageSource(true)
         );
 
         switch (cfg.webDriverBrowserName()) {
@@ -43,11 +45,10 @@ public class WebHooks {
         Configuration.browser = cfg.webDriverBrowserName();
         Configuration.browserSize = cfg.webDriverBrowserSize();
         Configuration.browserVersion = cfg.webDriverVersion();
-        Configuration.savePageSource = false;
-        Configuration.screenshots = false;
+        Configuration.savePageSource = true;
+        Configuration.screenshots = true;
         Configuration.webdriverLogsEnabled = false;
-        Configuration.pageLoadTimeout = cfg.webDriverTimeoutMs();
-        Configuration.timeout = cfg.webDriverTimeoutMs();
+        Configuration.timeout = TimeUnit.SECONDS.toMillis(cfg.webDriverTimeoutSeconds());
         Configuration.pollingInterval = cfg.pollingTimeoutMs();
         Configuration.reportsFolder = System.getProperty("selenide.report.folder");
         Configuration.downloadsFolder = System.getProperty("selenide.download.folder");
