@@ -170,6 +170,9 @@ mvn -am -pl autotest-rest test -Dcucumber.filters.tag=@test -Ddataproviderthread
 ### Запуск WEB через консоль
 mvn -am -pl autotest-web test -Dcucumber.filters.tag=@google -Ddataproviderthreadcount=5
 
+Так же запустить тесты можно через плагин Cucumber (предварительно установив его в Idea), для этого необходимо открыть любой feature-файл, и кликнуть по зеленой стрелке рядом со стройкой **Функционал** или **Сценарий**<br/>
+![feature](images/run-feature.png)
+
 ### Генерация отчета
 По итогу прогонов можно сгенерить _Allure отчет_, для этого необходимо в Intellij Idea кликнуть на строку **Maven** в правом верхнем углу IDE и следовать инструкции по пунктам ниже:<br/>
 В **п.1** необходимо выбрать тот модуль, в котором запускались тесты.<br/>
