@@ -163,10 +163,18 @@ screenAfterStep=false - необходимость аттачить скринш
 **D** - случайное число<br/>
 Другие символы с строке игнорятся и остаются неизменяемыми
 Сгенерированные значения хранятся в контексте теста. Их можно подставлять в запросы, тела запросов. Достать их можно используя синтаксис ***${username}***<br/>
-По итогу прогонов можно сгенерить Allure отчет
 
 ### Запуск API
 mvn -am -pl autotest-rest test -Dcucumber.filters.tag=@test -Ddataproviderthreadcount=5
 
 ### Запуск WEB
 mvn -am -pl autotest-web test -Dcucumber.filters.tag=@google -Ddataproviderthreadcount=5
+
+### Генерация отчета
+По итогу прогонов можно сгенерить _Allure отчет_, для этого необходимо в Intellij Idea кликнуть на строку **Maven** в правом верхнем углу IDE и следовать инструкции по пунктам ниже:<br/>
+В **п.1** необходимо выбрать тот модуль, в котором запускались тесты.<br/>
+![allure](images/allure.png)<br/>
+По итогу сформируется Html страница с отчетом.<br/>
+![allure-report](images/allure_report.png)<br/>
+В отчете можно провалиться в каждый шаг и посмотреть информацию по нему<br/>
+![allure-step](images/allure_report_steps.png)<br/>
