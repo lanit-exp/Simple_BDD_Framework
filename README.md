@@ -23,7 +23,7 @@ public class GooglePage extends WebPage {
 }
 ```
 ## 2. Степы
-**2.1** В классе со степами необходимо объявить поле PageManager следующим образом:<br/>
+**2.1** В классе со степами необходимо объявить поле PageManager и конструктор класса следующим образом:<br/>
 ```java
 public class MySteps {
     private PageManager pageManager;
