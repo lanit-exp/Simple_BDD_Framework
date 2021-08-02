@@ -7,7 +7,7 @@ import ru.lanit.at.web.pagecontext.WebPage;
 
 import static com.codeborne.selenide.Selenide.$;
 
-@Name(value = "Google сраница результатов")
+@Name(value = "Google страница результатов")
 public class GoogleResultPage extends WebPage {
 
     @Name("виджет погоды")

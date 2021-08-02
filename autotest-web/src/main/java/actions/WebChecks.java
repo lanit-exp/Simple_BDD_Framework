@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import ru.lanit.at.utils.ErrorMessage;
+import ru.lanit.at.web.pagecontext.Environment;
 import ru.lanit.at.web.properties.WebConfigurations;
 
 import java.time.Duration;
@@ -21,7 +22,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class WebChecks {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WebChecks.class);
-    private static final WebDriver DRIVER = WebDriverRunner.getWebDriver();
+    private static final WebDriver DRIVER = Environment.getDriver();
 
     private static Integer getTimeoutSeconds(Integer timeout) {
         WebConfigurations cfg = ConfigFactory.create(WebConfigurations.class,

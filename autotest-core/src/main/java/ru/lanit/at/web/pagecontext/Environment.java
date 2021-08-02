@@ -1,7 +1,10 @@
 package ru.lanit.at.web.pagecontext;
 
-import ru.lanit.at.web.annotations.Name;
+import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.lanit.at.reflections.ReflectionUtil;
+import ru.lanit.at.web.annotations.Name;
 
 import java.util.Arrays;
 
@@ -9,6 +12,17 @@ import java.util.Arrays;
  * Используется для хранения кеша страниц и драйвера
  */
 public class Environment {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(Environment.class);
+    private static final ThreadLocal<WebDriver> THREAD_DRIVER = new ThreadLocal<>();
+
+    public static WebDriver getDriver() {
+        return THREAD_DRIVER.get();
+    }
+
+    public static void setThreadDriver(WebDriver threadDriver) {
+        THREAD_DRIVER.set(threadDriver);
+    }
 
     /**
      * Список веб-страниц, заданных пользователем, доступных для использования в сценарии
@@ -50,5 +64,13 @@ public class Environment {
 
     public static WebPage getPage(String name) {
         return pages.get(name);
+    }
+
+    public static void demountDriver() {
+        if (getDriver() != null) {
+            getDriver().quit();
+        }
+        THREAD_DRIVER.set(null);
+        LOGGER.info("close webdriver thread: {}", Thread.currentThread().getId());
     }
 }

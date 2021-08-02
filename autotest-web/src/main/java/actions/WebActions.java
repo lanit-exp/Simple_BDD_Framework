@@ -2,13 +2,13 @@ package actions;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import ru.lanit.at.utils.ErrorMessage;
 import ru.lanit.at.utils.Sleep;
+import ru.lanit.at.web.pagecontext.Environment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
 public class WebActions {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WebActions.class);
-    private static final WebDriver DRIVER = WebDriverRunner.getWebDriver();
+    private static final WebDriver DRIVER = Environment.getDriver();
 
     /**
      * Открывает ссылку по переданному url и переводит контекст драйвера на новое окно

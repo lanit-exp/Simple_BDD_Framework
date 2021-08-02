@@ -58,5 +58,6 @@ public class WebHooks {
     @After
     public void close() {
         WebDriverRunner.closeWebDriver();
+        Environment.demountDriver();
     }
 }
