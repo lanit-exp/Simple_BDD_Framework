@@ -11,6 +11,10 @@
 
     <artifactId>autotest-web</artifactId>
 
+    <properties>
+        <tags></tags>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -34,6 +38,7 @@
                     <testFailureIgnore>false</testFailureIgnore>
                     <skipTests>false</skipTests>
                     <argLine>
+                        -Dcucumber.filter.tags="${tags}"
                         -Dfile.encoding=UTF-8
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
