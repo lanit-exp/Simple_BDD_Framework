@@ -127,4 +127,17 @@ public class WebCheckSteps {
     public void currentUrlContainsExpected(String url) {
         WebChecks.urlContains(url);
     }
+
+    /**
+     * проверка значения текста в поле
+     *
+     * @param fieldName название поля
+     * @param expectedText      текст
+     */
+    @Когда("проверить, что поле {string} заполнено значением {string}")
+    public void checkFieldContainsText(String fieldName, String expectedText) {
+        SelenideElement element = pageManager.getCurrentPage().getElement(fieldName);
+        WebChecks.checkAttribute(element, "value", expectedText, 10);
+        LOGGER.info("в поле '{}' содержится текст '{}'", fieldName, expectedText);
+    }
 }
