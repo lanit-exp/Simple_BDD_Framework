@@ -141,9 +141,9 @@ public class WebChecks {
     /**
      * Проверяет, появился ли элемент за переданное время
      *
-     * @param element        - веб-элемент
-     * @param timeoutSeconds -   таймаут ожидания (может быть null)
-     * @return -   появился ли элемент
+     * @param element        веб-элемент
+     * @param timeoutSeconds таймаут ожидания (может быть null)
+     * @return появился ли элемент
      */
     public static boolean isElementWillAppear(SelenideElement element, Integer timeoutSeconds) {
         try {
@@ -158,8 +158,8 @@ public class WebChecks {
      * Проверяет, исчез ли элемент за переданное время
      *
      * @param element        веб-элемент
-     * @param timeoutSeconds -   таймаут ожидания (может быть null)
-     * @return -   исчез ли элемент
+     * @param timeoutSeconds таймаут ожидания (может быть null)
+     * @return исчез ли элемент
      */
     public static boolean isElementWillDisappear(SelenideElement element, Integer timeoutSeconds) {
         try {
@@ -173,9 +173,9 @@ public class WebChecks {
     /**
      * Проверяет, исчез ли элемент за переданное время
      *
-     * @param xpath          - xpath веб-элемента
-     * @param timeoutSeconds -   таймаут ожидания (может быть null)
-     * @return -   исчез ли элемент
+     * @param xpath          xpath веб-элемента
+     * @param timeoutSeconds таймаут ожидания (может быть null)
+     * @return исчез ли элемент
      */
     public static boolean isElementWillDisappear(String xpath, Integer timeoutSeconds) {
         try {

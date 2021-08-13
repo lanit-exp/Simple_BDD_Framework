@@ -52,7 +52,7 @@ public class WebActionSteps {
      *
      * @param elementName наименование элемента
      */
-    @Когда("проскроллить страницу до элемента {string}")
+    @Когда("проскролить страницу до элемента {string}")
     public void scrollToElement(String elementName) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
         element.shouldBe(Condition.visible)
@@ -65,7 +65,7 @@ public class WebActionSteps {
      *
      * @param text текст
      */
-    @Когда("проскроллить страницу до текста {string}")
+    @Когда("проскролить страницу до текста {string}")
     public void scrollToText(String text) {
         SelenideElement element = $(Selectors.byText(text));
         element.shouldBe(Condition.visible)
