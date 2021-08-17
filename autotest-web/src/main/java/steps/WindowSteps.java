@@ -62,7 +62,7 @@ public class WindowSteps {
      *
      * @param number порядковый номер вкладки в браузере
      */
-    @И("пеерключиться на вкладку по порядковому номеру {int}")
+    @И("переключиться на вкладку по порядковому номеру {int}")
     public void switchNextTabByNumber(int number) {
         WebActions.switchToNextTab(number);
     }
