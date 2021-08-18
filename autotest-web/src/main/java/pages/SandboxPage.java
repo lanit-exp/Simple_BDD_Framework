@@ -29,4 +29,26 @@ public class SandboxPage extends WebPage {
 
     @Name("Создать тикет")
     private SelenideElement createTicket = $x("//*[text()='Создать тикет']");
+
+    @Name("Новый Тикет")
+    private SelenideElement newTicketSidebar = $x("//a[@href='/tickets/submit/']");
+
+    @Name("Очередь")
+    private SelenideElement queueDropdown = $x("//select[@name='queue']");
+
+    @Name("Описание вашей проблемы")
+    private SelenideElement descriptionProblemField = $x("//textarea[@id='id_body']");
+
+    @Name("Приоритет")
+    private SelenideElement priority = $x("//select[@id='id_priority']");
+
+    @Name("Выполнить до")
+    private SelenideElement doUntil = $x("//input[@name='due_date']");
+
+    @Name("Ваш адрес электронной почты")
+    private SelenideElement submitterEmail = $x("//input[@name='submitter_email']");
+
+    @Name("Отправить тикет")
+    private SelenideElement submitButton = $x("//button[@type='submit']");
+
 }
