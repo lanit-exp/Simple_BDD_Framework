@@ -11,4 +11,22 @@ public class SandboxPage extends WebPage {
 
     @Name("Краткое описание проблемы")
     private SelenideElement shortDescriptionProblemField = $x("//label[contains(text(),'Краткое описание проблемы')]/..//input[@type='text']");
+
+    @Name("Username")
+    private SelenideElement userNameField = $x("//input[@name='username']");
+
+    @Name("Password")
+    private SelenideElement passwordField = $x("//input[@name='password']");
+
+    @Name("Войти")
+    private SelenideElement loginLink = $x("//a[contains(text(),'Войти')]");
+
+    @Name("Вход")
+    private SelenideElement enterButton = $x("//input[@value='Вход']");
+
+    @Name("Таблица тикетов")
+    private SelenideElement ticketTable = $x("//table[@id='ticketTable']");
+
+    @Name("Создать тикет")
+    private SelenideElement createTicket = $x("//*[text()='Создать тикет']");
 }
