@@ -140,4 +140,17 @@ public class WebCheckSteps {
         WebChecks.checkAttribute(element, "value", expectedText, 10);
         LOGGER.info("в поле '{}' содержится текст '{}'", fieldName, expectedText);
     }
+
+    /**
+     * проверка значения в выпадающем списке
+     *
+     * @param fieldName название списка
+     * @param expectedText ожидаемое значение
+     */
+    @Когда("проверить, что в выпадающем списке {string} выбрано {string}")
+    public void checkListContainsText(String fieldName, String expectedText) {
+        SelenideElement element = pageManager.getCurrentPage().getElement(fieldName);
+        WebChecks.checkIsSelectedInDropdown(element, expectedText, 10);
+        LOGGER.info("в списке '{}' содержится значение '{}'", fieldName, expectedText);
+    }
 }

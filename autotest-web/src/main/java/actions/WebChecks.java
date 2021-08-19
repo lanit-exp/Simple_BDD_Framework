@@ -68,6 +68,20 @@ public class WebChecks {
     }
 
     /**
+     * Проверяет, что значение в выпадающем списке соответствует ожидаемому
+     *
+     * @param element     Элемент
+     * @param expectValue Ожидаемое значение
+     */
+    public static void checkIsSelectedInDropdown(SelenideElement element, String expectValue, Integer timeoutSeconds) {
+        int timeout = getTimeoutSeconds(timeoutSeconds);
+        element
+                .shouldBe(Condition.exist, Duration.ofSeconds(timeout))
+                .shouldBe(Condition.visible)
+                .should(Condition.matchText(expectValue));
+    }
+
+    /**
      * Проверяет, что на странице имеется элемент
      */
     public static void elementVisibleOnPage(SelenideElement element, Integer timeoutSeconds) {

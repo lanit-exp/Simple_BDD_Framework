@@ -108,4 +108,15 @@ public class WebActionSteps {
                 .shouldBe(Condition.visible)
                 .clear();
     }
+
+    @Если("в выпадающем списке {string} выбрать {string}")
+    public void selectValueDropdown(String list, String value) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(list);
+        element
+                .shouldBe(Condition.visible)
+                .selectOptionContainingText(value);
+        LOGGER.info("в списке '{}' выбран элемент '{}'", list, value);
+    }
 }
