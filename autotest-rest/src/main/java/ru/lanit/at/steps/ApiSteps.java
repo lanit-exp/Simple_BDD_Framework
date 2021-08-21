@@ -66,13 +66,21 @@ public class ApiSteps {
         });
     }
 
-    @И("снегерировать переменные")
+    @И("сгенерировать переменные")
     public void generateVariables(Map<String, String> table) {
         table.forEach((k, v) -> {
             String value = DataGenerator.generateValueByMask(replaceVarsIfPresent(v));
             ContextHolder.put(k, value);
             Allure.addAttachment(k, "application/json", k + ": " + value, ".txt");
             LOG.info("Сгенерирована переменная: {}={}", k, value);
+        });
+    }
+
+    @И("создать контекстные переменные")
+    public void createContextVariables(Map<String, String> table) {
+        table.forEach((k, v) -> {
+            ContextHolder.put(k, v);
+            LOG.info("Сохранена переменная: {}={}", k, v);
         });
     }
 

@@ -43,11 +43,11 @@ public class ApiRequest {
         this.path = replaceVarsIfPresent(requestModel.getPath());
         this.method = Method.valueOf(requestModel.getMethod());
         this.body = requestModel.getBody();
-        this.fullUrl = requestModel.getUrl();
+        this.fullUrl = replaceVarsIfPresent(requestModel.getUrl());
 
         URI uri;
 
-        if (fullUrl != null) {
+        if (!fullUrl.isEmpty()) {
             uri = URI.create(fullUrl);
         } else {
             uri = URI.create(baseUrl);

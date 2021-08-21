@@ -1,5 +1,7 @@
 package ru.lanit.at.utils;
 
+import org.apache.commons.lang3.math.NumberUtils;
+
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -55,15 +57,6 @@ public class CompareUtil {
     }
 
     private static boolean isNumeric(String strNum) {
-        if (strNum == null) {
-            return false;
-        }
-        try {
-            Double.parseDouble(strNum);
-            NumberFormat.getInstance().parse(strNum);
-        } catch (NumberFormatException | ParseException nfe) {
-            return false;
-        }
-        return true;
+        return NumberUtils.isParsable(strNum);
     }
 }
