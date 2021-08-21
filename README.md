@@ -166,10 +166,10 @@ screenAfterStep=false - необходимость аттачить скринш
 Сгенерированные значения хранятся в контексте теста. Их можно подставлять в запросы, тела запросов. Достать их можно используя синтаксис ***${username}***<br/>
 
 ### Запуск API через консоль
-mvn -am -pl autotest-rest test -Dcucumber.filters.tag=@test -Ddataproviderthreadcount=5
+mvn -am -pl autotest-rest test -Dtags="@test" -Ddataproviderthreadcount=5
 
 ### Запуск WEB через консоль
-mvn -am -pl autotest-web test -Dcucumber.filters.tag=@google -Ddataproviderthreadcount=5
+mvn -am -pl autotest-web test -Dtags="@google" -Ddataproviderthreadcount=5
 
 Так же запустить тесты можно через плагин Cucumber (предварительно установив его в Idea), для этого необходимо открыть любой feature-файл, и кликнуть по зеленой стрелке рядом со стройкой **Функционал** или **Сценарий**<br/>
 ![feature](images/run-feature.png)
