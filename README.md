@@ -35,6 +35,7 @@ public class MySteps {
 }
 ```
 * ссылка ***pageManager*** хранит в себе инициализированный контекст текущей страницы, с помощью которой можно достать элемент через ***value*** аннотации  ***@Name*** элемента <br/>
+* При компиляции ссылка ***pageManager*** проинициализируется автоматически путем Dependency Injection через PicoContainer <br/>
 * Более подробно о подходе можно ознакомиться по ссылке [Cucumber PicoContainer](https://cucumber.io/docs/cucumber/state/) <br/>
 
 **2.2** Пример инициализации страницы:<br/>
