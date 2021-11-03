@@ -3,6 +3,8 @@ package ru.lanit.at.steps;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.ru.И;
 import io.qameta.allure.Allure;
+import io.restassured.path.json.JsonPath;
+import net.minidev.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -17,6 +19,7 @@ import ru.lanit.at.utils.VariableUtil;
 import java.util.HashMap;
 import java.util.Map;
 
+import static io.restassured.RestAssured.given;
 import static ru.lanit.at.api.testcontext.ContextHolder.replaceVarsIfPresent;
 import static ru.lanit.at.utils.JsonUtil.getFieldFromJson;
 
@@ -25,6 +28,24 @@ public class ApiSteps {
     private static final Logger LOG = LoggerFactory.getLogger(ApiSteps.class);
     private ApiRequest apiRequest;
 
+    @И("получить Token {} {}")
+    public String getToken(String username,String password) {
+        JSONObject innerBody = new JSONObject();
+        innerBody.put("username", username);
+        innerBody.put("password", password);
+        JsonPath tokenJson = given()
+                .baseUri("http://178.154.246.238:58082/")
+                .contentType("application/json")
+                .body(innerBody)
+                .when()
+                .post("api/otp_token/")
+                .then()
+                .statusCode(200)
+                .extract()
+                .jsonPath();
+        System.out.println(tokenJson.get("otp_token").toString());
+        return tokenJson.get("otp_token").toString();
+    }
     @И("создать запрос")
     public void createRequest(RequestModel requestModel) {
         apiRequest = new ApiRequest(requestModel);
