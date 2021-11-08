@@ -29,7 +29,7 @@ public class ApiSteps {
     private ApiRequest apiRequest;
 
     @И("получить Token {} {}")
-    public String getToken(String username,String password) {
+    public void getToken(String username,String password) {
         JSONObject innerBody = new JSONObject();
         innerBody.put("username", username);
         innerBody.put("password", password);
@@ -43,8 +43,8 @@ public class ApiSteps {
                 .statusCode(200)
                 .extract()
                 .jsonPath();
-        System.out.println(tokenJson.get("otp_token").toString());
-        return tokenJson.get("otp_token").toString();
+        ContextHolder.put("TOTP", tokenJson.get("otp_token").toString());
+        LOG.info("TOTP - {}", ContextHolder.getValue("TOTP").toString());
     }
     @И("создать запрос")
     public void createRequest(RequestModel requestModel) {
