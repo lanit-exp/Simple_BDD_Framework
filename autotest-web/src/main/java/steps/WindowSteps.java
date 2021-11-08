@@ -6,6 +6,7 @@ import com.codeborne.selenide.WebDriverRunner;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Когда;
+import io.cucumber.java.ru.Тогда;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -89,6 +90,9 @@ public class WindowSteps {
      *
      * @param pageName наименование страницы
      */
+
+    @Если("деактивировано поле {string}")
+    @Тогда("активировать поле {string}")
     @Если("пользователь на странице {string}")
     @Когда("инициализация страницы {string}")
     @И("переход на страницу {string}")
