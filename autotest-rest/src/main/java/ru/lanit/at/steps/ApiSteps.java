@@ -44,7 +44,7 @@ public class ApiSteps {
                 .extract()
                 .jsonPath();
         ContextHolder.put("TOTP", tokenJson.get("otp_token").toString());
-        LOG.info("TOTP - {}", ContextHolder.getValue("TOTP").toString());
+        LOG.info("Токен для авторизации - {}", ContextHolder.getValue("TOTP").toString());
     }
     @И("создать запрос")
     public void createRequest(RequestModel requestModel) {
