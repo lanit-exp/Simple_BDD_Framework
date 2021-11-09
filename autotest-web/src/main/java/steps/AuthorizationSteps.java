@@ -31,16 +31,12 @@ public class AuthorizationSteps {
         LOGGER.info("init webdriver for thread: {}", Thread.currentThread().getId());
     }
 
-    //    Тогда нажать на чекбокс 'Я желаю войти с админскими правами'
-    //    Тогда нажать на чекбокс 'Я здесь впервые'
     @Тогда("нажать на чекбокс {string}")
     void clickOnCheckbox(String elementName) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
         element.click();
     }
 
-//    Затем заполнить поле 'логин' значением 'login'
-//    Затем заполнить поле 'пароль' значением 'password'
     @Тогда("заполнить поле {string} значением {string}")
     void fillField(String elementName, String value) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
@@ -52,8 +48,6 @@ public class AuthorizationSteps {
         return null;
     }
 
-//    Тогда нажать на кнопку 'Войти'
-//    Тогда нажать на кнопку 'Выслать инструкцию на почту'
     @Тогда("нажать на кнопку {string}")
     void clickSignInButton(String elementName) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);

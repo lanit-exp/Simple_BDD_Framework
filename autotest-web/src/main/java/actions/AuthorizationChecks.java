@@ -28,9 +28,6 @@ public class AuthorizationChecks {
         return timeout == null ? cfg.webDriverTimeoutSeconds() : timeout;
     }
 
-//    Пусть поле ввода 'логин' отображается
-//    Пусть поле ввода 'пароль' отображается
-//    Пусть поле ввода 'токен' отображается
     @Пусть("поле ввода {string} отображается")
     public void checkAppearField(String elementName, Integer timeoutSeconds) {
         int timeout = getTimeoutSeconds(timeoutSeconds);
@@ -38,8 +35,6 @@ public class AuthorizationChecks {
         element.shouldBe(Condition.visible, Duration.ofSeconds(timeout));
     }
 
-//    Пусть чекбокс 'Я желаю войти с админскими правами' отображается и не выбран
-//    Пусть чекбокс 'Я здесь впервые' отображается и не выбран
     @Пусть("чекбокс {string} отображается и не выбран")
     public void checkAppearCheckbox(String elementName, Integer timeoutSeconds) {
         int timeout = getTimeoutSeconds(timeoutSeconds);
@@ -48,8 +43,6 @@ public class AuthorizationChecks {
         element.shouldNotBe(Condition.selected);
     }
 
-//    Пусть кнопка 'Войти' отображается
-//    Пусть кнопка 'Выслать инструкцию на почту' отображается
     @Пусть("кнопка {string} отображается")
     public void checkAppearButton(String elementName, Integer timeoutSeconds) {
         int timeout = getTimeoutSeconds(timeoutSeconds);
