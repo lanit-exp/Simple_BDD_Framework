@@ -46,11 +46,11 @@ public class AuthorizationChecks {
         element.shouldBe(Condition.visible, Duration.ofSeconds(timeout));
     }
 
+//TODO
     public void checkErrorMessageText() {
-
     }
 
+//TODO
     public void checkPopUpErrorMessageText() {
-
     }
 }

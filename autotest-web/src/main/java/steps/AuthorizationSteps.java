@@ -32,25 +32,25 @@ public class AuthorizationSteps {
     }
 
     @Тогда("нажать на чекбокс {string}")
-    void clickOnCheckbox(String elementName) {
+    public void clickOnCheckbox(String elementName) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
         element.click();
         LOGGER.info("клик на элемент по тексту '{}'", elementName);
     }
 
     @Тогда("заполнить поле {string} значением {string}")
-    void fillField(String elementName, String value) {
+    public void fillField(String elementName, String value) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
         element.setValue(value);
         LOGGER.info("в поле '{}' введено значение '{}'", elementName, value);
     }
 
-    String getToken(String username, String password) {
-        return null;
+//TODO
+    public void getToken(String username, String password) {
     }
 
     @Тогда("нажать на кнопку {string}")
-    void clickSignInButton(String elementName) {
+    public void clickSignInButton(String elementName) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
         element.click();
         LOGGER.info("клик на элемент по тексту '{}'", elementName);
