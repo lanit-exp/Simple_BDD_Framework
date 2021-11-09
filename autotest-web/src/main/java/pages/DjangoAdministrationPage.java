@@ -10,6 +10,11 @@ import static com.codeborne.selenide.Selenide.$x;
 
 @Name(value = "DjangoAdministration")
 public class DjangoAdministrationPage extends WebPage {
+    @Name("Заголовок таблицы")
+    private SelenideElement tableHeader = $("//*[@id='content']/h1");
+    @Name("Имя пользователя")
+    private SelenideElement userName = $("//*[@id='user-tools']/strong");
+
     //MAIN
     @Name("Сотрудники")
     private SelenideElement employee = $x("//a[text()='Сотрудники']");
@@ -76,19 +81,16 @@ public class DjangoAdministrationPage extends WebPage {
     @Name("Сотрудники с административным доступом")
     private SelenideElement administrator = $x("//a[text()='Сотрудники с административным доступом']");
 
-    //
-    @Name("Добавить {String}")
+    @Name("Добавить поле Сотрудники")
     private SelenideElement addEmployee = $x("//a[text()='Сотрудники']/following::td[1]/a");
-    @Name("Изменить {String}")
+    @Name("Изменить поле Сотрудники")
     private SelenideElement changeEmployee = $x("//a[text()='Сотрудники']/following::td[2]/a");
 
-    //
     @Name("Выйти")
     private SelenideElement logout = $x("//a[text()='Log out']");
     @Name("Изменить пароль")
     private SelenideElement changePassword = $x("//a[text()='Change password']");
     @Name("Показать сайт")
     private SelenideElement viewSite = $x("//a[text()='View site']");
-    @Name("Домой")
-    private SelenideElement home = $x("//a[text()='Home']");
+
 }
