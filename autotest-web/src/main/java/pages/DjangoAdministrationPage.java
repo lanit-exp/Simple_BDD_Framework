@@ -87,10 +87,10 @@ public class DjangoAdministrationPage extends WebPage {
     private SelenideElement changeEmployee = $x("//a[text()='Сотрудники']/following::td[2]/a");
 
     @Name("Выйти")
-    private SelenideElement logout = $x("//a[text()='Log out']");
+    private SelenideElement logout = $x("//*[@id='user-tools']//strong//following::a[3]");
     @Name("Изменить пароль")
-    private SelenideElement changePassword = $x("//a[text()='Change password']");
+    private SelenideElement changePassword = $x("//*[@id='user-tools']//strong//following::a[2]");
     @Name("Показать сайт")
-    private SelenideElement viewSite = $x("//a[text()='View site']");
+    private SelenideElement viewSite = $x("//*[@id='user-tools']//strong//following::a[1]");
 
 }
