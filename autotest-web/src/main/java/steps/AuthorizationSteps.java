@@ -35,6 +35,7 @@ public class AuthorizationSteps {
     void clickOnCheckbox(String elementName) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
         element.click();
+        LOGGER.info("клик на элемент по тексту '{}'", elementName);
     }
 
     @Тогда("заполнить поле {string} значением {string}")
@@ -52,5 +53,6 @@ public class AuthorizationSteps {
     void clickSignInButton(String elementName) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
         element.click();
+        LOGGER.info("клик на элемент по тексту '{}'", elementName);
     }
 }
