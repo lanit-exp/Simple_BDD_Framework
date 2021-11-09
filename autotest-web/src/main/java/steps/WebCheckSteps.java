@@ -2,6 +2,7 @@ package steps;
 
 import actions.WebChecks;
 import com.codeborne.selenide.SelenideElement;
+import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 import org.slf4j.Logger;
@@ -77,7 +78,7 @@ public class WebCheckSteps {
         WebChecks.elementVisibleOnPage(element, timeoutSeconds);
         LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
-    
+
     /**
      * проверка что на странице отображен элемент
      *
@@ -126,5 +127,10 @@ public class WebCheckSteps {
     @Тогда("проверить что текущий url содержит текст {string}")
     public void currentUrlContainsExpected(String url) {
         WebChecks.urlContains(url);
+    }
+
+    @Если("на странице отсутствует текст {string}")
+    public void currentTextIsNotExist(String errorText) {
+        WebChecks.textAbsentOnPage(errorText);
     }
 }

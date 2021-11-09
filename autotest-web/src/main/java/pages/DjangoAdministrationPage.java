@@ -92,5 +92,6 @@ public class DjangoAdministrationPage extends WebPage {
     private SelenideElement changePassword = $x("//*[@id='user-tools']//strong//following::a[2]");
     @Name("Показать сайт")
     private SelenideElement viewSite = $x("//*[@id='user-tools']//strong//following::a[1]");
-
+    @Name("ДОБРО ПОЖАЛОВАТЬ, {string}")
+    private SelenideElement viewWelcome = $x("//*[@id='user-tools']/strong");
 }

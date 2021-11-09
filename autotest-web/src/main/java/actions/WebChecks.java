@@ -186,4 +186,7 @@ public class WebChecks {
             return false;
         }
     }
+
+    public static void textAbsentOnPage(String errorText) {
+    }
 }
