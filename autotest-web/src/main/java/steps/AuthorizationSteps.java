@@ -37,8 +37,6 @@ public class AuthorizationSteps {
         LOGGER.info("init webdriver for thread: {}", Thread.currentThread().getId());
     }
 
-    @Если("деактивировано поле {string}")
-
     @Тогда("нажать на чекбокс {string}")
     public void clickOnCheckbox(String elementName) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
@@ -48,13 +46,6 @@ public class AuthorizationSteps {
 
     @Тогда("заполнить поле {string} значением {string}")
     public void fillField(String elementName, String value) {
-        SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
-        element.setValue(value);
-        LOGGER.info("в поле '{}' введено значение '{}'", elementName, value);
-    }
-
-    @И("заполнить поле {string} значением {string}")
-    public void fillFieldPass(String elementName, String value) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
         element.setValue(value);
         LOGGER.info("в поле '{}' введено значение '{}'", elementName, value);

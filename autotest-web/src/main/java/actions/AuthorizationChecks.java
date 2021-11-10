@@ -38,10 +38,9 @@ public class AuthorizationChecks {
     }
 
     @Пусть("чекбокс {string} отображается и не выбран")
-    public void checkAppearCheckbox(String elementName, Integer timeoutSeconds) {
-        int timeout = getTimeoutSeconds(timeoutSeconds);
+    public void checkAppearCheckbox(String elementName) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
-        element.shouldBe(Condition.visible, Duration.ofSeconds(timeout));
+        element.shouldBe(Condition.visible);
         element.shouldNotBe(Condition.selected);
     }
 
@@ -54,16 +53,39 @@ public class AuthorizationChecks {
 
     @Если("на странице отсутствует текст {string}")
     public void currentTextIsNotExist(String errorText) {
-        WebChecks.textAbsentOnPage(errorText);
+        AuthorizationChecks.textAbsentOnPage(errorText);
         LOGGER.info("на странице '{}' отсутствует текст '{}'", pageManager.getCurrentPage().name(), errorText);
     }
 
+    private static void textAbsentOnPage(String errorText) {
+    }
+
+    @Если("на странице имеется элемент {string}, {string}")
+    public void elementAppearOnThePage(String elementName, String value) {
+        SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
+        element.setValue(value);
+        /*SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName)
+                .getElement(elementNameTwo);
+        WebChecks.elementVisibleOnPage(element, null);
+        LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
+         */
+        LOGGER.info("в поле '{}' введено значение '{}'", elementName, value);
+    }
+
     @Если("на странице имеется элемент {string}")
-    public void elementAppearOnThePage(String elementName) {
+    public void elementAppearsOnThePage(String elementName) {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
         WebChecks.elementVisibleOnPage(element, null);
         LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
+    }
+
+    @Если("в поле Добро пожаловать, присутствует текст {string}")
+    public void currentTextIsExist(String curText) {
+        AuthorizationChecks.textAbsentOnPage(curText);
+        LOGGER.info("на странице '{}' отсутствует текст '{}'", pageManager.getCurrentPage().name(), curText);
     }
 }
