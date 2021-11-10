@@ -64,13 +64,6 @@ public class AuthorizationChecks {
     public void elementAppearOnThePage(String elementName, String value) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
         element.setValue(value);
-        /*SelenideElement element = pageManager
-                .getCurrentPage()
-                .getElement(elementName)
-                .getElement(elementNameTwo);
-        WebChecks.elementVisibleOnPage(element, null);
-        LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
-         */
         LOGGER.info("в поле '{}' введено значение '{}'", elementName, value);
     }
 
