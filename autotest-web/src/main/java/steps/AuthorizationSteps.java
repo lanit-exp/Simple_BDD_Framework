@@ -20,7 +20,6 @@ public class AuthorizationSteps {
 
     private static final Logger LOG = LoggerFactory.getLogger(AuthorizationSteps.class);
     private final PageManager pageManager;
-    private final Logger LOGGER = LoggerFactory.getLogger(WindowSteps.class);
 
     public AuthorizationSteps(PageManager pageManager) {
         this.pageManager = pageManager;
@@ -34,21 +33,21 @@ public class AuthorizationSteps {
             WebDriver currentThreadWebDriver = WebDriverRunner.getWebDriver();
             Environment.setThreadDriver(currentThreadWebDriver);
         }
-        LOGGER.info("init webdriver for thread: {}", Thread.currentThread().getId());
+        LOG.info("init webdriver for thread: {}", Thread.currentThread().getId());
     }
 
     @Тогда("нажать на чекбокс {string}")
     public void clickOnCheckbox(String elementName) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
         element.click();
-        LOGGER.info("клик на элемент по тексту '{}'", elementName);
+        LOG.info("клик на элемент по тексту '{}'", elementName);
     }
 
     @Тогда("заполнить поле {string} значением {string}")
     public void fillField(String elementName, String value) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
         element.setValue(value);
-        LOGGER.info("в поле '{}' введено значение '{}'", elementName, value);
+        LOG.info("в поле '{}' введено значение '{}'", elementName, value);
     }
 
     @И("получить Token для юзера {string} с паролем {string}")
@@ -74,7 +73,7 @@ public class AuthorizationSteps {
     public void clickSignInButton(String elementName) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
         element.click();
-        LOGGER.info("клик на элемент по тексту '{}'", elementName);
+        LOG.info("клик на элемент по тексту '{}'", elementName);
     }
 
     @Тогда("инициализация страницы {string}")
