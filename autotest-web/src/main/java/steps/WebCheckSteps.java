@@ -2,6 +2,7 @@ package steps;
 
 import actions.WebChecks;
 import com.codeborne.selenide.SelenideElement;
+import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 import org.slf4j.Logger;
@@ -37,6 +38,23 @@ public class WebCheckSteps {
     public void textVisibleOnPage(String text) {
         WebChecks.textAbsentOnPage(text, null);
         LOGGER.info("на странице '{}' отсутствует текст '{}'", pageManager.getCurrentPage().name(), text);
+    }
+
+    /**
+     * проверка отсутствия текста на странице
+     *
+     * @param elementName название элемента
+     * @param attrName название атрибута
+     * @param value значение атрибута
+     * @param sec ожидание сек.
+     *
+     */
+    @И("проверить что {string} есть  атрибут {string} с значением {string} подождав {int}")
+    public void elementAttributeValue(String elementName, String attrName, String value, int sec) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        WebChecks.checkAttribute(element, attrName, value, sec);
     }
 
     /**
