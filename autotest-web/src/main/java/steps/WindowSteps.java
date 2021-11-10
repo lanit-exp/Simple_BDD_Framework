@@ -84,19 +84,4 @@ public class WindowSteps {
         WebDriverRunner.getWebDriver().close();
     }
 
-    /**
-     * действие обозначает что мы находимся на определенной странице
-     * для работы с описанными элементами в пейдже
-     *
-     * @param pageName наименование страницы
-     */
-
-    @Если("деактивировано поле {string}")
-    @Если("пользователь на странице {string}")
-    @Когда("инициализация страницы {string}")
-    @И("переход на страницу {string}")
-    public void setPage(String pageName) {
-        WebPage page = Environment.getPage(pageName);
-        pageManager.setCurrentPage(page);
-    }
 }

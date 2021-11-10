@@ -30,17 +30,6 @@ public class WebCheckSteps {
     }
 
     /**
-     * проверка отсутствия текста на странице
-     *
-     * @param text текст
-     */
-    @Когда("на странице отсутствует текст {string}")
-    public void textVisibleOnPage(String text) {
-        WebChecks.textAbsentOnPage(text, null);
-        LOGGER.info("на странице '{}' отсутствует текст '{}'", pageManager.getCurrentPage().name(), text);
-    }
-
-    /**
      * ожидание появления текста на странице в течении некоторого времени
      *
      * @param text           текст
@@ -80,20 +69,6 @@ public class WebCheckSteps {
     }
 
     /**
-     * проверка что на странице отображен элемент
-     *
-     * @param elementName наименование элемента
-     */
-    @Когда("на странице имеется элемент {string}")
-    public void elementAppearOnThePage(String elementName) {
-        SelenideElement element = pageManager
-                .getCurrentPage()
-                .getElement(elementName);
-        WebChecks.elementVisibleOnPage(element, null);
-        LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
-    }
-
-    /**
      * проверка что на странице отсуствует элемент
      *
      * @param elementName наименование элемента
@@ -129,8 +104,4 @@ public class WebCheckSteps {
         WebChecks.urlContains(url);
     }
 
-    @Если("на странице отсутствует текст {string}")
-    public void currentTextIsNotExist(String errorText) {
-        WebChecks.textAbsentOnPage(errorText);
-    }
 }

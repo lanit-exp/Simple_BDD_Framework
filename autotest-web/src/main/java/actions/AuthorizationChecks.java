@@ -55,6 +55,7 @@ public class AuthorizationChecks {
     @Если("на странице отсутствует текст {string}")
     public void currentTextIsNotExist(String errorText) {
         WebChecks.textAbsentOnPage(errorText);
+        LOGGER.info("на странице '{}' отсутствует текст '{}'", pageManager.getCurrentPage().name(), errorText);
     }
 
     @Если("на странице имеется элемент {string}")
