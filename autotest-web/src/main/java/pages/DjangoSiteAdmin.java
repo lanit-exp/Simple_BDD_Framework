@@ -16,6 +16,9 @@ import static com.codeborne.selenide.Selenide.$x;
         @Name("пароль")
         private SelenideElement passwordField = $(By.id("id_password"));
 
+        @Name("токен")
+        private SelenideElement tokenField = $(By.id("id_otp_token"));
+
         @Name("Я желаю войти с админскими правами")
         private SelenideElement isAdminCheckbox = $(By.id("id_i_am_admin"));
 
@@ -23,6 +26,9 @@ import static com.codeborne.selenide.Selenide.$x;
         private SelenideElement haveTokenCheckbox = $(By.id("id_i_have_no_token"));
 
         @Name("кнопка войти")
-        private SelenideElement signinButton = $x("//*[@class='submit-row']");
+        private SelenideElement signinButton = $x("//input[@value='Войти']");
+
+        @Name("кнопка выслать инструкцию на почту")
+        private SelenideElement sendByEmailButton = $x("//input[@value='Выслать инструкцию на почту']");
     }
 
