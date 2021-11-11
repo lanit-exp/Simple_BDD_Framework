@@ -15,6 +15,10 @@ public class Checks {
         element.shouldBe(Condition.visible);
         element.shouldNotBe(Condition.selected);
     }
+    public static void elementVisibleAndSelected(SelenideElement element) {
+        element.shouldBe(Condition.visible);
+        element.shouldBe(Condition.selected);
+    }
 
     public static void elementTextEqualsExpectedText(SelenideElement element, String expectedText) {
         element.shouldBe(Condition.exactTextCaseSensitive(expectedText));
