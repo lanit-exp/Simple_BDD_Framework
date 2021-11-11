@@ -4,17 +4,12 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import io.cucumber.java.ru.*;
-import io.restassured.path.json.JsonPath;
-import net.minidev.json.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.lanit.at.api.testcontext.ContextHolder;
 import ru.lanit.at.web.pagecontext.Environment;
 import ru.lanit.at.web.pagecontext.PageManager;
 import ru.lanit.at.web.pagecontext.WebPage;
-
-import static io.restassured.RestAssured.given;
 
 public class AuthorizationSteps {
 
@@ -48,25 +43,6 @@ public class AuthorizationSteps {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
         element.setValue(value);
         LOG.info("в поле '{}' введено значение '{}'", elementName, value);
-    }
-
-    @И("получить Token для юзера {string} с паролем {string}")
-    public void getToken(String username,String password) {
-        JSONObject innerBody = new JSONObject();
-        innerBody.put("username", username);
-        innerBody.put("password", password);
-        JsonPath tokenJson = given()
-                .baseUri("http://178.154.246.238:58082/")
-                .contentType("application/json")
-                .body(innerBody)
-                .when()
-                .post("api/otp_token/")
-                .then()
-                .statusCode(200)
-                .extract()
-                .jsonPath();
-        ContextHolder.put("TOTP", tokenJson.get("otp_token").toString());
-        LOG.info("Токен для авторизации - {}", ContextHolder.getValue("TOTP").toString());
     }
 
     @Тогда("нажать на {string}")
