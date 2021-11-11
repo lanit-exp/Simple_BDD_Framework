@@ -17,11 +17,19 @@ public class AuthorizationCheckSteps {
     }
 
     @Пусть("чекбокс {string} отображается и не выбран")
-    public void checkAppearCheckbox(String elementName) {
+    public void checkNoSelectedCheckbox(String elementName) {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
         Checks.elementVisibleAndNoSelected(element);
+        LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
+    }
+    @Пусть("чекбокс {string} отображается и выбран")
+    public void checkSelectedCheckbox(String elementName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        Checks.elementVisibleAndSelected(element);
         LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
