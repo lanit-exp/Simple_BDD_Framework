@@ -49,7 +49,7 @@ public class AuthorizationSteps {
     public void getToken(String username, String password) {
     }
 
-    @Тогда("нажать на кнопку {string}")
+    @Тогда("нажать на {string}")
     public void clickSignInButton(String elementName) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
         element.click();
