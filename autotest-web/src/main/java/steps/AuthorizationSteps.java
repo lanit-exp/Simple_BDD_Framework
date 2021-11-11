@@ -69,7 +69,7 @@ public class AuthorizationSteps {
         LOG.info("Токен для авторизации - {}", ContextHolder.getValue("TOTP").toString());
     }
 
-    @Тогда("нажать на кнопку {string}")
+    @Тогда("нажать на {string}")
     public void clickSignInButton(String elementName) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
         element.click();
