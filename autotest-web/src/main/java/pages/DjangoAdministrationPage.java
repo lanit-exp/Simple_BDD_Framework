@@ -93,5 +93,5 @@ public class DjangoAdministrationPage extends WebPage {
     @Name("Показать сайт")
     private SelenideElement viewSite = $x("//*[@id='user-tools']//strong//following::a[1]");
     @Name("username")
-    private SelenideElement viewWelcome = $x("//div[@id='user-tools']");
+    private SelenideElement userTools = $x("//div[@id='user-tools']/strong");
 }
