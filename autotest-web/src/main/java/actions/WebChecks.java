@@ -24,11 +24,11 @@ public class WebChecks {
     private static final Logger LOGGER = LoggerFactory.getLogger(WebChecks.class);
     private static final WebDriver DRIVER = Environment.getDriver();
 
-    private static Integer getTimeoutSeconds(Integer timeout) {
+    private static Integer getTimeoutSecondsFirst(Integer timeoutt) {
         WebConfigurations cfg = ConfigFactory.create(WebConfigurations.class,
                 System.getProperties(),
                 System.getenv());
-        return timeout == null ? cfg.webDriverTimeoutSeconds() : timeout;
+        return timeoutt == null ? cfg.webDriverTimeoutSeconds() : timeoutt;
     }
 
     /**
@@ -61,7 +61,7 @@ public class WebChecks {
      * @param expectValue Ожидаемое значение атрибута
      */
     public static void checkAttribute(SelenideElement element, String attrName, String expectValue, Integer timeoutSeconds) {
-        int timeout = getTimeoutSeconds(timeoutSeconds);
+        int timeout = getTimeoutSecondsFirst(timeoutSeconds);
         element
                 .shouldBe(Condition.exist, Duration.ofSeconds(timeout))
                 .shouldBe(Condition.attribute(attrName, expectValue), Duration.ofSeconds(timeout));
@@ -71,7 +71,7 @@ public class WebChecks {
      * Проверяет, что на странице имеется элемент
      */
     public static void elementVisibleOnPage(SelenideElement element, Integer timeoutSeconds) {
-        int timeout = getTimeoutSeconds(timeoutSeconds);
+        int timeout = getTimeoutSecondsFirst(timeoutSeconds);
         element.shouldBe(Condition.visible, Duration.ofSeconds(timeout));
     }
 
@@ -79,7 +79,7 @@ public class WebChecks {
      * Проверяет, что на странице имеется текст
      */
     public static void textVisibleOnPage(String text, Integer timeoutSeconds) {
-        int timeout = getTimeoutSeconds(timeoutSeconds);
+        int timeout = getTimeoutSecondsFirst(timeoutSeconds);
         $(Selectors.byText(text))
                 .shouldBe(Condition.visible, Duration.ofSeconds(timeout));
     }
@@ -88,7 +88,7 @@ public class WebChecks {
      * Проверяет, что на странице отсутствует текст
      */
     public static void textAbsentOnPage(String text, Integer timeoutSeconds) {
-        int timeout = getTimeoutSeconds(timeoutSeconds);
+        int timeout = getTimeoutSecondsFirst(timeoutSeconds);
         $(Selectors.byText(text))
                 .shouldBe(Condition.not(Condition.visible), Duration.ofSeconds(timeout));
     }
@@ -97,7 +97,7 @@ public class WebChecks {
      * Проверяет, что на странице отсутствует элемент
      */
     public static void elementAbsentOnPage(SelenideElement element, Integer timeoutSeconds) {
-        int timeout = getTimeoutSeconds(timeoutSeconds);
+        int timeout = getTimeoutSecondsFirst(timeoutSeconds);
         element
                 .shouldBe(Condition.not(Condition.visible), Duration.ofSeconds(timeout));
     }
@@ -110,7 +110,7 @@ public class WebChecks {
      * @param timeoutSeconds количество секунд, в течении этого времени ожидается текст
      */
     public static void elementTextEqualsExpectedText(SelenideElement element, String expectedText, Integer timeoutSeconds) {
-        int timeout = getTimeoutSeconds(timeoutSeconds);
+        int timeout = getTimeoutSecondsFirst(timeoutSeconds);
         element.shouldBe(Condition.exactTextCaseSensitive(expectedText), Duration.ofSeconds(timeout));
     }
 
@@ -122,7 +122,7 @@ public class WebChecks {
      * @param timeoutSeconds количество секунд
      */
     public static void elementTextNotEqualsExpectedText(SelenideElement element, String expectedText, Integer timeoutSeconds) {
-        int timeout = getTimeoutSeconds(timeoutSeconds);
+        int timeout = getTimeoutSecondsFirst(timeoutSeconds);
         element.shouldNotBe(Condition.exactTextCaseSensitive(expectedText), Duration.ofSeconds(timeout));
     }
 
@@ -134,7 +134,7 @@ public class WebChecks {
      * @param timeoutSeconds количество секунд, в течении этого времени ожидается текст
      */
     public static void elementTextContainsExpectedText(SelenideElement element, String expectedText, Integer timeoutSeconds) {
-        int timeout = getTimeoutSeconds(timeoutSeconds);
+        int timeout = getTimeoutSecondsFirst(timeoutSeconds);
         element.shouldBe(Condition.matchText(expectedText), Duration.ofSeconds(timeout));
     }
 

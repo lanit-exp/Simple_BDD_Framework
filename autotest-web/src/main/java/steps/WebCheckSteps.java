@@ -2,6 +2,7 @@ package steps;
 
 import actions.WebChecks;
 import com.codeborne.selenide.SelenideElement;
+import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 import org.slf4j.Logger;
@@ -26,17 +27,6 @@ public class WebCheckSteps {
     public void textAppearOnThePage(String text) {
         WebChecks.textVisibleOnPage(text, null);
         LOGGER.info("на странице '{}' имеется текст '{}'", pageManager.getCurrentPage().name(), text);
-    }
-
-    /**
-     * проверка отсутствия текста на странице
-     *
-     * @param text текст
-     */
-    @Когда("на странице отсутствует текст {string}")
-    public void textVisibleOnPage(String text) {
-        WebChecks.textAbsentOnPage(text, null);
-        LOGGER.info("на странице '{}' отсутствует текст '{}'", pageManager.getCurrentPage().name(), text);
     }
 
     /**
@@ -77,20 +67,6 @@ public class WebCheckSteps {
         WebChecks.elementVisibleOnPage(element, timeoutSeconds);
         LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
-    
-    /**
-     * проверка что на странице отображен элемент
-     *
-     * @param elementName наименование элемента
-     */
-    @Когда("на странице имеется элемент {string}")
-    public void elementAppearOnThePage(String elementName) {
-        SelenideElement element = pageManager
-                .getCurrentPage()
-                .getElement(elementName);
-        WebChecks.elementVisibleOnPage(element, null);
-        LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
-    }
 
     /**
      * проверка что на странице отсуствует элемент
@@ -127,4 +103,5 @@ public class WebCheckSteps {
     public void currentUrlContainsExpected(String url) {
         WebChecks.urlContains(url);
     }
+
 }
