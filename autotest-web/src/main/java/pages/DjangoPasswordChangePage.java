@@ -6,6 +6,7 @@ import ru.lanit.at.web.annotations.Name;
 import ru.lanit.at.web.pagecontext.WebPage;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 @Name(value = "DjangoPasswordChange")
 public class DjangoPasswordChangePage extends WebPage {
@@ -16,5 +17,5 @@ public class DjangoPasswordChangePage extends WebPage {
     @Name("подтверждение нового пароля")
     private SelenideElement newPasswordConfirmation = $(By.id("id_new_password2"));
     @Name("изменить пароль")
-    private SelenideElement changePassword = $(By.id("//input[@type='submit']"));
+    private SelenideElement changePassword = $x("//input[@type='submit']");
 }
