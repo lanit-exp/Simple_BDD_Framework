@@ -6,15 +6,26 @@ import net.minidev.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.lanit.at.api.testcontext.ContextHolder;
+import ru.lanit.at.web.pagecontext.PageManager;
 
 import static io.restassured.RestAssured.given;
 
 public class ApiSteps {
 
+    private static String token = "";
+    private PageManager pageManager;
     private static final Logger LOG = LoggerFactory.getLogger(ApiSteps.class);
 
+    public ApiSteps(PageManager pageManager) {
+        this.pageManager = pageManager;
+    }
+
+    public static String getCurrentToken() {
+        return token;
+    }
+
     @И("получить Token для юзера {string} с паролем {string}")
-    public void getToken(String username,String password) {
+    public static void getToken(String username, String password) {
         JSONObject innerBody = new JSONObject();
         innerBody.put("username", username);
         innerBody.put("password", password);
@@ -29,6 +40,7 @@ public class ApiSteps {
                 .extract()
                 .jsonPath();
         ContextHolder.put("TOTP", tokenJson.get("otp_token").toString());
+        token = ContextHolder.getValue("TOTP").toString();
         LOG.info("Токен для авторизации - {}", ContextHolder.getValue("TOTP").toString());
     }
 }

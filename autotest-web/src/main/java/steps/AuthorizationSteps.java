@@ -58,4 +58,12 @@ public class AuthorizationSteps {
         WebPage page = Environment.getPage(pageName);
         pageManager.setCurrentPage(page);
     }
+
+    @Тогда("ввести {string} для пользователя {string} с паролем {string}")
+    public void fillFieldToken(String elementName, String login, String password) {
+        ApiSteps.getToken(login, password);
+        SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
+        element.setValue(ApiSteps.getCurrentToken());
+        LOG.info("в поле '{}' введено значение '{}'", elementName, ApiSteps.getCurrentToken());
+    }
 }
