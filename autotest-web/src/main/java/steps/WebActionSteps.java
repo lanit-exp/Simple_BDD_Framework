@@ -6,16 +6,21 @@ import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Когда;
+import io.restassured.path.json.JsonPath;
+import net.minidev.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.lanit.at.api.testcontext.ContextHolder;
 import ru.lanit.at.web.pagecontext.PageManager;
 import ru.lanit.at.utils.Sleep;
 
 import static com.codeborne.selenide.Selenide.$;
+import static io.restassured.RestAssured.given;
 
 
 public class WebActionSteps {
 
+    private static final Logger LOG = LoggerFactory.getLogger(WebActionSteps.class);
     private PageManager pageManager;
     private static final Logger LOGGER = LoggerFactory.getLogger(WebActionSteps.class);
 
@@ -108,4 +113,5 @@ public class WebActionSteps {
                 .shouldBe(Condition.visible)
                 .clear();
     }
+
 }
