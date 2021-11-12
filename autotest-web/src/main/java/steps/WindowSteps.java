@@ -6,6 +6,7 @@ import com.codeborne.selenide.WebDriverRunner;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Когда;
+import io.cucumber.java.ru.Тогда;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -83,17 +84,4 @@ public class WindowSteps {
         WebDriverRunner.getWebDriver().close();
     }
 
-    /**
-     * действие обозначает что мы находимся на определенной странице
-     * для работы с описанными элементами в пейдже
-     *
-     * @param pageName наименование страницы
-     */
-    @Если("пользователь на странице {string}")
-    @Когда("инициализация страницы {string}")
-    @И("переход на страницу {string}")
-    public void setPage(String pageName) {
-        WebPage page = Environment.getPage(pageName);
-        pageManager.setCurrentPage(page);
-    }
 }

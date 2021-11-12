@@ -3,6 +3,7 @@ package steps;
 import actions.WebChecks;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.И;
+import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 import org.slf4j.Logger;
@@ -93,20 +94,6 @@ public class WebCheckSteps {
                 .getCurrentPage()
                 .getElement(elementName);
         WebChecks.elementVisibleOnPage(element, timeoutSeconds);
-        LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
-    }
-    
-    /**
-     * проверка что на странице отображен элемент
-     *
-     * @param elementName наименование элемента
-     */
-    @Когда("на странице имеется элемент {string}")
-    public void elementAppearOnThePage(String elementName) {
-        SelenideElement element = pageManager
-                .getCurrentPage()
-                .getElement(elementName);
-        WebChecks.elementVisibleOnPage(element, null);
         LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 

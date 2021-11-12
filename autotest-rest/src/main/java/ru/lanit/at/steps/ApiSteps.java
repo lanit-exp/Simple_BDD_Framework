@@ -28,7 +28,7 @@ public class ApiSteps {
     private static final Logger LOG = LoggerFactory.getLogger(ApiSteps.class);
     private ApiRequest apiRequest;
 
-    @И("получить Token {} {}")
+   /* @И("получить Token {} {}")
     public void getToken(String username,String password) {
         JSONObject innerBody = new JSONObject();
         innerBody.put("username", username);
@@ -46,6 +46,7 @@ public class ApiSteps {
         ContextHolder.put("TOTP", tokenJson.get("otp_token").toString());
         LOG.info("Токен для авторизации - {}", ContextHolder.getValue("TOTP").toString());
     }
+    */
     @И("создать запрос")
     public void createRequest(RequestModel requestModel) {
         apiRequest = new ApiRequest(requestModel);

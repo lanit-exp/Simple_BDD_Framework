@@ -2,6 +2,7 @@ package steps;
 
 import actions.Checks;
 import com.codeborne.selenide.SelenideElement;
+import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.Пусть;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,8 +34,10 @@ public class AuthorizationCheckSteps {
         LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
-    @Пусть("поле ввода {string} отображается")
-    public void checkAppearField(String elementName) {
+     @Если("поле {string} отображается")
+     @Если("кнопка {string} отображается")
+     @Пусть("поле ввода {string} отображается")
+     public void checkAppearElement(String elementName) {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
@@ -51,11 +54,28 @@ public class AuthorizationCheckSteps {
         LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
-//TODO
-    public void checkErrorMessageText() {
+    @Если("на странице отсутствует текст {string}")
+    public void currentTextIsNotExist(String errorText) {
+        AuthorizationCheckSteps.textAbsentOnPage(errorText);
+        LOGGER.info("на странице '{}' отсутствует текст '{}'", pageManager.getCurrentPage().name(), errorText);
     }
 
-//TODO
-    public void checkPopUpErrorMessageText() {
+    private static void textAbsentOnPage(String errorText) {
     }
+
+    @Если("на странице имеется элемент {string}")
+    public void elementAppearsOnThePage(String elementName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        Checks.elementVisibleOnPage(element, null);
+        LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
+    }
+
+    @Если("в поле Добро пожаловать, присутствует текст {string}")
+    public void currentTextIsExist(String curText) {
+        AuthorizationCheckSteps.textAbsentOnPage(curText);
+        LOGGER.info("на странице '{}' отсутствует текст '{}'", pageManager.getCurrentPage().name(), curText);
+    }
+
 }

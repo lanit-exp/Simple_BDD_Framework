@@ -8,8 +8,8 @@ import ru.lanit.at.web.pagecontext.WebPage;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
-    @Name(value = "DjangoSiteAdmin")
-    public class DjangoSiteAdmin extends WebPage {
+    @Name(value = "DjangoAuthorization")
+    public class DjangoAuthorization extends WebPage {
         @Name("логин")
         private SelenideElement usernameField = $(By.id("id_username"));
 
@@ -25,10 +25,10 @@ import static com.codeborne.selenide.Selenide.$x;
         @Name("Я здесь впервые")
         private SelenideElement haveTokenCheckbox = $(By.id("id_i_have_no_token"));
 
-        @Name("кнопка войти")
+        @Name("войти")
         private SelenideElement signinButton = $x("//input[@value='Войти']");
 
-        @Name("кнопка выслать инструкцию на почту")
+        @Name("выслать инструкцию на почту")
         private SelenideElement sendByEmailButton = $x("//input[@value='Выслать инструкцию на почту']");
     }
 

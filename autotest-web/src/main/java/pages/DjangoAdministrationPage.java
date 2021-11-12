@@ -11,9 +11,9 @@ import static com.codeborne.selenide.Selenide.$x;
 @Name(value = "DjangoAdministration")
 public class DjangoAdministrationPage extends WebPage {
     @Name("Заголовок таблицы")
-    private SelenideElement tableHeader = $("//*[@id='content']/h1");
+    private SelenideElement tableHeader = $x("//*[@id='content']/h1");
     @Name("Имя пользователя")
-    private SelenideElement userName = $("//*[@id='user-tools']/strong");
+    private SelenideElement userName = $x("//*[@id='user-tools']/strong");
 
     //MAIN
     @Name("Сотрудники")
@@ -89,8 +89,9 @@ public class DjangoAdministrationPage extends WebPage {
     @Name("Выйти")
     private SelenideElement logout = $x("//*[@id='user-tools']//strong//following::a[3]");
     @Name("Изменить пароль")
-    private SelenideElement changePassword = $x("//*[@id='user-tools']//strong//following::a[2]");
+    private SelenideElement changePassword = $x("//a[@href='/admin/password_change/']");
     @Name("Показать сайт")
     private SelenideElement viewSite = $x("//*[@id='user-tools']//strong//following::a[1]");
-
+    @Name("username")
+    private SelenideElement userTools = $x("//div[@id='user-tools']/strong");
 }
