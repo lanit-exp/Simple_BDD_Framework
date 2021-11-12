@@ -1,15 +1,12 @@
 package steps;
 
 import actions.Checks;
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.Пусть;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.lanit.at.web.pagecontext.PageManager;
-
-import java.time.Duration;
 
 public class AuthorizationCheckSteps {
 
@@ -29,8 +26,10 @@ public class AuthorizationCheckSteps {
         LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
-    @Пусть("поле ввода {string} отображается")
-    public void checkAppearField(String elementName) {
+     @Если("поле {string} отображается")
+     @Если("кнопка {string} отображается")
+     @Пусть("поле ввода {string} отображается")
+     public void checkAppearElement(String elementName) {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);

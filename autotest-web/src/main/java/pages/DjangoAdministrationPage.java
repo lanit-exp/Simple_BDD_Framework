@@ -11,9 +11,9 @@ import static com.codeborne.selenide.Selenide.$x;
 @Name(value = "DjangoAdministration")
 public class DjangoAdministrationPage extends WebPage {
     @Name("Заголовок таблицы")
-    private SelenideElement tableHeader = $("//*[@id='content']/h1");
+    private SelenideElement tableHeader = $x("//*[@id='content']/h1");
     @Name("Имя пользователя")
-    private SelenideElement userName = $("//*[@id='user-tools']/strong");
+    private SelenideElement userName = $x("//*[@id='user-tools']/strong");
 
     //MAIN
     @Name("Сотрудники")
