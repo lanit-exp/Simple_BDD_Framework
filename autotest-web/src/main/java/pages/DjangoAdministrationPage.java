@@ -1,23 +1,21 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 import ru.lanit.at.web.annotations.Name;
-import ru.lanit.at.web.pagecontext.WebPage;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 @Name(value = "DjangoAdministration")
-public class DjangoAdministrationPage extends WebPage {
+public class DjangoAdministrationPage extends DjangoPagesHeader {
+
     @Name("Заголовок таблицы")
-    private SelenideElement tableHeader = $x("//*[@id='content']/h1");
-    @Name("Имя пользователя")
-    private SelenideElement userName = $x("//*[@id='user-tools']/strong");
+    private SelenideElement tableHeader = $x("//div[@id='content']/h1");
 
     //MAIN
     @Name("Сотрудники")
-    private SelenideElement employee = $x("//a[text()='Сотрудники']");
+    private SelenideElement employee = $(".model-employee th a");
+
     @Name("Запросы на отпуск")
     private SelenideElement employeeVacationRequest = $x("//a[text()='Запросы на отпуск']");
     @Name("Фактические отпуска")
@@ -82,16 +80,7 @@ public class DjangoAdministrationPage extends WebPage {
     private SelenideElement administrator = $x("//a[text()='Сотрудники с административным доступом']");
 
     @Name("Добавить поле Сотрудники")
-    private SelenideElement addEmployee = $x("//a[text()='Сотрудники']/following::td[1]/a");
+    private SelenideElement addEmployee = $x("//a[@href='/admin/core/employee/add/']");
     @Name("Изменить поле Сотрудники")
-    private SelenideElement changeEmployee = $x("//a[text()='Сотрудники']/following::td[2]/a");
-
-    @Name("Выйти")
-    private SelenideElement logout = $x("//*[@id='user-tools']//strong//following::a[3]");
-    @Name("Изменить пароль")
-    private SelenideElement changePassword = $x("//a[@href='/admin/password_change/']");
-    @Name("Показать сайт")
-    private SelenideElement viewSite = $x("//*[@id='user-tools']//strong//following::a[1]");
-    @Name("username")
-    private SelenideElement userTools = $x("//div[@id='user-tools']/strong");
+    private SelenideElement changeEmployee = $x("//a[@href='/admin/core/employee/' and @class='changelink']");
 }
