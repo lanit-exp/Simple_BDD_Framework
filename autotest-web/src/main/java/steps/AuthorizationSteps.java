@@ -16,6 +16,7 @@ public class AuthorizationSteps {
     private static final Logger LOG = LoggerFactory.getLogger(AuthorizationSteps.class);
     private final PageManager pageManager;
 
+
     public AuthorizationSteps(PageManager pageManager) {
         this.pageManager = pageManager;
     }

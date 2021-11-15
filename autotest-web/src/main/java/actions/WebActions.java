@@ -13,7 +13,6 @@ import ru.lanit.at.web.pagecontext.Environment;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class WebActions {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WebActions.class);
