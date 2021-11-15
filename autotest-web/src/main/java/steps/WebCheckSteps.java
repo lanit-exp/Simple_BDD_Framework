@@ -41,7 +41,7 @@ public class WebCheckSteps {
      * @param sec ожидание сек.
      *
      */
-    @И("проверить что {string} есть  атрибут {string} с значением {string} подождав {int}")
+    @И("проверить что {string} есть  атрибут {string} с значением {string} подождав {int} сек.")
     public void elementAttributeValue(String elementName, String attrName, String value, int sec) {
         SelenideElement element = pageManager
                 .getCurrentPage()
