@@ -30,16 +30,7 @@ public class WebCheckSteps {
         LOGGER.info("на странице '{}' имеется текст '{}'", pageManager.getCurrentPage().name(), text);
     }
 
-    /**
-     * проверка отсутствия текста на странице
-     *
-     * @param text текст
-     */
-    @Когда("на странице отсутствует текст {string}")
-    public void textVisibleOnPage(String text) {
-        WebChecks.textAbsentOnPage(text, null);
-        LOGGER.info("на странице '{}' отсутствует текст '{}'", pageManager.getCurrentPage().name(), text);
-    }
+
 
     /**
      * проверка отсутствия текста на странице
