@@ -1,5 +1,6 @@
 package steps;
 
+import actions.WebActions;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
@@ -15,6 +16,7 @@ public class AuthorizationSteps {
 
     private static final Logger LOG = LoggerFactory.getLogger(AuthorizationSteps.class);
     private final PageManager pageManager;
+
 
     public AuthorizationSteps(PageManager pageManager) {
         this.pageManager = pageManager;
@@ -65,5 +67,12 @@ public class AuthorizationSteps {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
         element.setValue(ApiSteps.getCurrentToken());
         LOG.info("в поле '{}' введено значение '{}'", elementName, ApiSteps.getCurrentToken());
+    }
+
+    @Дано("успешная авторизация на сайте под аккаунтом {string} с паролем {string}")
+    public void fastAuthorization(String login, String password) {
+        WebActions.loadProperties();
+        openUrl(System.getProperty("base.url"));
+//        fillField();
     }
 }
