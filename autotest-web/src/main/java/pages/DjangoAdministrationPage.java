@@ -83,4 +83,6 @@ public class DjangoAdministrationPage extends DjangoPagesHeader {
     private SelenideElement addEmployee = $x("//a[@href='/admin/core/employee/add/']");
     @Name("Изменить поле Сотрудники")
     private SelenideElement changeEmployee = $x("//a[@href='/admin/core/employee/' and @class='changelink']");
+    @Name("Администрирование Django")
+    private SelenideElement headerPage = $x("//a[@href='/admin/']");
 }
