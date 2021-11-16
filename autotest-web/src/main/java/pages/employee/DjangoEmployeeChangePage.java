@@ -47,7 +47,7 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     @Name("Summary")
     private SelenideElement summary = $x("//a[@class='historylink' and text()='Summary']");
 
-    @Name("Удалить")
+    @Name("Удалено")
     private SelenideElement delete = $(".deletelink");
     @Name("Сохранить и добавать другой объект")
     private SelenideElement saveAndAddAnother = $x("//input[@name='_addanother']");

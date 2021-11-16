@@ -4,6 +4,7 @@ import actions.Checks;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.Пусть;
+import io.cucumber.java.ru.Тогда;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.lanit.at.web.pagecontext.PageManager;
@@ -68,6 +69,15 @@ public class AuthorizationCheckSteps {
     public void currentTextIsExist(String curText) {
         AuthorizationCheckSteps.textAbsentOnPage(curText);
         LOGGER.info("на странице '{}' отсутствует текст '{}'", pageManager.getCurrentPage().name(), curText);
+    }
+
+    @Если("поле {string} содержит значение {string}")
+    public void matchText(String elementName, String text) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        Checks.elementTextEqualsExpectedText(element, text);
+        LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
 }

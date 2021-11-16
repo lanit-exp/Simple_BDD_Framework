@@ -16,11 +16,15 @@ public class ApiSteps {
     private PageManager pageManager;
     private static final Logger LOG = LoggerFactory.getLogger(ApiSteps.class);
 
+    public static String getCurrentToken() {
+        return token;
+    }
+
     public ApiSteps(PageManager pageManager) {
         this.pageManager = pageManager;
     }
 
-    public static String getCurrentToken() {
+    public static String getCurentToken() {
         return token;
     }
 
