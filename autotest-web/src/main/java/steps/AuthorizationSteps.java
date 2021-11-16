@@ -14,8 +14,8 @@ import ru.lanit.at.web.pagecontext.WebPage;
 public class AuthorizationSteps {
 
     private static final Logger LOG = LoggerFactory.getLogger(AuthorizationSteps.class);
+    private static String currentToken = "";
     private final PageManager pageManager;
-
 
     public AuthorizationSteps(PageManager pageManager) {
         this.pageManager = pageManager;
@@ -63,8 +63,14 @@ public class AuthorizationSteps {
     @Тогда("ввести {string} для пользователя {string} с паролем {string}")
     public void fillFieldToken(String elementName, String login, String password) {
         ApiSteps.getToken(login, password);
-        SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
-        element.setValue(ApiSteps.getCurrentToken());
-        LOG.info("в поле '{}' введено значение '{}'", elementName, ApiSteps.getCurrentToken());
+        String token = ApiSteps.getCurrentToken();
+        if (token.equals(currentToken)) {
+            fillFieldToken(elementName, login, password);
+        } else {
+            SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
+            element.setValue(token);
+            currentToken = token;
+            LOG.info("в поле '{}' введено значение '{}'", elementName, token);
+        }
     }
 }
