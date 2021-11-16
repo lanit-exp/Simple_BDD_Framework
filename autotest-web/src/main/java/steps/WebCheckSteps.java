@@ -47,6 +47,7 @@ public class WebCheckSteps {
                 .getCurrentPage()
                 .getElement(elementName);
         WebChecks.checkAttribute(element, attrName, value, sec);
+        LOGGER.info("у элемента '{}' имеется атрибут '{}' со значением '{}' ", elementName, attrName, value);
     }
 
     /**
