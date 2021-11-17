@@ -15,5 +15,8 @@ public class DjangoReturnEmployeePage extends DjangoPagesHeader {
     @Name("Вернуть Бородкинов Битард")
     private SelenideElement returnBorodkinov = $x("//div/h1[text()]");
 
+    @Name("поле Фамилии")
+    private SelenideElement surname = $x("//input[@name='surname']");
+
 }
 

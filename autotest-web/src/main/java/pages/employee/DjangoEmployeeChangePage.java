@@ -1,5 +1,6 @@
 package pages.employee;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import pages.DjangoPagesHeader;
 import ru.lanit.at.web.annotations.Name;
@@ -58,5 +59,18 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     private SelenideElement saveAndContinue = $x("//input[@name='_continue']");
     @Name("Сохранить")
     private SelenideElement save = $x("//input[@name='_save']");
+
+    @Name("Name")
+    private SelenideElement nameOfHeader = $x("//li[@class='success']/a");
+
+    @Name("Города")
+    private SelenideElement cities = $x("//a[@id='fieldsetcollapser11']");
+    @Name("Список городов")
+    private SelenideElement listOfcities = $x("//select[@name='employeecity_set-0-city']");
+    @Name("Дата изменения")
+    private SelenideElement dateOfChange = $x("//th[@class='column-change_date required'][1]");
+    @Name("Сегодня")
+    private ElementsCollection todayCity = $$x("//span[@class='datetimeshortcuts']/a[text()='Сегодня']");
+
 }
 

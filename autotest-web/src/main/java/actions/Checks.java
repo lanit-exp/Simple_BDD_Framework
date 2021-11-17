@@ -3,6 +3,8 @@ package actions;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.aeonbits.owner.ConfigFactory;
+import org.openqa.selenium.support.ui.Select;
+import pages.employee.DjangoEmployeeChangePage;
 import ru.lanit.at.web.properties.WebConfigurations;
 
 import java.time.Duration;
@@ -37,4 +39,15 @@ public class Checks {
         int timeout = getTimeoutSeconds(timeoutSeconds);
         element.shouldBe(Condition.visible, Duration.ofSeconds(timeout));
     }
+
+   /* public void chooseCity(String workerCity) {
+        Select chooseOne = new Select(DjangoEmployeeChangePage.listOfCities);
+        chooseOne.getOptions().forEach(option -> {
+            System.out.println("Value = " + option.getAttribute("value") + ";Text = " + option.getText());
+        });
+        chooseOne.selectByVisibleText(workerCity);
+
+    */
+
+
 }
