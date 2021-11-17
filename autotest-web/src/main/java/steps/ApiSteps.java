@@ -41,6 +41,6 @@ public class ApiSteps {
                 .jsonPath();
         ContextHolder.put("TOTP", tokenJson.get("otp_token").toString());
         token = ContextHolder.getValue("TOTP").toString();
-        LOG.info("Токен для авторизации - {}", ContextHolder.getValue("TOTP").toString());
+//        LOG.info("Токен для авторизации - {}", ContextHolder.getValue("TOTP").toString());
     }
 }
