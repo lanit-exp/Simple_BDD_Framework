@@ -24,10 +24,6 @@ public class ApiSteps {
         this.pageManager = pageManager;
     }
 
-    public static String getCurentToken() {
-        return token;
-    }
-
     @И("получить Token для юзера {string} с паролем {string}")
     public static void getToken(String username, String password) {
         JSONObject innerBody = new JSONObject();

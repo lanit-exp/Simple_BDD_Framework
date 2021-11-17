@@ -13,7 +13,7 @@ public class DjangoReturnEmployeePage extends DjangoPagesHeader {
     private SelenideElement save = $x("//input[@name='_save']");
 
     @Name("Вернуть Бородкинов Битард")
-    private SelenideElement returnBorodkinov = $x("//div/h1[text()]");
+    private SelenideElement returnBorodkinov = $x("//div[@id='content']/h1");
 
     @Name("поле Фамилии")
     private SelenideElement surname = $x("//input[@name='surname']");
