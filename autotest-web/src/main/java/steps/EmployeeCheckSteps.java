@@ -51,7 +51,7 @@ public class EmployeeCheckSteps {
         ElementsCollection elements = pageManager
                 .getCurrentPage()
                 .getElementsCollection(elementName);
-        elements.get(26).click();
+        elements.get(25).click();
         LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 }
