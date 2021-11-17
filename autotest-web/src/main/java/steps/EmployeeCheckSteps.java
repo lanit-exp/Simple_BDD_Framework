@@ -33,6 +33,7 @@ public class EmployeeCheckSteps {
                 .getCurrentPage()
                 .getElement(elementName);
         Checks.elementVisibleOnPage(element, null);
+        LOGGER.info("в полях имеется элемент '{}'", elementName);
     }
 
     @Если("в поле The Сотрудник “ и ” was changed successfully. присутствует элемент {string}")
@@ -41,6 +42,7 @@ public class EmployeeCheckSteps {
                 .getCurrentPage()
                 .getElement(elementName);
         Checks.elementVisibleOnPage(element, null);
+        LOGGER.info("в поле имеется элемент '{}'", elementName);
     }
 
     @Если("на странице в блоке {string} выбрать элемент {string}")
