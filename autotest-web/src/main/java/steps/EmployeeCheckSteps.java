@@ -1,6 +1,7 @@
 package steps;
 
 import actions.Checks;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.И;
@@ -25,5 +26,34 @@ public class EmployeeCheckSteps {
                 .getElement(elementName);
         Checks.elementTextEqualsExpectedText(element, text);
         LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
+    }
+    @Если("в полях The Сотрудник “ и ” was changed successfully. You may edit it again below. присутствует элемент {string}")
+    public void curFieldsContainsThatElement(String elementName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        Checks.elementVisibleOnPage(element, null);
+        LOGGER.info("в полях имеется элемент '{}'", elementName);
+    }
+
+    @Если("в поле The Сотрудник “ и ” was changed successfully. присутствует элемент {string}")
+    public void curFieldContainsThatElement(String elementName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        Checks.elementVisibleOnPage(element, null);
+        LOGGER.info("в поле имеется элемент '{}'", elementName);
+    }
+
+    @Если("на странице в блоке {string} выбрать элемент {string}")
+    public void elementIsOnPage(String elementN, String elementName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementN);
+        ElementsCollection elements = pageManager
+                .getCurrentPage()
+                .getElementsCollection(elementName);
+        elements.get(25).click();
+        LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 }
