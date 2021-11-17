@@ -12,5 +12,8 @@ public class DjangoReturnEmployeePage extends DjangoPagesHeader {
     @Name("Сохранить")
     private SelenideElement save = $x("//input[@name='_save']");
 
+    @Name("Вернуть Бородкинов Битард")
+    private SelenideElement returnBorodkinov = $x("//div/h1[text()]");
+
 }
 

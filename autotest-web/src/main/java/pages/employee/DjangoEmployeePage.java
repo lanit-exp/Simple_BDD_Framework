@@ -1,6 +1,7 @@
 package pages.employee;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import pages.DjangoPagesHeader;
 import ru.lanit.at.web.annotations.Name;
 
@@ -10,5 +11,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class DjangoEmployeePage extends DjangoPagesHeader {
     @Name("ФИО")
     private ElementsCollection fio = $$x("//th[@class='field-full_name']/a");
+    @Name("Name")
+    private SelenideElement nameOfChange = $x("//li[@class='success']/a");
 }
 
