@@ -72,5 +72,20 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     @Name("Сегодня")
     private ElementsCollection todayCity = $$x("//span[@class='datetimeshortcuts']/a[text()='Сегодня']");
 
+    @Name("Должности")
+    private SelenideElement employerPost = $x("//a[@id='fieldsetcollapser5']");
+    @Name("Добавить еще один Должность")
+    private SelenideElement addPost = $x("//a[@href  and text()='Добавить еще один Должность']");
+
+    @Name("Проектные ставки")
+    private SelenideElement projectBids = $x("//a[@id='fieldsetcollapser8']");
+    @Name("Добавить еще один Проектная ставка")
+    private SelenideElement addProjectBid = $x("//a[@href  and text()='Добавить еще один Проектная ставка']");
+    @Name("Проект Проектные ставки")
+    private SelenideElement fieldProjectP = $x("//select[@name='employeeprojectsalaryrate_set-0-employee_project']");
+    @Name("Скрыть Проектные ставки")
+    private SelenideElement hideProjectBids = $x("//fieldset[@class='module collapse']/h2/a[@class='collapse-toggle']");
+
+
 }
 
