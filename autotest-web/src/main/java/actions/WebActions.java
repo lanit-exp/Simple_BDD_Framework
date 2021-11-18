@@ -53,8 +53,7 @@ public class WebActions {
 
     /**
      * Посимвольное заполнение поля
-     *
-     * @param element - элемент
+     *  @param element - элемент
      * @param text    - значение
      */
     public static void fillInputByCharacter(SelenideElement element, String text) {
@@ -67,4 +66,5 @@ public class WebActions {
     public static int getRandom(int range) {
         return (int)(Math.random() * range);
     }
-}
+
+    }

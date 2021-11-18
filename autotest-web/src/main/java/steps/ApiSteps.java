@@ -16,12 +16,12 @@ public class ApiSteps {
     private PageManager pageManager;
     private static final Logger LOG = LoggerFactory.getLogger(ApiSteps.class);
 
-    public ApiSteps(PageManager pageManager) {
-        this.pageManager = pageManager;
-    }
-
     public static String getCurrentToken() {
         return token;
+    }
+
+    public ApiSteps(PageManager pageManager) {
+        this.pageManager = pageManager;
     }
 
     @И("получить Token для юзера {string} с паролем {string}")
