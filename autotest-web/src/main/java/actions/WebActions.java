@@ -66,5 +66,7 @@ public class WebActions {
     public static int getRandom(int range) {
         return (int)(Math.random() * range);
     }
-
+    public static int getRandom(int start, int range) {
+        return start + (int)(Math.random() * range);
+    }
     }
