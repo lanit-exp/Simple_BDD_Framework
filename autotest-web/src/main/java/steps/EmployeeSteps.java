@@ -78,6 +78,13 @@ public class EmployeeSteps {
         LOGGER.info("клик на кнопку '{}'", elementName);
     }
 
+    @Тогда("выбрать элемент {string} с текстом {string}")
+    public void selectElementWithText(String elementName, String text) {
+        SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
+        element.selectOption(text);
+        LOGGER.info("клик на кнопку '{}'", elementName);
+    }
+
     @И("нажать на предпоследнюю запись из {string}")
     public void clickPreLast(String elementName) {
         ElementsCollection elements = pageManager
