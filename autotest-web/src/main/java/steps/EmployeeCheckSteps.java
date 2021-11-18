@@ -1,13 +1,13 @@
 package steps;
 
 import actions.Checks;
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.И;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 import ru.lanit.at.web.pagecontext.PageManager;
 
 public class EmployeeCheckSteps {
@@ -54,29 +54,36 @@ public class EmployeeCheckSteps {
         ElementsCollection elements = pageManager
                 .getCurrentPage()
                 .getElementsCollection(elementName);
-        elements.get(19).click();
+        elements.get(25).click();
         LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
-    @Если("в таблице все элементы {string} содержат текст {string}")
-    public void elementContainsText(String element, String text) {
+    @Если("в блоке {string} количество записей равно {int}")
+    public void matchRecordsNumber(String elementName, int number) {
         ElementsCollection elements = pageManager
                 .getCurrentPage()
-                .getElementsCollection(element);
-        for (SelenideElement selenideElement : elements) {
-            selenideElement.shouldBe(Condition.matchText(text));
-        }
-        LOGGER.info("на текущей странице в элементах '{}' присутствует текст '{}'", pageManager.getCurrentPage().name(), text);
+                .getElementsCollection(elementName);
+        Assert.assertEquals(elements.size(), number);
+        LOGGER.info("на странице '{}' в блоке '{}' количество записей '{}'", pageManager.getCurrentPage().name(), elementName, number);
     }
 
-   /* @Если("значение в поле {string} не изменяемое ")
-    public void fieldIsInvalid(String field) {
+    private String getElementText(String elementName, int index) {
+        ElementsCollection elements = pageManager
+                .getCurrentPage()
+                .getElementsCollection(elementName);
+        return elements.get(index).getText();
+    }
+
+    @Если("при нажатии на кнопку {string} в блоке 'Таблица' в столбце {string}, {int} элемент не изменился")
+    public void matchFirstElement(String buttonName, String elementName, int index) {
+        String firstResult = getElementText(elementName, index);
         SelenideElement element = pageManager
                 .getCurrentPage()
-                .getElement(field);
-        if (field.isEmpty())
-            element.i
-    }
+                .getElement(buttonName);
+        element.click();
+        String secondResult = getElementText(elementName, index);
 
-    */
+        Assert.assertEquals(firstResult, secondResult);
+        LOGGER.info("на странице '{}' в блоке '{}' запись '{}' осталась '{}'", pageManager.getCurrentPage().name(), elementName, firstResult, secondResult);
+    }
 }

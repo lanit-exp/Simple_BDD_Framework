@@ -78,6 +78,13 @@ public class EmployeeSteps {
         LOGGER.info("клик на кнопку '{}'", elementName);
     }
 
+    @Тогда("выбрать элемент {string} с текстом {string}")
+    public void selectElementWithText(String elementName, String text) {
+        SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
+        element.selectOption(text);
+        LOGGER.info("клик на кнопку '{}'", elementName);
+    }
+
     @И("нажать на предпоследнюю запись из {string}")
     public void clickPreLast(String elementName) {
         ElementsCollection elements = pageManager
@@ -88,29 +95,11 @@ public class EmployeeSteps {
     }
 
     @И("в выпадающем списке {string} выбрать {string}")
-    public void setAnyValue(String listOfCities, String text) {
+    public void setCity(String listOfCities, String city) {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(listOfCities);
-        element.selectOptionContainingText(text);
-        LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), text);
-    }
-
-    @И("в блоке {string} выбрать {string}")
-    public void setAnything(String listOfValues, String text) {
-        ElementsCollection elements = pageManager
-                .getCurrentPage()
-                .getElementsCollection(listOfValues);
-        elements.get(1).click();
-        LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), text);
-    }
-
-    @И("в блоке {string} выбрать значение {string}")
-    public void setAnyField(String listOfValues, String text) {
-        ElementsCollection elements = pageManager
-                .getCurrentPage()
-                .getElementsCollection(listOfValues);
-        elements.get(2).click();
-        LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), text);
+        element.selectOptionContainingText(city);
+        LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), element);
     }
 }

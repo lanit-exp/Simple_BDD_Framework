@@ -1,8 +1,9 @@
 #language:ru
-#@DjangoAdministrationHeader
-Функционал: Авторизация на странице Django Site Admin
+@DjangoAdministrationHeader
+Функционал: Проверка работоспособности кнопки "Администрирование Django"
 
-  Сценарий: Открытие страницы Django Administration, авторизация от лица админ
+  Сценарий: Открытие страницы Django Administration, авторизация от лица админ,
+  кликнуть на элемент "Администрирование Django"
 
     Дано открыть "http://178.154.246.238:58082/"
     Тогда инициализация страницы "DjangoAuthorization"
