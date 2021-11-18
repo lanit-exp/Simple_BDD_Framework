@@ -12,6 +12,9 @@ public class DjangoEmployeePage extends DjangoPagesHeader {
     @Name("ФИО")
     private ElementsCollection fio = $$x("//th[@class='field-full_name']/a");
 
+    @Name("Name")
+    private SelenideElement nameOfChange = $x("//li[@class='success']/a");
+
     @Name("Восстановить удаленный сотрудники")
     private SelenideElement recoverLink = $(".recoverlink");
     @Name("Импорт")
@@ -39,4 +42,10 @@ public class DjangoEmployeePage extends DjangoPagesHeader {
 
     @Name("Таблица чек-бокс")
     private ElementsCollection tableCheckboxes = $$(".action-select");
+    @Name("Выбрано 1 из 100")
+    private SelenideElement howMuchSearch = $x("//span[@class='action-counter']");
+    @Name("Договор")
+    private SelenideElement contractCheckbox = $x("//input[@value='contract']");
+    @Name("Формат")
+    private SelenideElement formatField = $x("//select[@name='file_format']");
 }

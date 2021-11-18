@@ -1,6 +1,7 @@
 package steps;
 
 import actions.Checks;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.Если;
@@ -53,7 +54,29 @@ public class EmployeeCheckSteps {
         ElementsCollection elements = pageManager
                 .getCurrentPage()
                 .getElementsCollection(elementName);
-        elements.get(25).click();
+        elements.get(19).click();
         LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
+
+    @Если("в таблице все элементы {string} содержат текст {string}")
+    public void elementContainsText(String element, String text) {
+        ElementsCollection elements = pageManager
+                .getCurrentPage()
+                .getElementsCollection(element);
+        for (SelenideElement selenideElement : elements) {
+            selenideElement.shouldBe(Condition.matchText(text));
+        }
+        LOGGER.info("на текущей странице в элементах '{}' присутствует текст '{}'", pageManager.getCurrentPage().name(), text);
+    }
+
+   /* @Если("значение в поле {string} не изменяемое ")
+    public void fieldIsInvalid(String field) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(field);
+        if (field.isEmpty())
+            element.i
+    }
+
+    */
 }
