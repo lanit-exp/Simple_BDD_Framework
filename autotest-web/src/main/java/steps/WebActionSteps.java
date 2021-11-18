@@ -1,5 +1,7 @@
 package steps;
 
+import actions.WebActions;
+import actions.WebChecks;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
@@ -112,6 +114,14 @@ public class WebActionSteps {
                 .getElement(elementName)
                 .shouldBe(Condition.visible)
                 .clear();
+    }
+    @Если("в выпадющем списке {string} выбрать элемент со значением {string}")
+    public void listSelectElement(String elementName,String text){
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+                element.selectOptionContainingText("Female");
+        LOGGER.info("в выпадющем списке {} выбран элемент со значением {}", elementName, text);
     }
 
 }
