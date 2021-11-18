@@ -83,9 +83,14 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     private SelenideElement addProjectBid = $x("//a[@href  and text()='Добавить еще один Проектная ставка']");
     @Name("Проект Проектные ставки")
     private SelenideElement fieldProjectP = $x("//select[@name='employeeprojectsalaryrate_set-0-employee_project']");
-    @Name("Скрыть Проектные ставки")
+    @Name("Скрыть")
     private SelenideElement hideProjectBids = $x("//fieldset[@class='module collapse']/h2/a[@class='collapse-toggle']");
 
-
+    @Name("Договоры")
+    private SelenideElement contracts = $x("//a[@id='fieldsetcollapser9']");
+    @Name("Добавить еще один Договор")
+    private SelenideElement addAnotherContract = $x("//a[@href  and text()='Добавить еще один Договор']");
+    @Name("Договоры Должность")
+    private SelenideElement fieldPost = $x("//select[@name='contract-0-position']");
 }
 
