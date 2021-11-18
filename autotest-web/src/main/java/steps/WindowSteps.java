@@ -1,7 +1,9 @@
 package steps;
 
 import actions.WebActions;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.И;

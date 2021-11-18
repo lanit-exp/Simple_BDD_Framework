@@ -77,4 +77,29 @@ public class EmployeeSteps {
         element.click();
         LOGGER.info("клик на кнопку '{}'", elementName);
     }
+
+    @Тогда("выбрать элемент {string} с текстом {string}")
+    public void selectElementWithText(String elementName, String text) {
+        SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
+        element.selectOption(text);
+        LOGGER.info("клик на кнопку '{}'", elementName);
+    }
+
+    @И("нажать на предпоследнюю запись из {string}")
+    public void clickPreLast(String elementName) {
+        ElementsCollection elements = pageManager
+                .getCurrentPage()
+                .getElementsCollection(elementName);
+        elements.get(elements.size()-2).click();
+        LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), elementName);
+    }
+
+    @И("в выпадающем списке {string} выбрать {string}")
+    public void setCity(String listOfCities, String city) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(listOfCities);
+        element.selectOptionContainingText(city);
+        LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), element);
+    }
 }
