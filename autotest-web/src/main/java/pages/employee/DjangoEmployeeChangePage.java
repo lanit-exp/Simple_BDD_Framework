@@ -86,16 +86,22 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     private SelenideElement employerPost = $x("//a[@id='fieldsetcollapser5']");
     @Name("Добавить еще один Должность")
     private SelenideElement addPost = $x("//a[@href  and text()='Добавить еще один Должность']");
-    /*@Name("Изменить выбранный объект типа Должность")
-
+    @Name("Изменить выбранный объект типа Должность")
+    private SelenideElement changeObjectPost = $x("//a[@id='change_id_employeeposition_set-3-position']/img[@src='/staticfiles/admin/img/icon-changelink.svg']");
     @Name("Должность")
-
+    private ElementsCollection postOfEmployer = $$x("//select[@name='employeeposition_set-3-position']");
     @Name("Название организации")
-
-     */
-
-
-
+    private ElementsCollection nameOfOrganization = $$x("//select[@name='employeeposition_set-3-organisation']");
+    @Name("Ставка")
+    private SelenideElement rateOfEmployer = $x("//input[@name='employeeposition_set-3-rate']");
+    @Name("Грейд")
+    private SelenideElement gradeOfEmployer = $x("//input[@name='employeeposition_set-3-grade']");
+    @Name("Дата начала")
+    private SelenideElement dateOfStart = $x("//input[@name='employeeposition_set-3-start_date']");
+    @Name("Дата окончания")
+    private SelenideElement dateOfFinish = $x("//input[@name='employeeposition_set-3-end_date']");
+    @Name("Заметка Должности")
+    private SelenideElement pointOfPosts = $x("//textarea[@name='employeeposition_set-3-memo']");
 
     @Name("Проектные ставки")
     private SelenideElement projectBids = $x("//a[@id='fieldsetcollapser8']");
