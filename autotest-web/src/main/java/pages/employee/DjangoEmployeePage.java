@@ -44,5 +44,11 @@ public class DjangoEmployeePage extends DjangoPagesHeader {
 
     @Name("Таблица чек-бокс")
     private ElementsCollection tableCheckboxes = $$(".action-select");
+    @Name("Выбрано 1 из 100")
+    private SelenideElement howMuchSearch = $x("//span[@class='action-counter']");
+    @Name("Договор")
+    private SelenideElement contractCheckbox = $x("//input[@value='contract']");
+    @Name("Формат")
+    private SelenideElement formatField = $x("//select[@name='file_format']");
 }
 
