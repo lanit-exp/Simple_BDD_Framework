@@ -30,6 +30,8 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     private SelenideElement dropdownCitizenship = $("#id_citizenship");
     @Name("Email")
     private SelenideElement email = $("#id_internal_email");
+    @Name("Корпоративная почта")
+    private SelenideElement corporateEmail = $(".field-internal_email .readonly");
 
     @Name("Сообщение об ошибке в заголовке")
     private SelenideElement headerError = $(".errornote");
@@ -45,11 +47,17 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     private SelenideElement errorPhone = $x("//div[contains(@class, 'field-phone')]/ul/li");
     @Name("Сообщение об ошибке Email")
     private SelenideElement errorEmail = $x("//div[contains(@class, 'field-internal_email')]/ul/li");
+    @Name("Сообщение о успешном редактировании")
+    private SelenideElement successEdit = $x("//div[contains(@id, 'container')]/ul/li");
 
     @Name("История")
     private SelenideElement history = $x("//a[@class='historylink' and text()='История']");
     @Name("Summary")
     private SelenideElement summary = $x("//a[@class='historylink' and text()='Summary']");
+    @Name("Квалификация")
+    private SelenideElement qualification = $x("//div[contains(@id, 'content')]/div/form/div/fieldset/h2[text()=\"Квалификация\"]/a");
+    @Name("Все квалификации")
+    private ElementsCollection AllQualifications = $$x("//ul[@id='id_qualification_skill']/li/label/input");
 
     @Name("Удалено")
     private SelenideElement delete = $(".deletelink");

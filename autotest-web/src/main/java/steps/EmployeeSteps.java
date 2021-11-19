@@ -28,6 +28,32 @@ public class EmployeeSteps {
         elements.get(WebActions.getRandom(elements.size())).click();
         LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
+    @И("на текущей странице в блоке {string} нажать на любую кнопку {int} раз")
+    public void clickRandomN(String elementName,int n) {
+        ElementsCollection elements = pageManager
+                .getCurrentPage()
+                .getElementsCollection(elementName);
+        for(int i = 0; i < n ;i ++){
+            elements.get(WebActions.getRandom(elements.size())).click();
+            LOGGER.info("В блоке '{}'было выбранно '{}' элементов", elementName, n);
+        }
+    }
+    @И("на текущей странице в блоке {string} отжать любую кнопку {int} раз")
+    public void unClickRandomN(String elementName,int n) {
+        ElementsCollection elements = pageManager
+                .getCurrentPage()
+                .getElementsCollection(elementName);
+        int i = 0;
+        while (i < n){
+            int rnd = WebActions.getRandom(1,elements.size() - 1);
+            if(elements.get(rnd).is(Condition.checked)){
+                elements.get(rnd).click();
+                i++;
+            }
+        }
+            LOGGER.info("В блоке '{}'было отжато '{}' элементов", elementName, n);
+    }
+
 
     @Затем("на текущей странице в блоке Общая информация очистить все поля: {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}")
     public void clearFieldsEmployee(String surname, String name, String patronymic, String gender, String joiningDate, String birthday, String phone, String citizenship, String email) {

@@ -1,5 +1,7 @@
 package steps;
 
+import actions.WebActions;
+import actions.WebChecks;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
@@ -8,11 +10,14 @@ import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Когда;
 import io.restassured.path.json.JsonPath;
 import net.minidev.json.JSONObject;
+import org.openqa.selenium.By;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.lanit.at.api.testcontext.ContextHolder;
 import ru.lanit.at.web.pagecontext.PageManager;
 import ru.lanit.at.utils.Sleep;
+
+import java.util.Random;
 
 import static com.codeborne.selenide.Selenide.$;
 import static io.restassured.RestAssured.given;
@@ -112,6 +117,22 @@ public class WebActionSteps {
                 .getElement(elementName)
                 .shouldBe(Condition.visible)
                 .clear();
+    }
+    @Если("в выпадющем списке {string} выбрать элемент со значением {string}")
+    public void listSelectElement(String elementName,String text){
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+                element.selectOptionContainingText("Female");
+        LOGGER.info("в выпадющем списке {} выбран элемент со значением {}", elementName, text);
+    }
+    @Если("в выпадющем списке {string} выбрать случайный элемент")
+    public void listSelectRandElement(String elementName){
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        element.selectOption( 1 + (int) (Math.random() * element.findAll(By.cssSelector("option")).size()-1));
+        LOGGER.info("в выпадющем списке {} выбран элемент со значением", elementName);
     }
 
 }
