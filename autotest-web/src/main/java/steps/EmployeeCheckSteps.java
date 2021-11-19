@@ -1,11 +1,13 @@
 package steps;
 
 import actions.Checks;
+import actions.WebChecks;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.И;
+import io.cucumber.java.ru.Когда;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -98,4 +100,4 @@ public class EmployeeCheckSteps {
         Assert.assertEquals(firstResult, secondResult);
         LOGGER.info("на странице '{}' в блоке '{}' запись '{}' осталась '{}'", pageManager.getCurrentPage().name(), elementName, firstResult, secondResult);
     }
-}
+    }

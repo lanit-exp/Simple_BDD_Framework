@@ -14,6 +14,8 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     private SelenideElement firstName = $("#id_name");
     @Name("Фамилия")
     private SelenideElement lastName = $("#id_surname");
+    @Name("Фамилия Public")
+    private SelenideElement lastNamePublic = $x("//div[@class='fieldBox field-surname']/div[@class='readonly']");
     @Name("Отчество")
     private SelenideElement patronymic = $("#id_patronymic");
     @Name("Пол")
@@ -84,6 +86,16 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     private SelenideElement employerPost = $x("//a[@id='fieldsetcollapser5']");
     @Name("Добавить еще один Должность")
     private SelenideElement addPost = $x("//a[@href  and text()='Добавить еще один Должность']");
+    /*@Name("Изменить выбранный объект типа Должность")
+
+    @Name("Должность")
+
+    @Name("Название организации")
+
+     */
+
+
+
 
     @Name("Проектные ставки")
     private SelenideElement projectBids = $x("//a[@id='fieldsetcollapser8']");
