@@ -42,7 +42,7 @@ public class DjangoEmployeePage extends DjangoPagesHeader {
     @Name("Предупреждение в заголовке")
     private SelenideElement headerWarning = $(".warning");
 
-    @Name("Сообщение о успешном редактирование")
+    @Name("Сообщение об успешном редактирование")
     private SelenideElement headerSuccess = $(".success");
 
     @Name("Таблица чек-бокс")
