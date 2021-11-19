@@ -118,5 +118,13 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     private SelenideElement addAnotherContract = $x("//a[@href  and text()='Добавить еще один Договор']");
     @Name("Договоры Должность")
     private SelenideElement fieldPost = $x("//select[@name='contract-0-position']");
+
+    @Name("Договоры ГПХ")
+    private SelenideElement contractsGpx = $x("//a[@id='fieldsetcollapser10']");
+    @Name("Добавить еще один Договор ГПХ")
+    private SelenideElement addAnotherContractGpx = $x("//a[@href and text()='Добавить еще один Договор ГПХ']");
+    @Name("Номер договора")
+    private SelenideElement numberOfContract = $x("//input[@name='employeecivilcontract_set-0-number']");
+
 }
 

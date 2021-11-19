@@ -39,4 +39,9 @@ public class Checks {
         int timeout = getTimeoutSeconds(timeoutSeconds);
         element.shouldBe(Condition.visible, Duration.ofSeconds(timeout));
     }
+
+    public static void fieldVisibleAndNoSelected(SelenideElement element) {
+        element.shouldBe(Condition.visible);
+        element.shouldBe(Condition.empty);
+    }
 }

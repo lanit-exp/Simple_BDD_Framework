@@ -8,6 +8,7 @@ import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Когда;
+import io.cucumber.java.ru.Пусть;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -99,5 +100,14 @@ public class EmployeeCheckSteps {
 
         Assert.assertEquals(firstResult, secondResult);
         LOGGER.info("на странице '{}' в блоке '{}' запись '{}' осталась '{}'", pageManager.getCurrentPage().name(), elementName, firstResult, secondResult);
+    }
+
+    @Пусть("поле {string} отображается и пусто")
+    public void checkEmptyField(String elementName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        Checks.fieldVisibleAndNoSelected(element);
+        LOGGER.info("в блоке есть пустое поле '{}'", elementName);
     }
     }
