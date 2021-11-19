@@ -42,7 +42,7 @@ public class WebCheckSteps {
                 .getCurrentPage()
                 .getElement(elementName);
         WebChecks.elementIsReadOnly(element,"readonly", null);
-        LOGGER.info("элемент {string} заблокирован", elementName);
+        LOGGER.info("элемент {} заблокирован", elementName);
     }
 
     /**

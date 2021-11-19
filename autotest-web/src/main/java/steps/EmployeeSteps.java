@@ -128,4 +128,5 @@ public class EmployeeSteps {
         element.selectOptionContainingText(city);
         LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), element);
     }
+
 }
