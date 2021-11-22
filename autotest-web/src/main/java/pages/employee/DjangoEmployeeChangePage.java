@@ -2,6 +2,7 @@ package pages.employee;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.cucumber.java.eo.Se;
 import org.openqa.selenium.By;
 import pages.DjangoPagesHeader;
 import ru.lanit.at.web.annotations.Name;
@@ -120,9 +121,9 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     @Name("Добавить еще один Должность")
     private SelenideElement addPost = $x("//a[@href  and text()='Добавить еще один Должность']");
     @Name("Изменить выбранный объект типа Должность")
-    private SelenideElement changeObjectPost = $x("//a[@id='change_id_employeeposition_set-3-position']/img[@src='/staticfiles/admin/img/icon-changelink.svg']");
+    private SelenideElement changeObjectPost = $x("//tr[@class='form-row dynamic-employeeposition_set row2']/td[@class='field-position']/div/select/following-sibling::a/img[@src='/staticfiles/admin/img/icon-changelink.svg']");
     @Name("Должность")
-    private ElementsCollection postOfEmployer = $$x("//select[@name='employeeposition_set-3-position']");
+    private SelenideElement postOfEmployer = $x("//select[@name='employeeposition_set-3-position']");
     @Name("Название организации")
     private ElementsCollection nameOfOrganization = $$x("//select[@name='employeeposition_set-3-organisation']");
     @Name("Ставка")
@@ -135,6 +136,13 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     private SelenideElement dateOfFinish = $x("//input[@name='employeeposition_set-3-end_date']");
     @Name("Заметка Должности")
     private SelenideElement pointOfPosts = $x("//textarea[@name='employeeposition_set-3-memo']");
+
+    @Name("Грейды")
+    private SelenideElement grades = $x("//a[@id='fieldsetcollapser6']");
+    @Name("Добавить еще один Грейд")
+    private SelenideElement addAnotherGrade = $x("//a[@href  and text()='Добавить еще один Грейд']");
+    @Name("Заметка Грейды")
+    private SelenideElement pointOfGrades = $x("//textarea[@name='employeepositiongrade_set-0-memo']");
 
     @Name("Проектные ставки")
     private SelenideElement projectBids = $x("//a[@id='fieldsetcollapser8']");
