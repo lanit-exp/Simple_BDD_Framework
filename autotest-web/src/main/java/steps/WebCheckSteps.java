@@ -160,4 +160,28 @@ public class WebCheckSteps {
         LOGGER.info("в выпадющем списке {} выбран элемент со значением {}", elementName, text);
     }
 
+    @Когда("элемент {string} не активен")
+    public void checkReadOnly(String elementName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        WebChecks.elementReadOnly(element);
+        LOGGER.info("элемент {} не активен", elementName);
+    }
+
+    /**
+     * проверка что элемент заблокирован
+     *
+     * @param elementName название элемента
+     *
+     */
+    @Когда("элемент {string} разблокирован")
+    public void checkElementIsNotReadOnly(String elementName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        WebChecks.elementIsNotReadOnly(element);
+        LOGGER.info("элемент {} разблокирован", elementName);
+    }
+
 }
