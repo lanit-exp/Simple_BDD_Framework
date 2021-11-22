@@ -80,7 +80,7 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     @Name("Дата изменения")
     private SelenideElement dateOfChange = $x("//th[@class='column-change_date required'][1]");
     @Name("Сегодня")
-    private ElementsCollection todayCity = $$x("//span[@class='datetimeshortcuts']/a[text()='Сегодня']");
+    private SelenideElement todayCity = $x("//input[@name='employeecity_set-0-change_date']/following-sibling::span/a[text()='Сегодня']");
 
     @Name("Должности")
     private SelenideElement employerPost = $x("//a[@id='fieldsetcollapser5']");
@@ -125,6 +125,39 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     private SelenideElement addAnotherContractGpx = $x("//a[@href and text()='Добавить еще один Договор ГПХ']");
     @Name("Номер договора")
     private SelenideElement numberOfContract = $x("//input[@name='employeecivilcontract_set-0-number']");
+
+    @Name("Добавить еще один Город")
+    private SelenideElement addAnotherCity = $x("//a[@href and text()='Добавить еще один Город']");
+    @Name("Город")
+    private SelenideElement fieldCity = $x("//select[@name='employeecity_set-0-city']");
+
+    @Name("Иностранные языки")
+    private SelenideElement foreignLanguages = $x("//a[@id='fieldsetcollapser12']");
+    @Name("Добавить еще один Иностранный язык")
+    private SelenideElement addAnotherLanguage = $x("//a[@href and text()='Добавить еще один Иностранный язык']");
+    @Name("Иностранный язык")
+    private SelenideElement forLanguage = $x("//select[@name='employeelanguage_set-0-language']");
+
+    @Name("Предыдущий опыт работы")
+    private SelenideElement previousExperience = $x("//a[@id='fieldsetcollapser13']");
+    @Name("Добавить еще один Предыдущий опыт работы")
+    private SelenideElement addAnotherExperience = $x("//a[@href and text()='Добавить еще один Предыдущий опыт работы']");
+    @Name("Название организации опыта")
+    private SelenideElement nameOrganizExp = $x("//select[@name='employeepreviousexperience_set-0-organisation']");
+
+    @Name("Достижения")
+    private SelenideElement achievements = $x("//a[@id='fieldsetcollapser14']");
+    @Name("Добавить еще один Достижение")
+    private SelenideElement addAnotherAchievement = $x("//a[@href and text()='Добавить еще один Достижение']");
+    @Name("Достижение")
+    private SelenideElement achievement = $x("//select[@name='employeeachievement_set-0-achievement']");
+
+    @Name("Запросы на отпуск")
+    private SelenideElement vacationRequests = $x("//a[@id='fieldsetcollapser15']");
+    @Name("Добавить еще один Запрос на отпуск")
+    private SelenideElement addAnotherVacRequest = $x("//a[@href and text()='Добавить еще один Запрос на отпуск']");
+    @Name("Статус запроса")
+    private SelenideElement vacRequestStatus = $x("//select[@name='employeevacationrequest_set-0-request_status']");
 
 }
 

@@ -55,10 +55,10 @@ public class EmployeeCheckSteps {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementN);
-        ElementsCollection elements = pageManager
+        SelenideElement elementTwo = pageManager
                 .getCurrentPage()
-                .getElementsCollection(elementName);
-        elements.get(25).click();
+                .getElement(elementName);
+        elementTwo.click();
         LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
