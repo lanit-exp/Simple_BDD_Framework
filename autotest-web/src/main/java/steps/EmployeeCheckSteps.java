@@ -1,14 +1,11 @@
 package steps;
 
 import actions.Checks;
-import actions.WebChecks;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.И;
-import io.cucumber.java.ru.Когда;
-import io.cucumber.java.ru.Пусть;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -55,10 +52,10 @@ public class EmployeeCheckSteps {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementN);
-        SelenideElement elementTwo = pageManager
+        ElementsCollection elements = pageManager
                 .getCurrentPage()
-                .getElement(elementName);
-        elementTwo.click();
+                .getElementsCollection(elementName);
+        elements.get(25).click();
         LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
@@ -101,13 +98,4 @@ public class EmployeeCheckSteps {
         Assert.assertEquals(firstResult, secondResult);
         LOGGER.info("на странице '{}' в блоке '{}' запись '{}' осталась '{}'", pageManager.getCurrentPage().name(), elementName, firstResult, secondResult);
     }
-
-    @Пусть("поле {string} отображается и пусто")
-    public void checkEmptyField(String elementName) {
-        SelenideElement element = pageManager
-                .getCurrentPage()
-                .getElement(elementName);
-        Checks.fieldVisibleAndNoSelected(element);
-        LOGGER.info("в блоке есть пустое поле '{}'", elementName);
-    }
-    }
+}

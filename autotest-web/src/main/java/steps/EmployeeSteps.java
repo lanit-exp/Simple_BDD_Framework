@@ -146,5 +146,4 @@ public class EmployeeSteps {
         elements.get(2).click();
         LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), text);
     }
-
 }
