@@ -26,7 +26,7 @@ public class EmployeeSteps {
                 .getCurrentPage()
                 .getElementsCollection(elementName);
         elements.get(WebActions.getRandom(elements.size())).click();
-        LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
+        LOGGER.info("на странице '{}' выбран элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
     @И("на текущей странице в блоке {string} нажать на любую кнопку {int} раз")
     public void clickRandomN(String elementName,int n) {
@@ -108,7 +108,14 @@ public class EmployeeSteps {
     public void selectElementWithText(String elementName, String text) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
         element.selectOption(text);
-        LOGGER.info("клик на кнопку '{}'", elementName);
+        LOGGER.info("выбран элемент '{}'", elementName);
+    }
+
+    @И("нажать на элемент {string} с текстом {string}")
+    public void clickOnElementWithText(String elementName, String text) {
+        ElementsCollection elements = pageManager.getCurrentPage().getElementsCollection(elementName);
+        elements.findBy(Condition.exactText(text)).click();
+        LOGGER.info("клик на элемент '{}' с номером '{}'", elementName, text);
     }
 
     @И("нажать на предпоследнюю запись из {string}")
@@ -129,4 +136,29 @@ public class EmployeeSteps {
         LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), element);
     }
 
+    @Затем("в блоке {string} нажать на ссылку с текстом {string}")
+    public void selectFilter(String elementName, String text) {
+        ElementsCollection elements = pageManager
+                .getCurrentPage()
+                .getElementsCollection(elementName);
+        elements.findBy(Condition.exactText(text)).click();
+        LOGGER.info("на странице '{}' выбран элемент '{}'", pageManager.getCurrentPage().name(), text);
+
+    @И("в блоке {string} выбрать {string}")
+    public void setAnything(String listOfValues, String text) {
+        ElementsCollection elements = pageManager
+                .getCurrentPage()
+                .getElementsCollection(listOfValues);
+        elements.get(1).click();
+        LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), text);
+    }
+
+    @И("в блоке {string} выбрать значение {string}")
+    public void setAnyField(String listOfValues, String text) {
+        ElementsCollection elements = pageManager
+                .getCurrentPage()
+                .getElementsCollection(listOfValues);
+        elements.get(2).click();
+        LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), text);
+    }
 }

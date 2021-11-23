@@ -159,5 +159,4 @@ public class WebCheckSteps {
         WebChecks.elementTextContainsExpectedText(element,text,null);
         LOGGER.info("в выпадющем списке {} выбран элемент со значением {}", elementName, text);
     }
-
 }
