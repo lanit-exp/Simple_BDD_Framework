@@ -208,22 +208,4 @@ public class WebChecks {
             return false;
         }
     }
-
-    /**
-     * проверяет что элемент разблокирован
-     *
-     * @param element        элемент
-     */
-    public static void elementIsNotReadOnly(SelenideElement element){
-        element.shouldBe(Condition.enabled);
-    }
-
-    /**
-     * проверяет что элемент не активен
-     *
-     * @param element        элемент
-     */
-    public static void elementReadOnly(SelenideElement element){
-        element.isImage();
-    }
 }
