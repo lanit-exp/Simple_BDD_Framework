@@ -143,6 +143,7 @@ public class EmployeeSteps {
                 .getElementsCollection(elementName);
         elements.findBy(Condition.exactText(text)).click();
         LOGGER.info("на странице '{}' выбран элемент '{}'", pageManager.getCurrentPage().name(), text);
+    }
 
     @И("в блоке {string} выбрать {string}")
     public void setAnything(String listOfValues, String text) {
