@@ -137,6 +137,7 @@ public class WebActionSteps {
                 .shouldBe(Condition.visible)
                 .clear();
     }
+  
     @Если("в выпадющем списке {string} выбрать элемент со значением {string}")
     public void listSelectElement(String elementName,String text){
         SelenideElement element = pageManager
@@ -153,5 +154,4 @@ public class WebActionSteps {
         element.selectOption( 1 + (int) (Math.random() * element.findAll(By.cssSelector("option")).size()-1));
         LOGGER.info("в выпадющем списке {} выбран элемент со значением", elementName);
     }
-
 }

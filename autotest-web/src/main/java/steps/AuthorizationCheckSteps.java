@@ -87,5 +87,4 @@ public class AuthorizationCheckSteps {
         Checks.elementTextEqualsExpectedText(element, text);
         LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
-
 }
