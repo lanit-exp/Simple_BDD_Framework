@@ -121,21 +121,21 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     @Name("Добавить еще один Должность")
     private SelenideElement addPost = $x("//a[@href  and text()='Добавить еще один Должность']");
     @Name("Изменить выбранный объект типа Должность")
-    private SelenideElement changeObjectPost = $x("//tr[@class='form-row dynamic-employeeposition_set row2']/td[@class='field-position']/div/select/following-sibling::a/img[@src='/staticfiles/admin/img/icon-changelink.svg']");
+    private SelenideElement changeObjectPost = $x("//tr[@class='form-row dynamic-employeeposition_set row1']/td[@class='field-position']/div/select/following-sibling::a[@id='change_id_employeeposition_set-0-position']");
     @Name("Должность")
-    private SelenideElement postOfEmployer = $x("//select[@name='employeeposition_set-3-position']");
+    private ElementsCollection postOfEmployer = $$x("//select[@id='id_employeeposition_set-0-position']/option");
     @Name("Название организации")
-    private ElementsCollection nameOfOrganization = $$x("//select[@name='employeeposition_set-3-organisation']");
+    private ElementsCollection nameOfOrganization = $$x("//select[@name='employeeposition_set-0-organisation']/option");
     @Name("Ставка")
-    private SelenideElement rateOfEmployer = $x("//input[@name='employeeposition_set-3-rate']");
+    private SelenideElement rateOfEmployer = $x("//input[@name='employeeposition_set-0-rate']");
     @Name("Грейд")
-    private SelenideElement gradeOfEmployer = $x("//input[@name='employeeposition_set-3-grade']");
+    private SelenideElement gradeOfEmployer = $x("//input[@name='employeeposition_set-0-grade']");
     @Name("Дата начала должности")
-    private SelenideElement dateOfStart = $x("//input[@name='employeeposition_set-3-start_date']");
+    private SelenideElement dateOfStart = $x("//input[@name='employeeposition_set-0-start_date']");
     @Name("Дата окончания должности")
-    private SelenideElement dateOfFinish = $x("//input[@name='employeeposition_set-3-end_date']");
+    private SelenideElement dateOfFinish = $x("//input[@name='employeeposition_set-0-end_date']");
     @Name("Заметка Должности")
-    private SelenideElement pointOfPosts = $x("//textarea[@name='employeeposition_set-3-memo']");
+    private SelenideElement pointOfPosts = $x("//textarea[@name='employeeposition_set-0-memo']");
 
     @Name("Грейды")
     private SelenideElement grades = $x("//a[@id='fieldsetcollapser6']");
@@ -200,5 +200,25 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     @Name("Статус запроса")
     private SelenideElement vacRequestStatus = $x("//select[@name='employeevacationrequest_set-0-request_status']");
 
+    @Name("Проекты")
+    private SelenideElement projects = $x("//a[@id='fieldsetcollapser7']");
+    @Name("Добавить еще один Проект")
+    private SelenideElement addProject = $x("//a[@href  and text()='Добавить еще один Проект']");
+    @Name("Изменить выбранный объект типа Проект")
+    private SelenideElement changeObjectProject = $x("//tr[@class='form-row dynamic-employeeproject_set row1']/td[@class='field-project']/div/select/following-sibling::a[@id='change_id_employeeproject_set-0-project']");
+    @Name("Проекты Проект")
+    private ElementsCollection projectOfEmployer = $$x("//select[@id='id_employeeproject_set-0-project']/option");
+    @Name("Тип тестирования")
+    private ElementsCollection typeOfTests = $$x("//select[@name='employeeproject_set-0-testing_type']/option");
+    @Name("Проектная роль проекты")
+    private ElementsCollection projectPostEmp = $$x("//select[@name='employeeproject_set-0-project_role']/option");
+    @Name("Дата начала проекты")
+    private SelenideElement dateOfStartProject = $x("//input[@name='employeeproject_set-0-start_date']");
+    @Name("Дата окончания проекты")
+    private SelenideElement dateOfFinishProject = $x("//input[@name='employeeproject_set-0-end_date']");
+    @Name("Обязанности проекты")
+    private SelenideElement duties = $x("//textarea[@name='employeeproject_set-0-responsibilities']");
+    @Name("Чекбокс Стажер")
+    private SelenideElement checkBoxJun = $x("//input[@name='employeeproject_set-0-is_trainee']");
 }
 

@@ -208,4 +208,18 @@ public class WebChecks {
             return false;
         }
     }
+
+    /**
+     * Проверяет, что на странице не активен элемент
+     */
+    public static void elementIsNotOnPage(SelenideElement element) {
+        element.shouldNotHave(Condition.href("http://178.154.246.238:58082/admin/core/position/113/change/?_to_field=id&_popup=1"));
+    }
+
+    /**
+     * Проверяет, что на странице не активен элемент
+     */
+    public static void elementIsOnPage(SelenideElement element) {
+        element.shouldNotHave(Condition.href("http://178.154.246.238:58082/admin/core/position/113/change/?_to_field=id&_popup=1"));
+    }
 }

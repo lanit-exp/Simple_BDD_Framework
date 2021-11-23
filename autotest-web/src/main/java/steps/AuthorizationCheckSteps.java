@@ -86,4 +86,10 @@ public class AuthorizationCheckSteps {
         LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
+    @Если("на странице отсутствует поле под названием {string}")
+    public void textOfFieldIsNotExist(String errorText) {
+        WebChecks.textAbsentOnPage(errorText, null);
+        LOGGER.info("отсутствует текст '{}'", errorText);
+    }
+
 }

@@ -1,5 +1,6 @@
 package steps;
 
+import actions.Checks;
 import actions.WebChecks;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.И;
@@ -165,7 +166,7 @@ public class WebCheckSteps {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
-        WebChecks.elementReadOnly(element);
+        WebChecks.elementIsNotOnPage(element);
         LOGGER.info("элемент {} не активен", elementName);
     }
 
@@ -175,13 +176,13 @@ public class WebCheckSteps {
      * @param elementName название элемента
      *
      */
-    @Когда("элемент {string} разблокирован")
+    @Когда("элемент {string} активен")
     public void checkElementIsNotReadOnly(String elementName) {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
-        WebChecks.elementIsNotReadOnly(element);
-        LOGGER.info("элемент {} разблокирован", elementName);
+        WebChecks.elementIsOnPage(element);
+        LOGGER.info("элемент {} активен", elementName);
     }
 
 }

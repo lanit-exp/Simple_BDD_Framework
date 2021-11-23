@@ -19,6 +19,12 @@ public class Checks {
         element.shouldBe(Condition.visible);
         element.shouldNotBe(Condition.selected);
     }
+
+    public static void elementVisibleAndNoEnable(SelenideElement element) {
+        element.shouldBe(Condition.visible);
+        element.shouldNotBe(Condition.enabled);
+    }
+
     public static void elementVisibleAndSelected(SelenideElement element) {
         element.shouldBe(Condition.visible);
         element.shouldBe(Condition.selected);
