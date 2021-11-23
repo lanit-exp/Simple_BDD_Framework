@@ -73,10 +73,7 @@ public class AuthorizationCheckSteps {
 
     @Если("на странице в поле Добро пожаловать, имеется элемент {string}")
     public void elementIsHere(String elementName) {
-        SelenideElement element = pageManager
-                .getCurrentPage()
-                .getElement(elementName);
-        Checks.elementVisibleOnPage(element, null);
+        WebChecks.textVisibleOnPage(elementName, null);
         LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
