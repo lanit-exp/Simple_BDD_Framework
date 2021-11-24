@@ -6,10 +6,15 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.И;
+import io.cucumber.java.ru.Тогда;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
+import ru.lanit.at.api.testcontext.ContextHolder;
 import ru.lanit.at.web.pagecontext.PageManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmployeeCheckSteps {
 
@@ -27,8 +32,9 @@ public class EmployeeCheckSteps {
                 .getCurrentPage()
                 .getElement(elementName);
         Checks.elementTextEqualsExpectedText(element, text);
-        LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
+        LOGGER.info("на странице '{}' имеется элемент '{}', с текстом '{}'", pageManager.getCurrentPage().name(), elementName, text);
     }
+
     @Если("в полях The Сотрудник “ и ” was changed successfully. You may edit it again below. присутствует элемент {string}")
     public void curFieldsContainsThatElement(String elementName) {
         SelenideElement element = pageManager
@@ -44,7 +50,7 @@ public class EmployeeCheckSteps {
                 .getCurrentPage()
                 .getElement(elementName);
         Checks.elementVisibleOnPage(element, null);
-        LOGGER.info("в поле имеется элемент '{}'", elementName);
+        LOGGER.info("в поле имеется элемент '{}'", element.getText());
     }
 
     @Если("на странице в блоке {string} выбрать элемент {string}")
@@ -79,24 +85,90 @@ public class EmployeeCheckSteps {
         LOGGER.info("на странице '{}' в блоке '{}' количество записей '{}'", pageManager.getCurrentPage().name(), elementName, number);
     }
 
-    private String getElementText(String elementName, int index) {
+    @И("в текущем блоке {string} взять {int} элемент")
+    public void getElementText(String elementName, int index) {
         ElementsCollection elements = pageManager
                 .getCurrentPage()
                 .getElementsCollection(elementName);
-        return elements.get(index).getText();
+        ContextHolder.put("fio1", elements.get(index - 1).getText());
+        LOGGER.info("на странице '{}' в блоке '{}' запись '{}", pageManager.getCurrentPage().name(), elementName, ContextHolder.getValue("fio1").toString());
     }
 
     @Если("при нажатии на кнопку {string} в блоке 'Таблица' в столбце {string}, {int} элемент не изменился")
-    public void matchFirstElement(String buttonName, String elementName, int index) {
-        String firstResult = getElementText(elementName, index);
-        SelenideElement element = pageManager
+    public void checkElementEquals(String buttonName, String elementName, int index) {
+        SelenideElement button = pageManager
                 .getCurrentPage()
                 .getElement(buttonName);
-        element.click();
-        String secondResult = getElementText(elementName, index);
+        button.click();
+        ElementsCollection elements = pageManager
+                .getCurrentPage()
+                .getElementsCollection(elementName);
+        ContextHolder.put("fio2", elements.get(index - 1).getText());
 
-        Assert.assertEquals(firstResult, secondResult);
-        LOGGER.info("на странице '{}' в блоке '{}' запись '{}' осталась '{}'", pageManager.getCurrentPage().name(), elementName, firstResult, secondResult);
+        Assert.assertEquals(ContextHolder.getValue("fio1").toString(), ContextHolder.getValue("fio2").toString());
+        LOGGER.info("на странице '{}' в блоке '{}' запись '{}' осталась '{}'", pageManager.getCurrentPage().name(), elementName, ContextHolder.getValue("fio1").toString(), ContextHolder.getValue("fio2").toString());
+    }
+
+    @Тогда("{int} запись в блоке {string} изменилась")
+    public void checkElementNoEquals(int index, String elementName) {
+        ElementsCollection elements = pageManager
+                .getCurrentPage()
+                .getElementsCollection(elementName);
+        ContextHolder.put("fio2", elements.get(index - 1).getText());
+
+        Assert.assertNotEquals(ContextHolder.getValue("fio1").toString(), ContextHolder.getValue("fio2").toString());
+        LOGGER.info("на странице '{}' в блоке '{}' запись '{}' изменился на '{}'", pageManager.getCurrentPage().name(), elementName, ContextHolder.getValue("fio1").toString(), ContextHolder.getValue("fio2").toString());
+    }
+
+    @Если("в {string} активный номер {string}")
+    public void checkCurrentNumber(String elementName, String number) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        Checks.elementTextEqualsExpectedText(element, number);
+        LOGGER.info("на странице '{}' в блоке '{}' текущий номер '{}'", pageManager.getCurrentPage().name(), elementName, number);
+    }
+
+    @Если("в блоке 'Таблица' в столбце {string} все записи = {string}")
+    public void checkCurrenNumberCity(String elementName, String city) {
+        ElementsCollection elements = pageManager
+                .getCurrentPage()
+                .getElementsCollection(elementName);
+        boolean result = true;
+        for (SelenideElement element : elements) {
+            if (!element.getText().equals(city)) {
+                result = false;
+                break;
+            }
+        }
+        Assert.assertTrue(result);
+        LOGGER.info("на странице '{}' в блоке '{}' текущий город '{}': '{}'", pageManager.getCurrentPage().name(), elementName, city, result);
+    }
+
+    @И("поле {string} присутствует на странице")
+    @И("кнопка {string} присутствует на странице")
+    public void checkElementVisibility(String elementName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        Checks.elementVisible(element);
+        LOGGER.info("элемент '{}' отображается", elementName);
+    }
+
+    @И("на странице присутствует {string} {string}")
+    public void checkElementVisibleCollection(String elementName, String text) {
+        ElementsCollection elements = pageManager
+                .getCurrentPage()
+                .getElementsCollection(elementName);
+        boolean result = false;
+        for (SelenideElement element : elements) {
+            if (element.getText().equals(text)) {
+                result = true;
+                break;
+            }
+        }
+        Assert.assertTrue(result);
+        LOGGER.info("на странице '{}' в блоке '{}' есть '{}'", pageManager.getCurrentPage().name(), elementName, text);
     }
 
     @Если("поле {string} отображается и пусто")

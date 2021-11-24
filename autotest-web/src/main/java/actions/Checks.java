@@ -1,10 +1,9 @@
 package actions;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.aeonbits.owner.ConfigFactory;
-import org.openqa.selenium.support.ui.Select;
-import pages.employee.DjangoEmployeeChangePage;
 import ru.lanit.at.web.properties.WebConfigurations;
 
 import java.time.Duration;

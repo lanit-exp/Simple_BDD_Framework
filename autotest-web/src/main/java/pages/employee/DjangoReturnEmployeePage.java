@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import pages.DjangoPagesHeader;
 import ru.lanit.at.web.annotations.Name;
 
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 @Name(value = "DjangoReturnEmployee")
@@ -18,5 +19,7 @@ public class DjangoReturnEmployeePage extends DjangoPagesHeader {
     @Name("поле Фамилии")
     private SelenideElement surname = $x("//input[@name='surname']");
 
+    @Name("Инфоблок")
+    private SelenideElement infoblock = $("#employee_form > p");
 }
 
