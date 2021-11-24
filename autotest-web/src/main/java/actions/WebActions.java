@@ -71,7 +71,7 @@ public class WebActions {
     }
 
     /**
-     * Посимвольное заполнение поля
+     * Заполнение поля рандомным значением от -5 до 5
      *  @param element - элемент
      */
     public static void fillFieldRandInt(SelenideElement element) {
