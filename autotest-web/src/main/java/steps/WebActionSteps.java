@@ -139,11 +139,11 @@ public class WebActionSteps {
     }
 
     @Если("в выпадющем списке {string} выбрать элемент со значением {string}")
-    public void listSelectElement(String elementName,String text){
+    public void  listSelectElement(String elementName,String text){
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
-                element.selectOptionContainingText("Female");
+                element.selectOptionContainingText(text);
         LOGGER.info("в выпадющем списке {} выбран элемент со значением {}", elementName, text);
     }
     @Если("в выпадющем списке {string} выбрать случайный элемент")

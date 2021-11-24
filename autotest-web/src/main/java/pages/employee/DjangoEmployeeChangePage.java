@@ -91,6 +91,10 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     private SelenideElement responsibilities = lastProject.find(By.xpath("./td[@class = 'field-responsibilities']/textarea"));
     @Name("СТАЖЕР")
     private SelenideElement trainee = lastProject.find(By.xpath("./td[@class = 'field-is_trainee']/input"));
+    @Name("Удалить проект")
+    private SelenideElement deleteProject = lastProject.find(By.xpath("./td[@class = 'field-is_trainee']/input"));
+
+
 
 
 
