@@ -74,8 +74,8 @@ public class WebActions {
      * Заполнение поля рандомным значением от -5 до 5
      *  @param element - элемент
      */
-    public static void fillFieldRandInt(SelenideElement element) {
-        element.setValue(String.valueOf(getRandom(-5, 5)));
+    public static void fillFieldRandInt(SelenideElement element, int start, int finish) {
+        element.setValue(String.valueOf(getRandom(start, finish)));
             Sleep.pauseSec(0.2);
         }
     }

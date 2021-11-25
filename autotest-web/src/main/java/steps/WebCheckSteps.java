@@ -161,28 +161,22 @@ public class WebCheckSteps {
         LOGGER.info("в выпадющем списке {} выбран элемент со значением {}", elementName, text);
     }
 
-    @Когда("элемент {string} не активен")
-    public void checkReadOnly(String elementName) {
+    @Когда("элемент {string} не активен из-за отсутствия параметра {string}")
+    public void checkReadOnly(String elementName, String text) {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
-        WebChecks.elementIsNotOnPage(element);
-        LOGGER.info("элемент {} не активен", elementName);
+        WebChecks.elementIsNotOnPage(element, text);
+        LOGGER.info("элемент {} не активен из-за отсутствия параметра {}", elementName, text);
     }
 
-    /**
-     * проверка что элемент заблокирован
-     *
-     * @param elementName название элемента
-     *
-     */
-    @Когда("элемент {string} активен")
-    public void checkElementIsNotReadOnly(String elementName) {
+    @Когда("элемент {string} активен из-за присутствия параметра {string}")
+    public void checkElementIsNotReadOnly(String elementName, String text) {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
-        WebChecks.elementIsOnPage(element);
-        LOGGER.info("элемент {} активен", elementName);
+        WebChecks.elementIsOnPage(element, text);
+        LOGGER.info("элемент {} не активен из-за присутствия параметра {}", elementName, text);
     }
 
 }

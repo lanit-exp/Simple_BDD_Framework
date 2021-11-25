@@ -212,14 +212,14 @@ public class WebChecks {
     /**
      * Проверяет, что на странице не активен элемент
      */
-    public static void elementIsNotOnPage(SelenideElement element) {
-        element.shouldNotHave(Condition.href("http://178.154.246.238:58082/admin/core/position/113/change/?_to_field=id&_popup=1"));
+    public static void elementIsNotOnPage(SelenideElement element, String text) {
+        element.shouldNotHave(Condition.href(text));
     }
 
     /**
      * Проверяет, что на странице активен элемент
      */
-    public static void elementIsOnPage(SelenideElement element) {
-        element.shouldNotHave(Condition.href("http://178.154.246.238:58082/admin/core/position/113/change/?_to_field=id&_popup=1"));
+    public static void elementIsOnPage(SelenideElement element, String text) {
+        element.shouldNotHave(Condition.href(text));
     }
 }

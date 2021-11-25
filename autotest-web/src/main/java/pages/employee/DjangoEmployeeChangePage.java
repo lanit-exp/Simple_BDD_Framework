@@ -121,7 +121,7 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     @Name("Добавить еще один Должность")
     private SelenideElement addPost = $x("//a[text()='Добавить еще один Должность']");
     @Name("Изменить выбранный объект типа Должность")
-    private SelenideElement changeObjectPost = $x("//tr[@class='form-row dynamic-employeeposition_set row1']/td[@class='field-position']/div/select/following-sibling::a[@id='change_id_employeeposition_set-0-position']");
+    private SelenideElement changeObjectPost = $x("//a[@id='change_id_employeeposition_set-0-position']");
     @Name("Должность")
     private ElementsCollection postOfEmployer = $$x("//select[@id='id_employeeposition_set-0-position']/option");
     @Name("Название организации")
@@ -205,7 +205,7 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     @Name("Добавить еще один Проект")
     private SelenideElement addProject = $x("//a[text()='Добавить еще один Проект']");
     @Name("Изменить выбранный объект типа Проект")
-    private SelenideElement changeObjectProject = $x("//tr[@class='form-row dynamic-employeeproject_set row1']/td[@class='field-project']/div/select/following-sibling::a[@id='change_id_employeeproject_set-0-project']");
+    private SelenideElement changeObjectProject = $x("//a[@id='change_id_employeeproject_set-0-project']");
     @Name("Проекты Проект")
     private ElementsCollection projectOfEmployer = $$x("//select[@id='id_employeeproject_set-0-project']/option");
     @Name("Тип тестирования")

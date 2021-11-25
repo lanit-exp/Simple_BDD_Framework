@@ -163,11 +163,11 @@ public class EmployeeSteps {
         LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), text);
     }
 
-    @Тогда("в поле {string} ввести случайное значение от -5 до 5")
-    public void setRandomInt(String elementName) {
+    @Тогда("в поле {string} ввести случайное значение от {int} до {int}")
+    public void setRandomInt(String elementName, int start, int finish) {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
-        WebActions.fillFieldRandInt(element);
+        WebActions.fillFieldRandInt(element, start, finish);
     }
 }
