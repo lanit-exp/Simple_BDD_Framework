@@ -23,12 +23,35 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     private SelenideElement photo = $("#id_photo");
     @Name("Дата приема на работу")
     private SelenideElement joiningDate = $("#id_joining_date");
+    @Name("Выберите дату")
+    private SelenideElement calendarLink = $("#calendarlink0");
+    @Name("Сегодня рядом 'Дата приема на работу'")
+    private SelenideElement todayNextJoiningDate = $x("//a[@id='calendarlink0']/preceding-sibling::a");
+    @Name("Календарь")
+    private SelenideElement calendar = $("#calendarbox0");
+    @Name("Сегодня в виджете 'Календарь'")
+    private SelenideElement todayInCalendarWidget = $x("//div[@id='calendarin0']/following-sibling::div/a[text()='Сегодня']");
+
     @Name("День рождения")
     private SelenideElement birthday = $("#id_birth");
+    @Name("Сегодня рядом с полем 'День рождения'")
+    private SelenideElement todayNextBirthday = $x("//a[@id='calendarlink1']/preceding-sibling::a");
+    @Name("Выберите дату в поле 'День рождения'")
+    private SelenideElement calendarLink1 = $("#calendarlink1");
+    @Name("Календарь в поле 'День рождения'")
+    private SelenideElement calendar1 = $("#calendarbox1");
+    @Name("Сегодня в виджете 'Календарь' поля 'День рождения'")
+    private SelenideElement todayInCalendarWidget1 = $x("//div[@id='calendarin1']/following-sibling::div/a[text()='Сегодня']");
     @Name("Телефон")
     private SelenideElement phone = $("#id_phone");
+
     @Name("Гражданство")
     private SelenideElement dropdownCitizenship = $("#id_citizenship");
+    @Name("Изменить выбранный объект типа ")
+    private SelenideElement changeIdCitizenship = $("#change_id_citizenship");
+    @Name("Добавить ещё один объект типа ")
+    private SelenideElement addCitizenship = $("#add_id_citizenship");
+
     @Name("Email")
     private SelenideElement email = $("#id_internal_email");
     @Name("Корпоративная почта")
@@ -114,6 +137,5 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     private SelenideElement dateOfChange = $x("//th[@class='column-change_date required'][1]");
     @Name("Сегодня")
     private ElementsCollection todayCity = $$x("//span[@class='datetimeshortcuts']/a[text()='Сегодня']");
-
 }
 
