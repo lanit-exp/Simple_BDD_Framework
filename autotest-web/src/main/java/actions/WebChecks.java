@@ -208,4 +208,18 @@ public class WebChecks {
             return false;
         }
     }
+
+    /**
+     * Проверяет, что на странице не активен элемент
+     */
+    public static void elementIsNotOnPage(SelenideElement element, String text) {
+        element.shouldNotHave(Condition.href(text));
+    }
+
+    /**
+     * Проверяет, что на странице активен элемент
+     */
+    public static void elementIsOnPage(SelenideElement element, String text) {
+        element.shouldNotHave(Condition.href(text));
+    }
 }

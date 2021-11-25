@@ -2,6 +2,7 @@ package pages.employee;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.cucumber.java.eo.Se;
 import org.openqa.selenium.By;
 import pages.DjangoPagesHeader;
 import ru.lanit.at.web.annotations.Name;
@@ -115,8 +116,6 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     @Name("СТАЖЕР")
     private SelenideElement trainee = lastProject.find(By.xpath("./td[@class = 'field-is_trainee']/input"));
 
-
-
     @Name("Удалено")
     private SelenideElement delete = $(".deletelink");
     @Name("Сохранить и добавать другой объект")
@@ -136,6 +135,110 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     @Name("Дата изменения")
     private SelenideElement dateOfChange = $x("//th[@class='column-change_date required'][1]");
     @Name("Сегодня")
-    private ElementsCollection todayCity = $$x("//span[@class='datetimeshortcuts']/a[text()='Сегодня']");
-}
+    private SelenideElement todayCity = $x("//input[@name='employeecity_set-0-change_date']/following-sibling::span/a[text()='Сегодня']");
 
+    @Name("Должности")
+    private SelenideElement employerPost = $x("//a[@id='fieldsetcollapser5']");
+    @Name("Добавить еще один Должность")
+    private SelenideElement addPost = $x("//a[text()='Добавить еще один Должность']");
+    @Name("Изменить выбранный объект типа Должность")
+    private SelenideElement changeObjectPost = $x("//a[@id='change_id_employeeposition_set-0-position']");
+    @Name("Должность")
+    private ElementsCollection postOfEmployer = $$x("//select[@id='id_employeeposition_set-0-position']/option");
+    @Name("Название организации")
+    private ElementsCollection nameOfOrganization = $$x("//select[@name='employeeposition_set-0-organisation']/option");
+    @Name("Ставка")
+    private SelenideElement rateOfEmployer = $x("//input[@name='employeeposition_set-0-rate']");
+    @Name("Грейд")
+    private SelenideElement gradeOfEmployer = $x("//input[@name='employeeposition_set-0-grade']");
+    @Name("Дата начала должности")
+    private SelenideElement dateOfStart = $x("//input[@name='employeeposition_set-0-start_date']");
+    @Name("Дата окончания должности")
+    private SelenideElement dateOfFinish = $x("//input[@name='employeeposition_set-0-end_date']");
+    @Name("Заметка Должности")
+    private SelenideElement pointOfPosts = $x("//textarea[@name='employeeposition_set-0-memo']");
+
+    @Name("Грейды")
+    private SelenideElement grades = $x("//a[@id='fieldsetcollapser6']");
+    @Name("Добавить еще один Грейд")
+    private SelenideElement addAnotherGrade = $x("//a[text()='Добавить еще один Грейд']");
+    @Name("Заметка Грейды")
+    private SelenideElement pointOfGrades = $x("//textarea[@name='employeepositiongrade_set-0-memo']");
+
+    @Name("Проектные ставки")
+    private SelenideElement projectBids = $x("//a[@id='fieldsetcollapser8']");
+    @Name("Добавить еще один Проектная ставка")
+    private SelenideElement addProjectBid = $x("//a[text()='Добавить еще один Проектная ставка']");
+    @Name("Проект Проектные ставки")
+    private SelenideElement fieldProjectP = $x("//select[@name='employeeprojectsalaryrate_set-0-employee_project']");
+    @Name("Скрыть")
+    private SelenideElement hideProjectBids = $x("//fieldset[@class='module collapse']/h2/a[@class='collapse-toggle']");
+
+    @Name("Договоры")
+    private SelenideElement contracts = $x("//a[@id='fieldsetcollapser9']");
+    @Name("Добавить еще один Договор")
+    private SelenideElement addAnotherContract = $x("//a[text()='Добавить еще один Договор']");
+    @Name("Договоры Должность")
+    private SelenideElement fieldPost = $x("//select[@name='contract-0-position']");
+
+    @Name("Договоры ГПХ")
+    private SelenideElement contractsGpx = $x("//a[@id='fieldsetcollapser10']");
+    @Name("Добавить еще один Договор ГПХ")
+    private SelenideElement addAnotherContractGpx = $x("//a[text()='Добавить еще один Договор ГПХ']");
+    @Name("Номер договора")
+    private SelenideElement numberOfContract = $x("//input[@name='employeecivilcontract_set-0-number']");
+
+    @Name("Добавить еще один Город")
+    private SelenideElement addAnotherCity = $x("//a[text()='Добавить еще один Город']");
+    @Name("Город")
+    private SelenideElement fieldCity = $x("//select[@name='employeecity_set-0-city']");
+
+    @Name("Иностранные языки")
+    private SelenideElement foreignLanguages = $x("//a[@id='fieldsetcollapser12']");
+    @Name("Добавить еще один Иностранный язык")
+    private SelenideElement addAnotherLanguage = $x("//a[text()='Добавить еще один Иностранный язык']");
+    @Name("Иностранный язык")
+    private SelenideElement forLanguage = $x("//select[@name='employeelanguage_set-0-language']");
+
+    @Name("Предыдущий опыт работы")
+    private SelenideElement previousExperience = $x("//a[@id='fieldsetcollapser13']");
+    @Name("Добавить еще один Предыдущий опыт работы")
+    private SelenideElement addAnotherExperience = $x("//a[text()='Добавить еще один Предыдущий опыт работы']");
+    @Name("Название организации опыта")
+    private SelenideElement nameOrganizExp = $x("//select[@name='employeepreviousexperience_set-0-organisation']");
+
+    @Name("Достижения")
+    private SelenideElement achievements = $x("//a[@id='fieldsetcollapser14']");
+    @Name("Добавить еще один Достижение")
+    private SelenideElement addAnotherAchievement = $x("//a[text()='Добавить еще один Достижение']");
+    @Name("Достижение")
+    private SelenideElement achievement = $x("//select[@name='employeeachievement_set-0-achievement']");
+
+    @Name("Запросы на отпуск")
+    private SelenideElement vacationRequests = $x("//a[@id='fieldsetcollapser15']");
+    @Name("Добавить еще один Запрос на отпуск")
+    private SelenideElement addAnotherVacRequest = $x("//a[text()='Добавить еще один Запрос на отпуск']");
+    @Name("Статус запроса")
+    private SelenideElement vacRequestStatus = $x("//select[@name='employeevacationrequest_set-0-request_status']");
+
+    @Name("Проекты")
+    private SelenideElement projects = $x("//a[@id='fieldsetcollapser7']");
+    @Name("Добавить еще один Проект")
+    private SelenideElement addProject = $x("//a[text()='Добавить еще один Проект']");
+    @Name("Изменить выбранный объект типа Проект")
+    private SelenideElement changeObjectProject = $x("//a[@id='change_id_employeeproject_set-0-project']");
+    @Name("Проекты Проект")
+    private ElementsCollection projectOfEmployer = $$x("//select[@id='id_employeeproject_set-0-project']/option");
+    @Name("Тип тестирования")
+    private ElementsCollection typeOfTests = $$x("//select[@name='employeeproject_set-0-testing_type']/option");
+    @Name("Проектная роль проекты")
+    private ElementsCollection projectPostEmp = $$x("//select[@name='employeeproject_set-0-project_role']/option");
+    @Name("Дата начала проекты")
+    private SelenideElement dateOfStartProject = $x("//input[@name='employeeproject_set-0-start_date']");
+    @Name("Дата окончания проекты")
+    private SelenideElement dateOfFinishProject = $x("//input[@name='employeeproject_set-0-end_date']");
+    @Name("Обязанности проекты")
+    private SelenideElement duties = $x("//textarea[@name='employeeproject_set-0-responsibilities']");
+    @Name("Чекбокс Стажер")
+    private SelenideElement checkBoxJun = $x("//input[@name='employeeproject_set-0-is_trainee']");
+}

@@ -69,4 +69,13 @@ public class WebActions {
     public static int getRandom(int start, int range) {
         return start + (int)(Math.random() * range);
     }
+
+    /**
+     * Заполнение поля рандомным значением от -5 до 5
+     *  @param element - элемент
+     */
+    public static void fillFieldRandInt(SelenideElement element, int start, int finish) {
+        element.setValue(String.valueOf(getRandom(start, finish)));
+            Sleep.pauseSec(0.2);
+        }
     }
