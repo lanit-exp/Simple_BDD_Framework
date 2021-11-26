@@ -241,4 +241,7 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     private SelenideElement duties = $x("//textarea[@name='employeeproject_set-0-responsibilities']");
     @Name("Чекбокс Стажер")
     private SelenideElement checkBoxJun = $x("//input[@name='employeeproject_set-0-is_trainee']");
+
+    @Name("Фамилия Public")
+    private SelenideElement surnamePublic = $x("//div[@class='fieldBox field-surname']/label/following-sibling::div");
 }
