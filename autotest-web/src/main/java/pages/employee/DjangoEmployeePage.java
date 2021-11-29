@@ -70,3 +70,4 @@ public class DjangoEmployeePage extends DjangoPagesHeader {
     @Name("Формат")
     private SelenideElement formatField = $x("//select[@name='file_format']");
 }
+

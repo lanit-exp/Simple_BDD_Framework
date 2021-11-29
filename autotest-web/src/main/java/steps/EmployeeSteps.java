@@ -1,9 +1,11 @@
 package steps;
 
+import actions.Checks;
 import actions.WebActions;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.Затем;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Тогда;
@@ -22,38 +24,39 @@ public class EmployeeSteps {
 
     @И("на текущей странице в блоке {string} нажать на любую ссылку")
     public void clickRandom(String elementName) {
-         ElementsCollection elements = pageManager
+        ElementsCollection elements = pageManager
                 .getCurrentPage()
                 .getElementsCollection(elementName);
         elements.get(WebActions.getRandom(elements.size())).click();
         LOGGER.info("на странице '{}' выбран элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
+
     @И("на текущей странице в блоке {string} нажать на любую кнопку {int} раз")
-    public void clickRandomN(String elementName,int n) {
+    public void clickRandomN(String elementName, int n) {
         ElementsCollection elements = pageManager
                 .getCurrentPage()
                 .getElementsCollection(elementName);
-        for(int i = 0; i < n ;i ++){
+        for (int i = 0; i < n; i++) {
             elements.get(WebActions.getRandom(elements.size())).click();
             LOGGER.info("В блоке '{}'было выбранно '{}' элементов", elementName, n);
         }
     }
+
     @И("на текущей странице в блоке {string} отжать любую кнопку {int} раз")
-    public void unClickRandomN(String elementName,int n) {
+    public void unClickRandomN(String elementName, int n) {
         ElementsCollection elements = pageManager
                 .getCurrentPage()
                 .getElementsCollection(elementName);
         int i = 0;
-        while (i < n){
-            int rnd = WebActions.getRandom(1,elements.size() - 1);
-            if(elements.get(rnd).is(Condition.checked)){
+        while (i < n) {
+            int rnd = WebActions.getRandom(1, elements.size() - 1);
+            if (elements.get(rnd).is(Condition.checked)) {
                 elements.get(rnd).click();
                 i++;
             }
         }
-            LOGGER.info("В блоке '{}'было отжато '{}' элементов", elementName, n);
+        LOGGER.info("В блоке '{}'было отжато '{}' элементов", elementName, n);
     }
-
 
     @Затем("на текущей странице в блоке Общая информация очистить все поля: {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}")
     public void clearFieldsEmployee(String surname, String name, String patronymic, String gender, String joiningDate, String birthday, String phone, String citizenship, String email) {
@@ -123,7 +126,7 @@ public class EmployeeSteps {
         ElementsCollection elements = pageManager
                 .getCurrentPage()
                 .getElementsCollection(elementName);
-        elements.get(elements.size()-2).click();
+        elements.get(elements.size() - 2).click();
         LOGGER.info("на текущей странице в блоке '{}' нажимается элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
@@ -143,6 +146,15 @@ public class EmployeeSteps {
                 .getElementsCollection(elementName);
         elements.findBy(Condition.exactText(text)).click();
         LOGGER.info("на странице '{}' выбран элемент '{}'", pageManager.getCurrentPage().name(), text);
+    }
+
+    @Если("в выпадающем списке поле {string} не выбрано")
+    public void emptyDropDown(String elementName) {
+        SelenideElement elements = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        elements.shouldBe(Condition.visible).selectOption(0);
+        LOGGER.info("на странице '{}' выбран элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
     @И("в блоке {string} выбрать {string}")
