@@ -1,0 +1,17 @@
+---
+authValues:
+  - login: admin
+    password: asdf
+    token: yes
+  - login: project1_admin
+    password: hrmhrm1234
+    token: yes
+  - login: hr
+    password: hrmhrm12345
+    token: yes
+  - login: public
+    password: hrmhrm123456
+    token: yes
+  - login: just_employee
+    password: hrmhrm123
+    token: no
