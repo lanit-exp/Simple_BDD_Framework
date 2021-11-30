@@ -1,5 +1,6 @@
 package steps;
 
+import actions.Checks;
 import actions.WebChecks;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.И;
@@ -30,7 +31,20 @@ public class WebCheckSteps {
         LOGGER.info("на странице '{}' имеется текст '{}'", pageManager.getCurrentPage().name(), text);
     }
 
-
+    /**
+     * проверка что элемент заблокирован
+     *
+     * @param elementName название элемента
+     *
+     */
+    @Когда("элемент {string} заблокирован")
+    public void checkElementIsReadOnly(String elementName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        WebChecks.elementIsReadOnly(element,"readonly", null);
+        LOGGER.info("элемент {} заблокирован", elementName);
+    }
 
     /**
      * проверка отсутствия текста на странице
@@ -124,4 +138,45 @@ public class WebCheckSteps {
     public void currentUrlContainsExpected(String url) {
         WebChecks.urlContains(url);
     }
+
+    /**
+     * проверка, что поле заполнено текстом
+     * <br/>можно начать написание url с переменной %{apiUrl}% или %{webUrl}%
+     *
+     */
+    @Если("поле {string} заполнено текстом {string}")
+    public void checkFieldText(String elementName,String text){
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        WebChecks.elementValueEqualsExpectedText(element, text, 0);
+        LOGGER.info("на странице '{}' отсутствует элемент '{}'", pageManager.getCurrentPage().name(), elementName);
+    }
+    @Если("в выпадющем списке {string} выбран элемент со значением {string}")
+    public void listCheckedElement(String elementName,String text){
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        WebChecks.elementTextContainsExpectedText(element,text,null);
+        LOGGER.info("в выпадющем списке {} выбран элемент со значением {}", elementName, text);
+    }
+
+    @Когда("элемент {string} не активен из-за отсутствия параметра {string}")
+    public void checkReadOnly(String elementName, String text) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        WebChecks.elementIsNotOnPage(element, text);
+        LOGGER.info("элемент {} не активен из-за отсутствия параметра {}", elementName, text);
+    }
+
+    @Когда("элемент {string} активен из-за присутствия параметра {string}")
+    public void checkElementIsNotReadOnly(String elementName, String text) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        WebChecks.elementIsOnPage(element, text);
+        LOGGER.info("элемент {} не активен из-за присутствия параметра {}", elementName, text);
+    }
+
 }

@@ -1,6 +1,7 @@
 package steps;
 
 import actions.Checks;
+import actions.WebChecks;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.Пусть;
@@ -57,11 +58,8 @@ public class AuthorizationCheckSteps {
 
     @Если("на странице отсутствует текст {string}")
     public void currentTextIsNotExist(String errorText) {
-        AuthorizationCheckSteps.textAbsentOnPage(errorText);
+        WebChecks.textAbsentOnPage(errorText, null);
         LOGGER.info("на странице '{}' отсутствует текст '{}'", pageManager.getCurrentPage().name(), errorText);
-    }
-
-    private static void textAbsentOnPage(String errorText) {
     }
 
     @Если("на странице имеется элемент {string}")
@@ -73,10 +71,10 @@ public class AuthorizationCheckSteps {
         LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
-    @Если("в поле Добро пожаловать, присутствует текст {string}")
-    public void currentTextIsExist(String curText) {
-        AuthorizationCheckSteps.textAbsentOnPage(curText);
-        LOGGER.info("на странице '{}' отсутствует текст '{}'", pageManager.getCurrentPage().name(), curText);
+    @Если("на странице в поле Добро пожаловать, имеется элемент {string}")
+    public void elementIsHere(String elementName) {
+        WebChecks.textVisibleOnPage(elementName, null);
+        LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
     @Если("поле {string} содержит значение {string}")
@@ -86,6 +84,12 @@ public class AuthorizationCheckSteps {
                 .getElement(elementName);
         Checks.elementTextEqualsExpectedText(element, text);
         LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
+    }
+
+    @Если("на странице отсутствует поле под названием {string}")
+    public void textOfFieldIsNotExist(String errorText) {
+        WebChecks.textAbsentOnPage(errorText, null);
+        LOGGER.info("отсутствует текст '{}'", errorText);
     }
 
 }

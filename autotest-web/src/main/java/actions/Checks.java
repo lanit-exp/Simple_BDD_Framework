@@ -1,10 +1,9 @@
 package actions;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.aeonbits.owner.ConfigFactory;
-import org.openqa.selenium.support.ui.Select;
-import pages.employee.DjangoEmployeeChangePage;
 import ru.lanit.at.web.properties.WebConfigurations;
 
 import java.time.Duration;
@@ -15,10 +14,20 @@ public class Checks {
         element.shouldBe(Condition.visible);
     }
 
+        public static void elementNotVisible(SelenideElement element) {
+            element.shouldHave(Condition.exactText(""));
+        }
+
     public static void elementVisibleAndNoSelected(SelenideElement element) {
         element.shouldBe(Condition.visible);
         element.shouldNotBe(Condition.selected);
     }
+
+    public static void elementVisibleAndNoEnable(SelenideElement element) {
+        element.shouldBe(Condition.visible);
+        element.shouldNotBe(Condition.enabled);
+    }
+
     public static void elementVisibleAndSelected(SelenideElement element) {
         element.shouldBe(Condition.visible);
         element.shouldBe(Condition.selected);
@@ -38,5 +47,13 @@ public class Checks {
     public static void elementVisibleOnPage(SelenideElement element, Integer timeoutSeconds) {
         int timeout = getTimeoutSeconds(timeoutSeconds);
         element.shouldBe(Condition.visible, Duration.ofSeconds(timeout));
+    }
+
+    public static void emptyElement(SelenideElement element) {
+        element.shouldHave(Condition.empty);
+
+    public static void fieldVisibleAndNoSelected(SelenideElement element) {
+        element.shouldBe(Condition.visible);
+        element.shouldBe(Condition.empty);
     }
 }

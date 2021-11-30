@@ -127,6 +127,28 @@ public class WebChecks {
     }
 
     /**
+     * проверяет что значение элемента соответствует ожидаемому тексту
+     *
+     * @param element        элемент
+     * @param expectedText   текст
+     * @param timeoutSeconds количество секунд
+     */
+    public static void elementValueEqualsExpectedText(SelenideElement element, String expectedText, Integer timeoutSeconds){
+        int timeout = getTimeoutSecondsFirst(timeoutSeconds);
+        element.shouldBe(Condition.value(expectedText), Duration.ofSeconds(timeout));
+    }
+
+    /**
+     * проверяет что элемент заблокирован
+     *
+     * @param element        элемент
+     * @param timeoutSeconds количество секунд
+     */
+    public static void elementIsReadOnly(SelenideElement element, String text, Integer timeoutSeconds){
+        int timeout = getTimeoutSecondsFirst(timeoutSeconds);
+        element.shouldBe(Condition.cssClass(text), Duration.ofSeconds(timeout));
+    }
+    /**
      * Проверяет, что текст элемента содержит ожидаемый текст
      *
      * @param element        элемент
@@ -185,5 +207,19 @@ public class WebChecks {
         } catch (ElementShould elementShould) {
             return false;
         }
+    }
+
+    /**
+     * Проверяет, что на странице не активен элемент
+     */
+    public static void elementIsNotOnPage(SelenideElement element, String text) {
+        element.shouldNotHave(Condition.href(text));
+    }
+
+    /**
+     * Проверяет, что на странице активен элемент
+     */
+    public static void elementIsOnPage(SelenideElement element, String text) {
+        element.shouldNotHave(Condition.href(text));
     }
 }
