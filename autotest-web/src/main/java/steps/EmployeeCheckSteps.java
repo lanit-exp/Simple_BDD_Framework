@@ -13,9 +13,6 @@ import org.testng.Assert;
 import ru.lanit.at.api.testcontext.ContextHolder;
 import ru.lanit.at.web.pagecontext.PageManager;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class EmployeeCheckSteps {
 
     private PageManager pageManager;
@@ -169,6 +166,33 @@ public class EmployeeCheckSteps {
         }
         Assert.assertTrue(result);
         LOGGER.info("на странице '{}' в блоке '{}' есть '{}'", pageManager.getCurrentPage().name(), elementName, text);
+    }
+
+    @Если("в текущем блоке поле {string} заблокировано")
+    public void checkBlockedField(String elementName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        Checks.emptyElement(element);
+        LOGGER.info("элемент '{}' заблокирован", elementName);
+    }
+
+    @Если("в текущем блоке поле {string} отсутствует")
+    public void checkElementNotVisible(String elementName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        Checks.elementVisibleOnPage(element, null);
+        LOGGER.info("элемент '{}' не отображается на странице", elementName);
+    }
+
+    @Если("в текущем поле {string} отсутствует текст")
+          public void checkFieldWithoutText(String elementName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+              Checks.emptyElement(element);
+        LOGGER.info("элемент '{}' не содержит текст", elementName);
     }
 
     @Если("поле {string} отображается и пусто")

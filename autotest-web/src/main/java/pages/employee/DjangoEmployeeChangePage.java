@@ -137,6 +137,40 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     @Name("Сегодня")
     private SelenideElement todayCity = $x("//input[@name='employeecity_set-0-change_date']/following-sibling::span/a[text()='Сегодня']");
 
+    @Name("Фактические отпуска")
+    private SelenideElement actualVacationsShow = $("#employeeactualvacation_set-group fieldset h2 a");
+    @Name("Заметка")
+    private SelenideElement addActualVacations = $x("//h2[contains(text(), 'Фактические отпуска')]/following-sibling::table//tbody");
+    @Name("Скрыть отпуска")
+    private SelenideElement hideActualVacations = $x("//h2[contains(text(), 'Фактические отпуска')]/a");
+
+    @Name("Больничные")
+    private SelenideElement sickLeaveShow = $("#employeesickleaveofficial_set-group fieldset h2 a");
+    @Name("Добавить больничный")
+    private SelenideElement addSickLeave = $("#employeesickleaveofficial_set-empty ~ tr td a");
+    @Name("Номер больничного листа")
+    private SelenideElement numberSickLeave = $(".empty-form .field-notes_number");
+    @Name("Скрыть больничный")
+    private SelenideElement hideSickLeave = $x("//h2[contains(text(), 'Больничные')]/a");
+
+    @Name("Бюллетени без больничного листа")
+    private SelenideElement bulletinWithoutLeaveShow = $("#employeesickleaveunofficial_set-group fieldset h2 a");
+    @Name("Добавить бюллетень")
+    private SelenideElement addBulletinWithoutLeave = $("#employeesickleaveunofficial_set-empty ~ tr td a");
+    @Name("Дата бюллетеня")
+    private SelenideElement dateBulletinWithoutLeave = $(".empty-form .field-notes_number");
+    @Name("Скрыть бюллетень")
+    private SelenideElement hideBulletinWithoutLeave = $x("//h2[contains(text(), 'Семья')]/a");
+
+    @Name("Семья")
+    private SelenideElement familyShow = $("#Family-group fieldset h2 a");
+    @Name("Добавить семья")
+    private SelenideElement addFamily = $("#Family-empty ~ tr td a");
+    @Name("Родственная связь")
+    private SelenideElement kinship = $(".dynamic-Family select[id*='relationship']");
+    @Name("Скрыть семья")
+    private SelenideElement hideFamily = $x("//h2[contains(text(), 'Бюллютени без больничного листа')]/a");
+
     @Name("Должности")
     private SelenideElement employerPost = $x("//a[@id='fieldsetcollapser5']");
     @Name("Добавить еще один Должность")
