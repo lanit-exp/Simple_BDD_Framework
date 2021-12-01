@@ -2,6 +2,7 @@ package steps;
 
 import actions.Checks;
 import actions.WebChecks;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Если;
@@ -168,6 +169,15 @@ public class WebCheckSteps {
                 .getElement(elementName);
         WebChecks.elementIsNotOnPage(element, text);
         LOGGER.info("элемент {} не активен из-за отсутствия параметра {}", elementName, text);
+    }
+
+    @Когда("элемент {string} не активен")
+    public void checkActive(String elementName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        element.shouldNotBe(Condition.enabled);
+        LOGGER.info("элемент {} не активен ", elementName);
     }
 
     @Когда("элемент {string} активен из-за присутствия параметра {string}")

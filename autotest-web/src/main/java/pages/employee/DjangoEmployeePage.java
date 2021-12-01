@@ -16,28 +16,28 @@ public class DjangoEmployeePage extends DjangoPagesHeader {
     private SelenideElement nameOfChange = $x("//li[@class='success']/a");
 
     @Name("Восстановить удаленный сотрудники")
-    private SelenideElement recoverLink = $(".recoverlink");
+    private SelenideElement recoverLink = $x("//a[@href='/admin/core/employee/recover/']");
     @Name("Импорт")
-    private SelenideElement importLink = $(".import_link");
+    private SelenideElement importLink = $x("//a[@href='/admin/core/employee/import/']");
     @Name("Экспорт")
-    private SelenideElement exportLink = $(".export_link");
+    private SelenideElement exportLink = $x("//a[@href='/admin/core/employee/export/?']");
     @Name("Добавить сотрудник")
-    private SelenideElement addEmployeeLink = $(".addlink");
+    private SelenideElement addEmployeeLink = $x("//a[@href='/admin/core/employee/add/']");
 
     @Name("Поиск")
-    private SelenideElement search = $("#searchbar");
+    private SelenideElement search = $x("//input[@id='searchbar']");
     @Name("Найти")
-    private SelenideElement searchButton = $("#searchbar ~ input[type='submit']");
+    private SelenideElement searchButton = $x("//input[@type='submit']");
 
     @Name("Выполнить")
-    private SelenideElement executeButton = $(".button");
+    private SelenideElement executeButton = $x("//button[@type='submit']");
     @Name("Действие")
     private ElementsCollection dropDownAction = $$x("//select[@name='action']/option");
     @Name("Действие меню")
     private SelenideElement action = $x("//select[@name='action']");
 
     @Name("Количество найденных записей")
-    private SelenideElement numberRecords = $(".paginator");
+    private SelenideElement numberRecords = $x("//p[@class='paginator']");
 
     @Name("Предупреждение в заголовке")
     private SelenideElement headerWarning = $(".warning");
@@ -46,19 +46,19 @@ public class DjangoEmployeePage extends DjangoPagesHeader {
     private SelenideElement headerSuccess = $(".success");
 
     @Name("Таблица чек-бокс")
-    private ElementsCollection tableCheckboxes = $$(".action-select");
+    private ElementsCollection tableCheckboxes = $$x("//input[@class='action-select']");
 
     @Name("Пагинация")
-    private ElementsCollection paginator = $$(".paginator a");
+    private ElementsCollection paginator = $$x("//p[@class='paginator']/a");
 
     @Name("Пагинация текущая страница")
-    private SelenideElement currentPaginator = $(".paginator span.this-page");
+    private SelenideElement currentPaginator = $x("//span[@class='this-page']");
 
     @Name("Фильтр")
-    private ElementsCollection filters = $$("#changelist-filter li");
+    private ElementsCollection filters = $$x("//div[@id='changelist-filter']/ul/li");
 
     @Name("Текущий город")
-    private ElementsCollection currentCity = $$(".field-current_city");
+    private ElementsCollection currentCity = $$x("//td[@class='field-current_city nowrap']");
 
     @Name("Инфоблок")
     private SelenideElement tableHeader = $x("//div[@id='content']/h1");

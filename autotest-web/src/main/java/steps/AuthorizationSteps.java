@@ -1,8 +1,6 @@
 package steps;
 
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.*;
 import io.cucumber.java.ru.*;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -13,6 +11,8 @@ import ru.lanit.at.web.pagecontext.Environment;
 import ru.lanit.at.web.pagecontext.PageManager;
 import ru.lanit.at.web.pagecontext.WebPage;
 
+import java.awt.*;
+import java.util.Iterator;
 import java.util.UUID;
 
 public class AuthorizationSteps {
@@ -43,6 +43,25 @@ public class AuthorizationSteps {
         LOG.info("клик на элемент по тексту '{}'", elementName);
     }
 
+    @Тогда("активировать в чек-лист {string} чекбокс {string}")
+    public void activeCheckbox(String elementName,String checkboxName) {
+        ElementsCollection element = pageManager.getCurrentPage().getElementsCollection(elementName);
+        Iterator<SelenideElement> iter = element.iterator();
+        SelenideElement elementCollection;
+        String actual = "";
+
+        while (iter.hasNext()){
+            elementCollection = iter.next();
+            if(elementCollection.getText().equals(checkboxName)){
+                elementCollection.click();
+                actual = elementCollection.getText();
+                break;
+            }
+        }
+        Assert.assertEquals(actual, checkboxName,"Элемент не найден");
+        LOG.info("в чек-листе '{}' активирован чекбокс '{}' - '{}'",elementName,checkboxName, actual);
+    }
+
     @Тогда("заполнить поле {string} значением {string}")
     public void fillField(String elementName, String value) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
@@ -57,6 +76,26 @@ public class AuthorizationSteps {
         ContextHolder.put(field, randomString);
     }
 
+    @И("сохранить содержимое поля {string} в ContextHolder")
+    public void saveFieldContents(String fieldName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(fieldName);
+        String value = element.getValue();
+        ContextHolder.put(fieldName, value);
+        LOG.info("содержимое поля '{}' - '{}' сохранено в ContextHolder", fieldName,value);
+    }
+
+    @И("сохранить выделенное значение выпадающего списка {string} в ContextHolder")
+    public void saveDropDownListContents(String fieldName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(fieldName);
+        String value = element.getSelectedText();
+        ContextHolder.put(fieldName, value);
+        LOG.info("содержимое поля '{}' - '{}' сохранено в ContextHolder", fieldName,value);
+    }
+
     @И("сравнить значение поля {string} и содержимое ContextHolder")
     public void checkField(String fieldName) {
         String expectedValue = ContextHolder.getValue(fieldName).toString();
@@ -66,6 +105,16 @@ public class AuthorizationSteps {
         String actualValue = element.getValue();
         Assert.assertEquals(actualValue, expectedValue);
        LOG.info("Содержимое поля - {}", actualValue);
+    }
+    @И("сравнить текст выделенного поля {string} и содержимое ContextHolder")
+    public void checkSelectedField(String fieldName) {
+        String expectedValue = ContextHolder.getValue(fieldName).toString();
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(fieldName);
+        String actualValue = element.getSelectedText();
+        Assert.assertEquals(actualValue, expectedValue);
+        LOG.info("Содержимое поля - {}", actualValue);
     }
 
     @Тогда("нажать на {string}")

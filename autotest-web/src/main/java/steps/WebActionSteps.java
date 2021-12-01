@@ -143,6 +143,7 @@ public class WebActionSteps {
                 .getCurrentPage()
                 .getElement(elementName);
         element.selectOption( 1 + (int) (Math.random() * element.findAll(By.cssSelector("option")).size()-1));
-        LOGGER.info("в выпадющем списке {} выбран элемент со значением", elementName);
+        String selectedText = element.getSelectedText();
+        LOGGER.info("в выпадющем списке '{}' выбран элемент со значением - '{}'", elementName,selectedText);
     }
 }

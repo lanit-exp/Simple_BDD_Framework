@@ -182,4 +182,14 @@ public class EmployeeSteps {
                 .getElement(elementName);
         WebActions.fillFieldRandInt(element, start, finish);
     }
+    @Тогда("в поле {string} удалить {int} последних символа")
+    public void deleteCharacter(String elementName, int numberOfChars) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        String valueOfElement = element.getValue();
+        String resultString = valueOfElement.substring(0,valueOfElement.length()-numberOfChars);
+        element.setValue("");
+        WebActions.fillInputByCharacter(element,resultString);
+    }
 }

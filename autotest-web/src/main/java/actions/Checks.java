@@ -14,9 +14,9 @@ public class Checks {
         element.shouldBe(Condition.visible);
     }
 
-        public static void elementNotVisible(SelenideElement element) {
-            element.shouldHave(Condition.exactText(""));
-        }
+    public static void elementNotVisible(SelenideElement element) {
+        element.shouldHave(Condition.exactText(""));
+    }
 
     public static void elementVisibleAndNoSelected(SelenideElement element) {
         element.shouldBe(Condition.visible);
@@ -51,9 +51,9 @@ public class Checks {
 
     public static void emptyElement(SelenideElement element) {
         element.shouldHave(Condition.empty);
-
-    public static void fieldVisibleAndNoSelected(SelenideElement element) {
-        element.shouldBe(Condition.visible);
-        element.shouldBe(Condition.empty);
     }
+        public static void fieldVisibleAndNoSelected(SelenideElement element){
+            element.shouldBe(Condition.visible);
+            element.shouldBe(Condition.empty);
+        }
 }
