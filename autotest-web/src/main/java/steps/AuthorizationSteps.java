@@ -25,9 +25,8 @@ import java.util.UUID;
 
 public class AuthorizationSteps {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AuthorizationSteps.class);
-
     private static Properties properties = new Properties();
+    private static final Logger LOGGER = LoggerFactory.getLogger(AuthorizationSteps.class);
     private static String currentToken = "";
     private final PageManager pageManager;
 
@@ -46,6 +45,7 @@ public class AuthorizationSteps {
             Environment.setThreadDriver(currentThreadWebDriver);
         }
         LOGGER.info("инициализация webdriver для потока: {}", Thread.currentThread().getId());
+    }
 
     @Дано("открыть сайт")
     public void openUrl() {
@@ -56,7 +56,7 @@ public class AuthorizationSteps {
             WebDriver currentThreadWebDriver = WebDriverRunner.getWebDriver();
             Environment.setThreadDriver(currentThreadWebDriver);
         }
-        LOGGER.info("init webdriver for thread: {}", Thread.currentThread().getId());
+        LOGGER.info("инициализация webdriver для потока: {}", Thread.currentThread().getId());
     }
 
     @Тогда("нажать на чекбокс {string}")
@@ -124,7 +124,7 @@ public class AuthorizationSteps {
                 clickOnCheckbox("Я желаю войти с админскими правами");
                 fillField("логин", el.getLogin());
                 fillField("пароль", el.getPassword());
-                fillFieldToken("токен", el.getLogin(), el.getPassword());
+                fillTokenField("токен", el.getLogin(), el.getPassword());
                 clickSignInButton("войти");
 
             } else if (el.getLogin().equals(login) && el.isToken().equals(false)) {
@@ -134,6 +134,15 @@ public class AuthorizationSteps {
             }
         }
         LOGGER.info("авторизация под логином: '{}'", login);
+    }
+
+//    @Тогда("нажать на {string}")
+    private void clickSignInButton(String elementName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        element.click();
+        LOGGER.info("клик на элемент по тексту '{}'", elementName);
     }
 
     private static void loadProperties() {

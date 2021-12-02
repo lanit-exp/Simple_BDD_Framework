@@ -152,7 +152,10 @@ public class EmployeeSteps {
 
     @Когда("кликнуть на элемент по тексту {string}")
     public void clickElementWithText(String text) {
-        pageManager.getCurrentPage().getElement(text).click();
+        pageManager
+                .getCurrentPage()
+                .getElement(text)
+                .click();
         LOGGER.info("клик на элемент по тексту '{}'", text);
     }
 

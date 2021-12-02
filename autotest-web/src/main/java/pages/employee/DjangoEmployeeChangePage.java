@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class DjangoEmployeeChangePage extends WebPage {
 
     @Name("Имя")
-    private SelenideElement firstName = $("#id_name");
+    private SelenideElement firstName = $x("//input[@id='id_name']");
     @Name("Фамилия")
     private SelenideElement lastName = $x("//input[@id='id_surname']");
     @Name("Отчество")
@@ -276,4 +276,6 @@ public class DjangoEmployeeChangePage extends WebPage {
     private SelenideElement duties = $x("//textarea[@name='employeeproject_set-0-responsibilities']");
     @Name("Чекбокс Стажер")
     private SelenideElement checkBoxJun = $x("//input[@name='employeeproject_set-0-is_trainee']");
+    @Name("Фамилия Public")
+    private SelenideElement surnamePublic = $x("//div[@class='fieldBox field-surname']/label/following-sibling::div");
 }
