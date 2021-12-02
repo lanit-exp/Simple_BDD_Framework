@@ -1,9 +1,8 @@
-package actions;
+package actions.will_be_removed;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.ex.ElementNotFound;
 import com.codeborne.selenide.ex.ElementShould;
 import org.aeonbits.owner.ConfigFactory;
@@ -20,6 +19,7 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.href;
 import static com.codeborne.selenide.Selenide.$;
 
+@Deprecated
 public class WebChecks {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WebChecks.class);
@@ -134,7 +134,7 @@ public class WebChecks {
      * @param expectedText   текст
      * @param timeoutSeconds количество секунд
      */
-    public static void elementValueEqualsExpectedText(SelenideElement element, String expectedText, Integer timeoutSeconds){
+    public static void elementValueEqualsExpectedText(SelenideElement element, String expectedText, Integer timeoutSeconds) {
         int timeout = getTimeoutSecondsFirst(timeoutSeconds);
         element.shouldBe(Condition.value(expectedText), Duration.ofSeconds(timeout));
     }
@@ -145,10 +145,11 @@ public class WebChecks {
      * @param element        элемент
      * @param timeoutSeconds количество секунд
      */
-    public static void elementIsReadOnly(SelenideElement element, String text, Integer timeoutSeconds){
+    public static void elementIsReadOnly(SelenideElement element, String text, Integer timeoutSeconds) {
         int timeout = getTimeoutSecondsFirst(timeoutSeconds);
         element.shouldBe(Condition.cssClass(text), Duration.ofSeconds(timeout));
     }
+
     /**
      * Проверяет, что текст элемента содержит ожидаемый текст
      *
@@ -222,5 +223,17 @@ public class WebChecks {
      */
     public static void elementIsOn(SelenideElement element) {
         element.isEnabled();
+    }
+
+    public static void elementVisibleAndNoEnable(SelenideElement element) {
+        element.shouldBe(Condition.visible);
+        element.shouldNotBe(Condition.enabled);
+    }
+
+    private static Integer getTimeoutSeconds(Integer timeout) {
+        WebConfigurations cfg = ConfigFactory.create(WebConfigurations.class,
+                System.getProperties(),
+                System.getenv());
+        return timeout == null ? cfg.webDriverTimeoutSeconds() : timeout;
     }
 }

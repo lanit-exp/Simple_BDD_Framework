@@ -1,20 +1,13 @@
-package steps;
+package steps.will_be_removed;
 
-import actions.WebActions;
-import com.codeborne.selenide.ElementsCollection;
+import actions.will_be_removed.WebActions;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
-import io.cucumber.java.ru.Если;
-import io.cucumber.java.ru.И;
-import io.cucumber.java.ru.Когда;
-import io.cucumber.java.ru.Тогда;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.lanit.at.web.pagecontext.Environment;
 import ru.lanit.at.web.pagecontext.PageManager;
-import ru.lanit.at.web.pagecontext.WebPage;
 
 public class WindowSteps {
 
@@ -30,7 +23,7 @@ public class WindowSteps {
      *
      * @param url url
      */
-    @Если("открыть url {string}")
+//    @Если("открыть url {string}")
     public void open(String url) {
         Selenide.open(url);
         WebDriver driver = Environment.getDriver();
@@ -46,7 +39,7 @@ public class WindowSteps {
      *
      * @param url url
      */
-    @И("открыть новую вкладку с url {string}")
+//    @И("открыть новую вкладку с url {string}")
     public void openNewTab(String url) {
         WebActions.openUrlOnNewTab(url);
     }
@@ -55,7 +48,7 @@ public class WindowSteps {
      * если вкладок 2, то переключится на следующую вкладку.
      * <br/>по факту переключается на последнюю вкладку
      */
-    @И("переключиться на следующую вкладку")
+//    @И("переключиться на следующую вкладку")
     public void switchNextTab() {
         WebActions.switchToNextTab(null);
     }
@@ -65,7 +58,7 @@ public class WindowSteps {
      *
      * @param number порядковый номер вкладки в браузере
      */
-    @И("пеерключиться на вкладку по порядковому номеру {int}")
+//    @И("пеерключиться на вкладку по порядковому номеру {int}")
     public void switchNextTabByNumber(int number) {
         WebActions.switchToNextTab(number);
     }
@@ -73,7 +66,7 @@ public class WindowSteps {
     /**
      * закрывает текущую вкладку и переходит на предыдущую (последняя вкладка в наборе)
      */
-    @И("закрыть текущую вкладку и перейти на предыдущую")
+//    @И("закрыть текущую вкладку и перейти на предыдущую")
     public void closeTabAndSwitchTab() {
         WebActions.closeCurrentTabAndSwitchToPrevious();
     }
@@ -81,7 +74,7 @@ public class WindowSteps {
     /**
      * закрывает страницу
      */
-    @Если("закрыть страницу")
+//    @Если("закрыть страницу")
     public void closeDriver() {
         WebDriverRunner.getWebDriver().close();
     }

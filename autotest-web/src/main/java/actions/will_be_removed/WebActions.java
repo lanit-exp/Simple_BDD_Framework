@@ -1,4 +1,4 @@
-package actions;
+package actions.will_be_removed;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
@@ -13,6 +13,7 @@ import ru.lanit.at.web.pagecontext.Environment;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class WebActions {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WebActions.class);
@@ -53,7 +54,8 @@ public class WebActions {
 
     /**
      * Посимвольное заполнение поля
-     *  @param element - элемент
+     *
+     * @param element - элемент
      * @param text    - значение
      */
     public static void fillInputByCharacter(SelenideElement element, String text) {
@@ -62,20 +64,21 @@ public class WebActions {
             Sleep.pauseSec(0.2);
         }
     }
-
     public static int getRandom(int range) {
-        return (int)(Math.random() * range);
+        return (int) (Math.random() * range);
     }
+
     public static int getRandom(int start, int range) {
-        return start + (int)(Math.random() * range);
+        return start + (int) (Math.random() * range);
     }
 
     /**
      * Заполнение поля рандомным значением от -5 до 5
-     *  @param element - элемент
+     *
+     * @param element - элемент
      */
     public static void fillFieldRandInt(SelenideElement element, int start, int finish) {
         element.setValue(String.valueOf(getRandom(start, finish)));
-            Sleep.pauseSec(0.2);
-        }
+        Sleep.pauseSec(0.2);
     }
+}
