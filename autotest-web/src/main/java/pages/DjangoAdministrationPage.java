@@ -2,18 +2,24 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import ru.lanit.at.web.annotations.Name;
+import ru.lanit.at.web.pagecontext.WebPage;
 
 import static com.codeborne.selenide.Selenide.*;
 
 @Name(value = "DjangoAdministration")
-public class DjangoAdministrationPage extends DjangoPagesHeader {
+public class DjangoAdministrationPage extends WebPage {
 
     @Name("Заголовок таблицы")
     private SelenideElement tableHeader = $x("//div[@id='content']/h1");
 
+    @Name("Изменить пароль")
+    SelenideElement changePassword = $x("//a[@href='/admin/password_change/']");
+    @Name("Выйти")
+    SelenideElement logout = $x("//div[@id='user-tools']/a[@href='/admin/logout/']");
+
     //MAIN
     @Name("Сотрудники")
-    private SelenideElement employee = $(".model-employee th a");
+    private SelenideElement employee = $x("//tr[@class='model-employee']/th/a");
 
     @Name("Запросы на отпуск")
     private SelenideElement employeeVacationRequest = $x("//a[text()='Запросы на отпуск']");

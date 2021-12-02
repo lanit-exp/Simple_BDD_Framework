@@ -2,20 +2,19 @@ package pages.employee;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import io.cucumber.java.eo.Se;
 import org.openqa.selenium.By;
-import pages.DjangoPagesHeader;
 import ru.lanit.at.web.annotations.Name;
+import ru.lanit.at.web.pagecontext.WebPage;
 
 import static com.codeborne.selenide.Selenide.*;
 
 @Name(value = "DjangoEmployeeChange")
-public class DjangoEmployeeChangePage extends DjangoPagesHeader {
+public class DjangoEmployeeChangePage extends WebPage {
 
     @Name("Имя")
     private SelenideElement firstName = $("#id_name");
     @Name("Фамилия")
-    private SelenideElement lastName = $("#id_surname");
+    private SelenideElement lastName = $x("//input[@id='id_surname']");
     @Name("Отчество")
     private SelenideElement patronymic = $("#id_patronymic");
     @Name("Пол")
@@ -138,9 +137,11 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     private SelenideElement todayCity = $x("//input[@name='employeecity_set-0-change_date']/following-sibling::span/a[text()='Сегодня']");
 
     @Name("Фактические отпуска")
-    private SelenideElement actualVacationsShow = $("#employeeactualvacation_set-group fieldset h2 a");
+    private SelenideElement actualVacationsShow = $x("//div[@id='employeeactualvacation_set-group']/div//fieldset/h2/a");
     @Name("Заметка")
-    private SelenideElement addActualVacations = $x("//h2[contains(text(), 'Фактические отпуска')]/following-sibling::table//tbody");
+    private SelenideElement fieldActualVacations = $x("//th[@class='column-vacation_request']/preceding-sibling::th[@class='column-memo']");
+    @Name("Заметка поле")
+    private SelenideElement getActualVacations = $x("//h2[contains(text(), 'Фактические отпуска')]/following-sibling::table//tbody");
     @Name("Скрыть отпуска")
     private SelenideElement hideActualVacations = $x("//h2[contains(text(), 'Фактические отпуска')]/a");
 
@@ -160,16 +161,16 @@ public class DjangoEmployeeChangePage extends DjangoPagesHeader {
     @Name("Дата бюллетеня")
     private SelenideElement dateBulletinWithoutLeave = $(".empty-form .field-notes_number");
     @Name("Скрыть бюллетень")
-    private SelenideElement hideBulletinWithoutLeave = $x("//h2[contains(text(), 'Семья')]/a");
+    private SelenideElement hideBulletinWithoutLeave = $x("//h2[contains(text(), 'Бюллютени без больничного листа')]/a");
 
     @Name("Семья")
     private SelenideElement familyShow = $("#Family-group fieldset h2 a");
     @Name("Добавить семья")
     private SelenideElement addFamily = $("#Family-empty ~ tr td a");
     @Name("Родственная связь")
-    private SelenideElement kinship = $(".dynamic-Family select[id*='relationship']");
+    private SelenideElement kinship = $x("//select[contains(@id, 'relationship')]");
     @Name("Скрыть семья")
-    private SelenideElement hideFamily = $x("//h2[contains(text(), 'Бюллютени без больничного листа')]/a");
+    private SelenideElement hideFamily = $x("//h2[contains(text(), 'Семья')]/a");
 
     @Name("Должности")
     private SelenideElement employerPost = $x("//a[@id='fieldsetcollapser5']");
