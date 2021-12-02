@@ -16,6 +16,7 @@ import ru.lanit.at.web.properties.WebConfigurations;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.Condition.href;
 import static com.codeborne.selenide.Selenide.$;
 
 @Deprecated
@@ -220,8 +221,8 @@ public class WebChecks {
     /**
      * Проверяет, что на странице активен элемент
      */
-    public static void elementIsOnPage(SelenideElement element, String text) {
-        element.shouldNotHave(Condition.href(text));
+    public static void elementIsOn(SelenideElement element) {
+        element.isEnabled();
     }
 
     public static void elementVisibleAndNoEnable(SelenideElement element) {
