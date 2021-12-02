@@ -16,13 +16,13 @@ public class DjangoEmployeePage extends DjangoPagesHeader {
     private SelenideElement nameOfChange = $x("//li[@class='success']/a");
 
     @Name("Восстановить удаленный сотрудники")
-    private SelenideElement recoverLink = $x("//a[@href='/admin/core/employee/recover/']");
+    private SelenideElement recoverLink = $x("//a[@class='recoverlink']");
     @Name("Импорт")
-    private SelenideElement importLink = $x("//a[@href='/admin/core/employee/import/']");
+    private SelenideElement importLink = $x("//a[@class='import_link']");
     @Name("Экспорт")
-    private SelenideElement exportLink = $x("//a[@href='/admin/core/employee/export/?']");
+    private SelenideElement exportLink = $x("//a[@class='export_link']");
     @Name("Добавить сотрудник")
-    private SelenideElement addEmployeeLink = $x("//a[@href='/admin/core/employee/add/']");
+    private SelenideElement addEmployeeLink = $x("//a[@class='addlink']");
 
     @Name("Поиск")
     private SelenideElement search = $x("//input[@id='searchbar']");

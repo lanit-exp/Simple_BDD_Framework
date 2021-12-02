@@ -13,7 +13,7 @@ public class DjangoAdministrationPage extends DjangoPagesHeader {
 
     //MAIN
     @Name("Сотрудники")
-    private SelenideElement employee = $(".model-employee th a");
+    private SelenideElement employee = $x("//a[@href='/admin/core/employee/'][text()='Сотрудники']");
 
     @Name("Запросы на отпуск")
     private SelenideElement employeeVacationRequest = $x("//a[text()='Запросы на отпуск']");
