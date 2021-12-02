@@ -11,8 +11,6 @@ import ru.lanit.at.web.pagecontext.Environment;
 import ru.lanit.at.web.pagecontext.PageManager;
 import ru.lanit.at.web.pagecontext.WebPage;
 
-import java.awt.*;
-import java.util.Iterator;
 import java.util.UUID;
 
 public class AuthorizationSteps {
@@ -42,24 +40,22 @@ public class AuthorizationSteps {
         element.click();
         LOG.info("клик на элемент по тексту '{}'", elementName);
     }
-
     @Тогда("активировать в чек-лист {string} чекбокс {string}")
-    public void activeCheckbox(String elementName,String checkboxName) {
-        ElementsCollection element = pageManager.getCurrentPage().getElementsCollection(elementName);
-        Iterator<SelenideElement> iter = element.iterator();
-        SelenideElement elementCollection;
+    public void activeCheckbox(String elementName, String checkboxName) {
         String actual = "";
+        ElementsCollection elements = pageManager
+                .getCurrentPage()
+                .getElementsCollection(elementName);
 
-        while (iter.hasNext()){
-            elementCollection = iter.next();
-            if(elementCollection.getText().equals(checkboxName)){
-                elementCollection.click();
-                actual = elementCollection.getText();
+        for (SelenideElement el : elements) {
+            if (el.getText().equals(checkboxName)){
+                el.click();
+                actual = el.getText();
                 break;
             }
         }
         Assert.assertEquals(actual, checkboxName,"Элемент не найден");
-        LOG.info("в чек-листе '{}' активирован чекбокс '{}' - '{}'",elementName,checkboxName, actual);
+        LOG.info("в чек-листе '{}' активирован чекбокс '{}' - '{}'", elementName, checkboxName, actual);
     }
 
     @Тогда("заполнить поле {string} значением {string}")
