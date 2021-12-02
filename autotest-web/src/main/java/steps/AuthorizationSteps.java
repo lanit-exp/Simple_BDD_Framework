@@ -40,23 +40,6 @@ public class AuthorizationSteps {
         element.click();
         LOG.info("клик на элемент по тексту '{}'", elementName);
     }
-    @Тогда("активировать в чек-лист {string} чекбокс {string}")
-    public void activeCheckbox(String elementName, String checkboxName) {
-        String actual = "";
-        ElementsCollection elements = pageManager
-                .getCurrentPage()
-                .getElementsCollection(elementName);
-
-        for (SelenideElement el : elements) {
-            if (el.getText().equals(checkboxName)){
-                el.click();
-                actual = el.getText();
-                break;
-            }
-        }
-        Assert.assertEquals(actual, checkboxName,"Элемент не найден");
-        LOG.info("в чек-листе '{}' активирован чекбокс '{}' - '{}'", elementName, checkboxName, actual);
-    }
 
     @Тогда("заполнить поле {string} значением {string}")
     public void fillField(String elementName, String value) {

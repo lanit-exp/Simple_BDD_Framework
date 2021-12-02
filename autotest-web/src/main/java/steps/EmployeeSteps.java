@@ -11,6 +11,7 @@ import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Тогда;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 import ru.lanit.at.web.pagecontext.PageManager;
 
 public class EmployeeSteps {
@@ -191,5 +192,22 @@ public class EmployeeSteps {
         String resultString = valueOfElement.substring(0,valueOfElement.length()-numberOfChars);
         element.setValue("");
         WebActions.fillInputByCharacter(element,resultString);
+    }
+    @Тогда("активировать в чек-лист {string} чекбокс {string}")
+    public void activeCheckbox(String elementName, String checkboxName) {
+        String actual = "";
+        ElementsCollection elements = pageManager
+                .getCurrentPage()
+                .getElementsCollection(elementName);
+
+        for (SelenideElement el : elements) {
+            if (el.getText().equals(checkboxName)){
+                el.click();
+                actual = el.getText();
+                break;
+            }
+        }
+        Assert.assertEquals(actual, checkboxName,"Элемент не найден");
+        LOGGER.info("в чек-листе '{}' активирован чекбокс '{}' - '{}'", elementName, checkboxName, actual);
     }
 }
