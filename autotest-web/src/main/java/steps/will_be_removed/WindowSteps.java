@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import ru.lanit.at.web.pagecontext.Environment;
 import ru.lanit.at.web.pagecontext.PageManager;
 
+@Deprecated
 public class WindowSteps {
 
     private PageManager pageManager;

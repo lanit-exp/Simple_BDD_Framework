@@ -1,7 +1,6 @@
 package steps;
 
 import actions.Checks;
-import actions.WebChecks;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Если;

@@ -3,12 +3,15 @@ package steps;
 import actions.Actions;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.lanit.at.utils.Sleep;
 import ru.lanit.at.web.pagecontext.PageManager;
+
+import static com.codeborne.selenide.Selenide.$;
 
 public class EmployeeSteps {
 
@@ -165,6 +168,14 @@ public class EmployeeSteps {
         element.shouldBe(Condition.visible)
                 .scrollIntoView("{block: 'center'}");
         LOGGER.info("скролл страницы до элемента '{}'", elementName);
+    }
+
+    @Когда("проскроллить страницу до текста {string}")
+    public void scrollToText(String text) {
+        SelenideElement element = $(Selectors.byText(text));
+        element.shouldBe(Condition.visible)
+                .scrollIntoView("{block: 'center'}");
+        LOGGER.info("скролл страницы до текста '{}'", text);
     }
 
     @И("подождать {int} сек")
