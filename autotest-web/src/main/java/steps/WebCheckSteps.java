@@ -1,7 +1,6 @@
 package steps;
 
 import actions.Checks;
-import actions.WebChecks;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Если;
@@ -27,41 +26,8 @@ public class WebCheckSteps {
      */
     @Когда("на странице присутствует текст {string}")
     public void textAppearOnThePage(String text) {
-        WebChecks.textVisibleOnPage(text, null);
+        Checks.textVisibleOnPage(text, null);
         LOGGER.info("на странице '{}' имеется текст '{}'", pageManager.getCurrentPage().name(), text);
-    }
-
-    /**
-     * проверка что элемент заблокирован
-     *
-     * @param elementName название элемента
-     *
-     */
-    @Когда("элемент {string} заблокирован")
-    public void checkElementIsReadOnly(String elementName) {
-        SelenideElement element = pageManager
-                .getCurrentPage()
-                .getElement(elementName);
-        WebChecks.elementIsReadOnly(element,"readonly", null);
-        LOGGER.info("элемент {} заблокирован", elementName);
-    }
-
-    /**
-     * проверка отсутствия текста на странице
-     *
-     * @param elementName название элемента
-     * @param attrName название атрибута
-     * @param value значение атрибута
-     * @param sec ожидание сек.
-     *
-     */
-    @И("проверить что {string} есть  атрибут {string} с значением {string} подождав {int} сек.")
-    public void elementAttributeValue(String elementName, String attrName, String value, int sec) {
-        SelenideElement element = pageManager
-                .getCurrentPage()
-                .getElement(elementName);
-        WebChecks.checkAttribute(element, attrName, value, sec);
-        LOGGER.info("у элемента '{}' имеется атрибут '{}' со значением '{}' ", elementName, attrName, value);
     }
 
     /**
@@ -72,8 +38,39 @@ public class WebCheckSteps {
      */
     @Когда("подождать появления текста {string} в течение {int} секунд")
     public void waitUntilTextAppearOnPage(String text, int timeoutSeconds) {
-        WebChecks.textVisibleOnPage(text, timeoutSeconds);
+        Checks.textVisibleOnPage(text, timeoutSeconds);
         LOGGER.info("на странице '{}' имеется текст '{}'", pageManager.getCurrentPage().name(), text);
+    }
+
+    /**
+     * проверка что элемент заблокирован
+     *
+     * @param elementName название элемента
+     */
+    @Когда("элемент {string} заблокирован")
+    public void checkElementIsReadOnly(String elementName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        Checks.elementIsReadOnly(element, "readonly", null);
+        LOGGER.info("элемент {} заблокирован", elementName);
+    }
+
+    /**
+     * проверка отсутствия текста на странице
+     *
+     * @param elementName   название элемента
+     * @param attributeName название атрибута
+     * @param value         значение атрибута
+     * @param sec           ожидание сек.
+     */
+    @И("проверить что {string} есть  атрибут {string} с значением {string} подождав {int} сек.")
+    public void elementAttributeValue(String elementName, String attributeName, String value, int sec) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        Checks.checkAttribute(element, attributeName, value, sec);
+        LOGGER.info("у элемента '{}' имеется атрибут '{}' со значением '{}' ", elementName, attributeName, value);
     }
 
     /**
@@ -84,7 +81,7 @@ public class WebCheckSteps {
      */
     @Когда("подождать исчезновения текста {string} в течение {int} секунд")
     public void waitUntilTextAbsentOnPage(String text, int timeoutSeconds) {
-        WebChecks.textAbsentOnPage(text, timeoutSeconds);
+        Checks.textAbsentOnPage(text, timeoutSeconds);
         LOGGER.info("на странице '{}' отсутствует текст '{}'", pageManager.getCurrentPage().name(), text);
     }
 
@@ -99,7 +96,7 @@ public class WebCheckSteps {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
-        WebChecks.elementVisibleOnPage(element, timeoutSeconds);
+        Checks.elementVisibleOnPage(element, timeoutSeconds);
         LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
@@ -113,51 +110,29 @@ public class WebCheckSteps {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
-        WebChecks.elementAbsentOnPage(element, null);
+        Checks.elementAbsentOnPage(element, null);
         LOGGER.info("на странице '{}' отсутствует элемент '{}'", pageManager.getCurrentPage().name(), elementName);
-    }
-
-    /**
-     * проверка текущего url
-     * <br/>можно начать написание url с переменной %{apiUrl}% или %{webUrl}%
-     *
-     * @param url часть или полный url (также может содержать переменные)
-     */
-    @Тогда("проверить что текущий url соответствует {string}")
-    public void currentUrlEqualsExpected(String url) {
-        WebChecks.urlEquals(url);
-    }
-
-    /**
-     * проверка текущего url
-     * <br/>можно начать написание url с переменной %{apiUrl}% или %{webUrl}%
-     *
-     * @param url часть url (также может содержать переменные)
-     */
-    @Тогда("проверить что текущий url содержит текст {string}")
-    public void currentUrlContainsExpected(String url) {
-        WebChecks.urlContains(url);
     }
 
     /**
      * проверка, что поле заполнено текстом
      * <br/>можно начать написание url с переменной %{apiUrl}% или %{webUrl}%
-     *
      */
     @Если("поле {string} заполнено текстом {string}")
-    public void checkFieldText(String elementName,String text){
+    public void checkFieldText(String elementName, String text) {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
-        WebChecks.elementValueEqualsExpectedText(element, text, 0);
+        Checks.elementValueEqualsExpectedText(element, text, 0);
         LOGGER.info("на странице '{}' отсутствует элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
+
     @Если("в выпадющем списке {string} выбран элемент со значением {string}")
-    public void listCheckedElement(String elementName,String text){
+    public void listCheckedElement(String elementName, String text) {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
-        WebChecks.elementTextContainsExpectedText(element,text,null);
+        Checks.elementTextContainsExpectedText(element, text, null);
         LOGGER.info("в выпадющем списке {} выбран элемент со значением {}", elementName, text);
     }
 
@@ -166,8 +141,26 @@ public class WebCheckSteps {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
-        WebChecks.elementIsNotOnPage(element, text);
+        Checks.elementIsNotOnPage(element, text);
         LOGGER.info("элемент {} не активен из-за отсутствия параметра {}", elementName, text);
+    }
+
+    @Когда("элемент {string} активен из-за присутствия параметра {string}")
+    public void checkElementIsNotReadOnly(String elementName, String text) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        Checks.elementIsOnPage(element, text);
+        LOGGER.info("элемент {} не активен из-за присутствия параметра {}", elementName, text);
+    }
+
+    @Тогда("проверить поле {string}, что текст в поле {string}")
+    public void matchText(String elementName, String text) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        Checks.elementTextEqualsExpectedText(element, text);
+        LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
     @Когда("элемент {string} активен")
@@ -175,7 +168,7 @@ public class WebCheckSteps {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
-        WebChecks.elementIsOn(element);
+        Checks.elementIsOn(element);
         LOGGER.info("элемент {} активен", elementName);
     }
 }

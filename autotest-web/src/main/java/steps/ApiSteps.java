@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 public class ApiSteps {
 
     private PageManager pageManager;
-    private static final Logger LOG = LoggerFactory.getLogger(ApiSteps.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ApiSteps.class);
 
     public ApiSteps(PageManager pageManager) {
         this.pageManager = pageManager;
@@ -35,6 +35,6 @@ public class ApiSteps {
                 .extract()
                 .jsonPath();
         ContextHolder.put("TOTP", tokenJson.get("otp_token").toString());
-//        LOG.info("Токен для авторизации - {}", ContextHolder.getValue("TOTP").toString());
+//        LOGGER.info("Токен для авторизации - {}", ContextHolder.getValue("TOTP").toString());
     }
 }

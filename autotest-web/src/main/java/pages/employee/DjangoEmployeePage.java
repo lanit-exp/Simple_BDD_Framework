@@ -2,13 +2,13 @@ package pages.employee;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import pages.DjangoPagesHeader;
 import ru.lanit.at.web.annotations.Name;
+import ru.lanit.at.web.pagecontext.WebPage;
 
 import static com.codeborne.selenide.Selenide.*;
 
 @Name(value = "DjangoEmployee")
-public class DjangoEmployeePage extends DjangoPagesHeader {
+public class DjangoEmployeePage extends WebPage {
     @Name("ФИО")
     private ElementsCollection fio = $$x("//th[@class='field-full_name']/a");
 
@@ -54,8 +54,11 @@ public class DjangoEmployeePage extends DjangoPagesHeader {
     @Name("Пагинация текущая страница")
     private SelenideElement currentPaginator = $(".paginator span.this-page");
 
+    @Name("Категории фильтров")
+    private ElementsCollection filtersCategory = $$x("//div[@id='changelist-filter']/h3");
+
     @Name("Фильтр")
-    private ElementsCollection filters = $$("#changelist-filter li");
+    private ElementsCollection filters = $$x("//div[@id='changelist-filter']/ul/li");
 
     @Name("Текущий город")
     private ElementsCollection currentCity = $$(".field-current_city");
