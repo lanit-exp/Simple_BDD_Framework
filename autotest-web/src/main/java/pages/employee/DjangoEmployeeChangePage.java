@@ -78,6 +78,7 @@ public class DjangoEmployeeChangePage extends WebPage {
     private SelenideElement history = $x("//a[@class='historylink' and text()='История']");
     @Name("Summary")
     private SelenideElement summary = $x("//a[@class='historylink' and text()='Summary']");
+
     @Name("Квалификация")
     private SelenideElement qualification = $x("//div[contains(@id, 'content')]/div/form/div/fieldset/h2[text()=\"Квалификация\"]/a");
     @Name("Навыки")

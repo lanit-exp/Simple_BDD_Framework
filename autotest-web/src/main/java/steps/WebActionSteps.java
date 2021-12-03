@@ -1,9 +1,11 @@
 package steps;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.DownloadOptions;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import io.cucumber.java.ru.Если;
+import io.cucumber.java.ru.Затем;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 import org.openqa.selenium.By;
@@ -11,6 +13,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.lanit.at.utils.DataGenerator;
 import ru.lanit.at.web.pagecontext.PageManager;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+
+import static com.codeborne.selenide.FileDownloadMode.FOLDER;
+import static com.codeborne.selenide.files.FileFilters.withExtension;
 
 public class WebActionSteps {
 
@@ -71,8 +79,6 @@ public class WebActionSteps {
         LOGGER.info("в выпадющем списке {} выбран элемент со случайным значением", elementName);
     }
 
-//    @Тогда("нажать на {string}")
-//    @Тогда("нажать на чекбокс {string}")
     @Тогда("нажать на {string}")
     @Если("кликнуть на элемент {string}")
     @Тогда("нажать на кнопку {string}")
@@ -94,6 +100,30 @@ public class WebActionSteps {
                 .shouldBe(Condition.visible)
                 .setValue(value);
         LOGGER.info("в поле '{}' введено значение '{}'", field, value);
+    }
+
+    @Затем("на текущей странице в поле {string} загрузить файл {string}")
+    public void uploadFiles(String elementName, String path) {
+        SelenideElement uploadElement = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+
+        uploadElement.uploadFile(new File("src/test/resources/files/" + path));
+
+        LOGGER.info("на странице '{}' загружено изображение '{}'", pageManager.getCurrentPage().name(), elementName);
+    }
+
+    @Затем("на текущей странице нажать на кнопку с текстом {string}")
+    public void downloadFiles(String elementName) throws FileNotFoundException, InterruptedException {
+
+        SelenideElement downloadElement = pageManager
+                .getCurrentPage()
+                .getElement(elementName)
+                .shouldBe(Condition.visible);
+
+        File f = downloadElement.download(DownloadOptions.using(FOLDER).withFilter(withExtension("docx")).withTimeout(1000));
+
+        LOGGER.info("на странице '{}' скачано изображение '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
     @Если("закрыть страницу")
