@@ -21,6 +21,12 @@ public class DjangoEmployeeChangePage extends WebPage {
     private SelenideElement dropdownGender = $("#id_gender");
     @Name("Выберите фото")
     private SelenideElement photo = $("#id_photo");
+    @Name("Загруженное фото")
+    private SelenideElement uploadedPhoto = $x("//div[contains(@class, 'field-photo_tag')]//div[@class='readonly']/img");
+    @Name("Инфоблок фото")
+    private SelenideElement absentPhoto = $x("//div[contains(@class, 'field-photo_tag')]//div[@class='readonly']");
+    @Name("Очистить фото")
+    private SelenideElement clearPhoto = $x("//input[@id='photo-clear_id']");
     @Name("Дата приема на работу")
     private SelenideElement joiningDate = $("#id_joining_date");
     @Name("Выберите дату")
