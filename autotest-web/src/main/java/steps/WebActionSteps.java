@@ -113,15 +113,17 @@ public class WebActionSteps {
         LOGGER.info("на странице '{}' загружено изображение '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
-    @Затем("на текущей странице нажать на кнопку с текстом {string}")
-    public void downloadFiles(String elementName) throws FileNotFoundException, InterruptedException {
+    @Затем("на текущей странице нажать на кнопку с текстом {string}, проверить, что скачивается файл с раширением {string}")
+    public void downloadFiles(String elementName, String fileType) throws FileNotFoundException  {
 
         SelenideElement downloadElement = pageManager
                 .getCurrentPage()
                 .getElement(elementName)
                 .shouldBe(Condition.visible);
 
-        File f = downloadElement.download(DownloadOptions.using(FOLDER).withFilter(withExtension("docx")).withTimeout(1000));
+        File file = downloadElement.download(DownloadOptions.using(FOLDER).withFilter(withExtension(fileType)).withTimeout(1000));
+
+        file.delete();
 
         LOGGER.info("на странице '{}' скачано изображение '{}'", pageManager.getCurrentPage().name(), elementName);
     }

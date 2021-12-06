@@ -58,11 +58,13 @@ public class DjangoEmployeeChangePage extends WebPage {
     private SelenideElement corporateEmail = $(".field-internal_email .readonly");
 
     @Name("Сообщение об ошибке в заголовке")
-    private SelenideElement headerError = $(".errornote");
+    private SelenideElement headerError = $x("//p[@class='errornote']");
     @Name("Сообщение об ошибке Имя")
     private SelenideElement errorFirstName = $x("//div[contains(@class, 'field-name')]/ul/li");
     @Name("Сообщение об ошибке Фамилия")
     private SelenideElement errorSurname = $x("//div[contains(@class, 'field-surname')]/ul/li");
+    @Name("Сообщение об ошибке Фото")
+    private SelenideElement errorPhoto = $x("//div[contains(@class, 'field-photo')]/ul/li");
     @Name("Сообщение об ошибке Пол")
     private SelenideElement errorGender = $x("//div[contains(@class, 'field-gender')]/ul/li");
     @Name("Сообщение об ошибке Дата приема на работу")
