@@ -48,7 +48,7 @@ public class ApiRequest {
         URI uri;
 
         if (!fullUrl.isEmpty()) {
-            uri = URI.create(fullUrl);
+            uri = URI.create(fullUrl.replace(" ", "+"));
         } else {
             uri = URI.create(baseUrl);
             builder.setBasePath(path);
