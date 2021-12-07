@@ -40,6 +40,7 @@
                     <argLine>
                         -Dcucumber.filter.tags="${tags}"
                         -Dfile.encoding=UTF-8
+                        -Dcucumber.publish.quiet=true
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <systemPropertyVariables>
