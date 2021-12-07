@@ -77,7 +77,7 @@ public class WebCheckSteps {
         WebChecks.elementVisibleOnPage(element, timeoutSeconds);
         LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
-    
+
     /**
      * проверка что на странице отображен элемент
      *

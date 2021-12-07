@@ -3,8 +3,6 @@ package ru.lanit.at.utils;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import java.math.BigDecimal;
-import java.text.NumberFormat;
-import java.text.ParseException;
 
 public class CompareUtil {
 
