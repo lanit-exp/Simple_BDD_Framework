@@ -1,6 +1,5 @@
 package steps;
 
-import com.codeborne.selenide.*;
 import authorization.AuthValues;
 import authorization.Authorization;
 import utils.Deserializer;
@@ -173,14 +172,6 @@ public class AuthorizationSteps {
             }
         }
         LOGGER.info("авторизация под логином: '{}'", login);
-    }
-
-    private void clickSignInButton(String elementName) {
-        SelenideElement element = pageManager
-                .getCurrentPage()
-                .getElement(elementName);
-        element.click();
-        LOGGER.info("клик на элемент по тексту '{}'", elementName);
     }
 
     private static void loadProperties() {
