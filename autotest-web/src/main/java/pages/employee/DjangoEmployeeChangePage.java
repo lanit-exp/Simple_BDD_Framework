@@ -16,53 +16,106 @@ public class DjangoEmployeeChangePage extends WebPage {
     @Name("Фамилия")
     private SelenideElement lastName = $x("//input[@id='id_surname']");
     @Name("Отчество")
-    private SelenideElement patronymic = $("#id_patronymic");
+    private SelenideElement patronymic = $x("//input[@id='id_patronymic']");
     @Name("Пол")
-    private SelenideElement dropdownGender = $("#id_gender");
+    private SelenideElement dropdownGender = $x("//select[@id='id_gender']");
     @Name("Выберите фото")
-    private SelenideElement photo = $("#id_photo");
-    @Name("Дата приема на работу")
-    private SelenideElement joiningDate = $("#id_joining_date");
-    @Name("Выберите дату")
-    private SelenideElement calendarLink = $("#calendarlink0");
-    @Name("Сегодня рядом 'Дата приема на работу'")
-    private SelenideElement todayNextJoiningDate = $x("//a[@id='calendarlink0']/preceding-sibling::a");
-    @Name("Календарь")
-    private SelenideElement calendar = $("#calendarbox0");
-    @Name("Сегодня в виджете 'Календарь'")
-    private SelenideElement todayInCalendarWidget = $x("//div[@id='calendarin0']/following-sibling::div/a[text()='Сегодня']");
+    private SelenideElement photo = $x("//input[@id='id_photo']");
+    @Name("Загруженное фото")
+    private SelenideElement uploadedPhoto = $x("//div[contains(@class, 'field-photo_tag')]//div[@class='readonly']/img");
+    @Name("Инфоблок фото")
+    private SelenideElement absentPhoto = $x("//div[contains(@class, 'field-photo_tag')]//div[@class='readonly']");
+    @Name("Очистить фото")
+    private SelenideElement clearPhoto = $x("//input[@id='photo-clear_id']");
 
+    @Name("Дата приема на работу")
+    private SelenideElement joiningDate = $x("//input[@id='id_joining_date']");
     @Name("День рождения")
-    private SelenideElement birthday = $("#id_birth");
-    @Name("Сегодня рядом с полем 'День рождения'")
-    private SelenideElement todayNextBirthday = $x("//a[@id='calendarlink1']/preceding-sibling::a");
-    @Name("Выберите дату в поле 'День рождения'")
-    private SelenideElement calendarLink1 = $("#calendarlink1");
-    @Name("Календарь в поле 'День рождения'")
-    private SelenideElement calendar1 = $("#calendarbox1");
-    @Name("Сегодня в виджете 'Календарь' поля 'День рождения'")
-    private SelenideElement todayInCalendarWidget1 = $x("//div[@id='calendarin1']/following-sibling::div/a[text()='Сегодня']");
+    private SelenideElement birthday = $x("//input[@id='id_birth']");
     @Name("Телефон")
-    private SelenideElement phone = $("#id_phone");
+    private SelenideElement phone = $x("//input[@id='id_phone']");
 
     @Name("Гражданство")
-    private SelenideElement dropdownCitizenship = $("#id_citizenship");
-    @Name("Изменить выбранный объект типа ")
-    private SelenideElement changeIdCitizenship = $("#change_id_citizenship");
-    @Name("Добавить ещё один объект типа ")
-    private SelenideElement addCitizenship = $("#add_id_citizenship");
+    private SelenideElement dropdownCitizenship = $x("//select[@id='id_citizenship']");
+    @Name("Изменить выбранный объект типа Гражданство")
+    private SelenideElement changeCitizenship = $x("//a[@id='change_id_citizenship']");
+    @Name("Добавить еще один объект типа Гражданство")
+    private SelenideElement addCitizenship = $x("//a[@id='add_id_citizenship']");
+    @Name("Удалить выбранный объект типа Гражданство")
+    private SelenideElement deleteCitizenship = $x("//a[@id='delete_id_citizenship']");
+
+    @Name("Показать Квалификация")
+    private SelenideElement showQualification = $x("//a[@id='fieldsetcollapser0']");
+    @Name("Скрыть Квалификация")
+    private SelenideElement hideQualification = $x("//a[@id='fieldsetcollapser0']");
+    @Name("Список квалификаций")
+    private ElementsCollection keyQualification = $$x("//ul[@id='id_qualification_skill']/li");
+    @Name("Добавить еще один объект типа Квалификация")
+    private SelenideElement addQualificationSkill = $x("//a[@id='add_id_qualification_skill']");
+    @Name("Общие квалификации: Автоматизированное тестирование")
+    private SelenideElement qualificationSkill0 = $x("//input[@id='id_qualification_skill_0']");
+
+    @Name("Показать Навыки")
+    private SelenideElement showSkills = $x("//a[@id='fieldsetcollapser1']");
+    @Name("Скрыть Навыки")
+    private SelenideElement hideSkills = $x("//a[@id='fieldsetcollapser1']");
+    @Name("Список навыков")
+    private ElementsCollection keySkill = $$x("//ul[@id='id_key_skill']/li");
+    @Name("Языки программирования: C# 5.0")
+    private SelenideElement keySkill0 = $x("//input[@id='id_key_skill_0']");
+
+    @Name("Показать Статус сотрудника")
+    private SelenideElement showEmployeeStatus = $x("//a[@id='fieldsetcollapser3']");
+    @Name("Скрыть Статус сотрудника")
+    private SelenideElement hideEmployeeStatus = $x("//a[@id='fieldsetcollapser3']");
+    @Name("Список статусов сотрудников")
+    private ElementsCollection keyEmployeeStatus = $$x("//div/input[@type='checkbox']/parent::div");
+    @Name("Работает")
+    private SelenideElement isActive = $x("//input[@id='id_is_active']");
+
+    @Name("Показать ОБРАЗОВАНИЯ")
+    private SelenideElement showEducation = $x("//a[@id='fieldsetcollapser4']");
+    @Name("Скрыть ОБРАЗОВАНИЯ")
+    private SelenideElement hideEducation = $x("//a[@id='fieldsetcollapser4']");
+    @Name("Добавить еще один Образование")
+    private SelenideElement addEducation = $x("//a[text()='Добавить еще один Образование']");
+    @Name("Изменить выбранный объект типа ВУЗ")
+    private SelenideElement editEducation = $x("//a[@id='change_id_employeeeducation_set-0-institution']");
+    @Name("ВУЗ")
+    private SelenideElement institution = $x("//select[@id='id_employeeeducation_set-0-institution']");
+    @Name("УРОВЕНЬ ОБРАЗОВАНИЯ")
+    private SelenideElement degree = $x("//select[@id='id_employeeeducation_set-0-degree']");
+    @Name("Изменить выбранный объект типа УРОВЕНЬ ОБРАЗОВАНИЯ")
+    private SelenideElement editDegree = $x("//a[@id='change_id_employeeeducation_set-0-degree']");
+    @Name("СПЕЦИАЛЬНОСТЬ")
+    private SelenideElement specialty = $x("//select[@id='id_employeeeducation_set-0-specialty']");
+    @Name("Изменить выбранный объект типа СПЕЦИАЛЬНОСТЬ")
+    private SelenideElement editSpecialty = $x("//a[@id='change_id_employeeeducation_set-0-specialty']");
+    @Name("ДАТА НАЧАЛА")
+    private SelenideElement startDateOfEducation = $x("//input[@id='id_employeeeducation_set-0-start_date']");
+    @Name("ДАТА ОКОНЧАНИЯ")
+    private SelenideElement endDateOfEducation = $x("//input[@id='id_employeeeducation_set-0-end_date']");
 
     @Name("Email")
-    private SelenideElement email = $("#id_internal_email");
-    @Name("Корпоративная почта")
-    private SelenideElement corporateEmail = $(".field-internal_email .readonly");
+    private SelenideElement email = $x("//input[@id='id_internal_email']");
+
+    @Name("Показать Сертификаты")
+    private SelenideElement showCertificates = $x("//a[@id='fieldsetcollapser2']");
+    @Name("Скрыть Сертификаты")
+    private SelenideElement hideCertificates = $x("//a[@id='fieldsetcollapser2']");
+    @Name("Сертификаты")
+    private SelenideElement certificates = $x("//textarea[@id='id_certificates']");
+    @Name("Курсы")
+    private SelenideElement courses = $x("//textarea[@id='id_courses']");
 
     @Name("Сообщение об ошибке в заголовке")
-    private SelenideElement headerError = $(".errornote");
+    private SelenideElement headerError = $x("//p[@class='errornote']");
     @Name("Сообщение об ошибке Имя")
     private SelenideElement errorFirstName = $x("//div[contains(@class, 'field-name')]/ul/li");
     @Name("Сообщение об ошибке Фамилия")
     private SelenideElement errorSurname = $x("//div[contains(@class, 'field-surname')]/ul/li");
+    @Name("Сообщение об ошибке Фото")
+    private SelenideElement errorPhoto = $x("//div[contains(@class, 'field-photo')]/ul/li");
     @Name("Сообщение об ошибке Пол")
     private SelenideElement errorGender = $x("//div[contains(@class, 'field-gender')]/ul/li");
     @Name("Сообщение об ошибке Дата приема на работу")
@@ -71,13 +124,12 @@ public class DjangoEmployeeChangePage extends WebPage {
     private SelenideElement errorPhone = $x("//div[contains(@class, 'field-phone')]/ul/li");
     @Name("Сообщение об ошибке Email")
     private SelenideElement errorEmail = $x("//div[contains(@class, 'field-internal_email')]/ul/li");
-    @Name("Сообщение о успешном редактировании")
-    private SelenideElement successEdit = $x("//div[contains(@id, 'container')]/ul/li");
 
     @Name("История")
     private SelenideElement history = $x("//a[@class='historylink' and text()='История']");
     @Name("Summary")
     private SelenideElement summary = $x("//a[@class='historylink' and text()='Summary']");
+
     @Name("Квалификация")
     private SelenideElement qualification = $x("//div[contains(@id, 'content')]/div/form/div/fieldset/h2[text()=\"Квалификация\"]/a");
     @Name("Навыки")
@@ -134,7 +186,8 @@ public class DjangoEmployeeChangePage extends WebPage {
     @Name("Дата изменения")
     private SelenideElement dateOfChange = $x("//th[@class='column-change_date required'][1]");
     @Name("Сегодня")
-    private SelenideElement todayCity = $x("//input[@name='employeecity_set-0-change_date']/following-sibling::span/a[text()='Сегодня']");
+    private ElementsCollection todayCity = $$x("//span[@class='datetimeshortcuts']/a[text()='Сегодня']");
+//     private SelenideElement todayCity = $x("//input[@name='employeecity_set-0-change_date']/following-sibling::span/a[text()='Сегодня']");
 
     @Name("Фактические отпуска")
     private SelenideElement actualVacationsShow = $x("//div[@id='employeeactualvacation_set-group']/div//fieldset/h2/a");

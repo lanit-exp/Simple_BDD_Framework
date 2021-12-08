@@ -145,6 +145,15 @@ public class WebCheckSteps {
         LOGGER.info("элемент {} не активен из-за отсутствия параметра {}", elementName, text);
     }
 
+    @Когда("элемент {string} не активен")
+    public void checkActive(String elementName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        element.shouldNotBe(Condition.enabled);
+        LOGGER.info("элемент {} не активен ", elementName);
+    }
+
     @Когда("элемент {string} активен из-за присутствия параметра {string}")
     public void checkElementIsNotReadOnly(String elementName, String text) {
         SelenideElement element = pageManager

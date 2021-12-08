@@ -19,6 +19,6 @@
     Если при нажатии на кнопку '<button>' в блоке 'Таблица' в столбце 'ФИО', <number> элемент не изменился
 
     Примеры:
-      |login |button_emp |button  |number|
+      |login |button_emp |button   |number|
       |hr    |Сотрудники |Выполнить|1     |
 
