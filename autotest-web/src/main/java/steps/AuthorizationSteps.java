@@ -175,14 +175,6 @@ public class AuthorizationSteps {
         LOGGER.info("авторизация под логином: '{}'", login);
     }
 
-    private void clickSignInButton(String elementName) {
-        SelenideElement element = pageManager
-                .getCurrentPage()
-                .getElement(elementName);
-        element.click();
-        LOGGER.info("клик на элемент по тексту '{}'", elementName);
-    }
-
     private static void loadProperties() {
         InputStream inputStream = null;
         try {

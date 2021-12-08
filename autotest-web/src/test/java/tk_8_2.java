@@ -8,10 +8,7 @@ import steps.*;
 public class tk_8_2 extends WebHooks {
     private PageManager pageManager = new PageManager();
 
-
-
     @Test
-    @Step("Jojo")
     @Description("Тест-кейс 8.2")
     public void test82() {
         AuthorizationSteps authorizationSteps = new AuthorizationSteps(pageManager);
@@ -31,6 +28,7 @@ public class tk_8_2 extends WebHooks {
         webActionSteps.fillTheField("День рождения","21.06.1988");
         webActionSteps.listSelectRandElement("Гражданство");
         webActionSteps.clickOnButton("Сохранить и продолжить редактирование");
-        employeeCheckSteps.matchText("Сообщение о успешном редактировании", "The Сотрудник “Бородкина Анастасия” was changed successfully. You may edit it again below.");
+        employeeCheckSteps.matchText("Сообщение о успешном редактировании",
+                "The Сотрудник “Бородкина Анастасия” was changed successfully. You may edit it again below.");
     }
 }
