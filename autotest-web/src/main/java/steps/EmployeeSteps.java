@@ -184,6 +184,7 @@ public class EmployeeSteps {
     public void waitSeconds(int timeout) {
         Sleep.pauseSec(timeout);
     }
+
     @Тогда("в поле {string} удалить {int} последних символа")
     public void deleteCharacter(String elementName, int numberOfChars) {
         SelenideElement element = pageManager
@@ -192,8 +193,10 @@ public class EmployeeSteps {
         String valueOfElement = element.getValue();
         String resultString = valueOfElement.substring(0,valueOfElement.length()-numberOfChars);
         element.setValue("");
-        WebActions.fillInputByCharacter(element,resultString);
+        Actions.fillInputByCharacter(element, resultString);
+        LOGGER.info("из поля '{}' удалено '{}' последних символов", elementName, numberOfChars);
     }
+
     @Тогда("активировать в чек-лист {string} чекбокс {string}")
     public void activeCheckbox(String elementName, String checkboxName) {
         String actual = "";

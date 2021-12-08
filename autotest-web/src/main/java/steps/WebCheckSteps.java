@@ -1,6 +1,7 @@
 package steps;
 
 import actions.Checks;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Если;

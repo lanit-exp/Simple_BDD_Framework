@@ -1,5 +1,6 @@
 package steps;
 
+import com.codeborne.selenide.*;
 import authorization.AuthValues;
 import authorization.Authorization;
 import utils.Deserializer;
@@ -82,6 +83,26 @@ public class AuthorizationSteps {
         ContextHolder.put(field, randomString);
     }
 
+    @И("сохранить содержимое поля {string} в ContextHolder")
+    public void saveFieldContents(String fieldName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(fieldName);
+        String value = element.getValue();
+        ContextHolder.put(fieldName, value);
+        LOGGER.info("содержимое поля '{}' - '{}' сохранено в ContextHolder", fieldName,value);
+    }
+
+    @И("сохранить выделенное значение выпадающего списка {string} в ContextHolder")
+    public void saveDropDownListContents(String fieldName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(fieldName);
+        String value = element.getSelectedText();
+        ContextHolder.put(fieldName, value);
+        LOGGER.info("содержимое поля '{}' - '{}' сохранено в ContextHolder", fieldName,value);
+    }
+
     @И("сравнить значение поля {string} и содержимое ContextHolder")
     public void checkField(String fieldName) {
         String expectedValue = ContextHolder.getValue(fieldName).toString();
@@ -90,7 +111,25 @@ public class AuthorizationSteps {
                 .getElement(fieldName);
         String actualValue = element.getValue();
         Assert.assertEquals(actualValue, expectedValue);
-       LOGGER.info("Ожидаемое значение поля: '{}', актуальное значения поля: {}", expectedValue, actualValue);
+        LOGGER.info("Ожидаемое значение поля: '{}', актуальное значения поля: {}", expectedValue, actualValue);
+    }
+  
+    @И("сравнить текст выделенного поля {string} и содержимое ContextHolder")
+    public void checkSelectedField(String fieldName) {
+        String expectedValue = ContextHolder.getValue(fieldName).toString();
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(fieldName);
+        String actualValue = element.getSelectedText();
+        Assert.assertEquals(actualValue, expectedValue);
+        LOGGER.info("Содержимое поля - {}", actualValue);
+    }
+
+    @Тогда("нажать на {string}")
+    public void clickSignInButton(String elementName) {
+        SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
+        element.click();
+        LOGGER.info("клик на элемент по тексту '{}'", elementName);
     }
 
     @Тогда("инициализация страницы {string}")
@@ -136,8 +175,7 @@ public class AuthorizationSteps {
         LOGGER.info("авторизация под логином: '{}'", login);
     }
 
-    //    @Тогда("нажать на {string}")
-    public void clickSignInButton(String elementName) {
+    private void clickSignInButton(String elementName) {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
