@@ -25,6 +25,7 @@
     Тогда нажать на кнопку '<savebutton>'
     Если на текущей странице 'Сообщение об ошибке в заголовке' с текстом '<infoblock>' присутствует
     И поле '<errormessagebox>' инфоблок с текстом '<errorblock>' присутствует
+    Тогда закрыть страницу
 
     Примеры:
       |login |button     |field                |text      |savebutton                           |infoblock                         |errorblock                                               |errormessagebox                          |
