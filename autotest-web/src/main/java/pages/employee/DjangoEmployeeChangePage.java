@@ -107,6 +107,8 @@ public class DjangoEmployeeChangePage extends WebPage {
     private SelenideElement errorFirstName = $x("//div[contains(@class, 'field-name')]/ul/li");
     @Name("Сообщение об ошибке Фамилия")
     private SelenideElement errorSurname = $x("//div[contains(@class, 'field-surname')]/ul/li");
+    @Name("Сообщение об ошибке Фото")
+    private SelenideElement errorPhoto = $x("//div[contains(@class, 'field-photo')]/ul/li");
     @Name("Сообщение об ошибке Пол")
     private SelenideElement errorGender = $x("//div[contains(@class, 'field-gender')]/ul/li");
     @Name("Сообщение об ошибке Дата приема на работу")
@@ -120,6 +122,43 @@ public class DjangoEmployeeChangePage extends WebPage {
     private SelenideElement history = $x("//a[@class='historylink' and text()='История']");
     @Name("Summary")
     private SelenideElement summary = $x("//a[@class='historylink' and text()='Summary']");
+
+    @Name("Квалификация")
+    private SelenideElement qualification = $x("//div[contains(@id, 'content')]/div/form/div/fieldset/h2[text()=\"Квалификация\"]/a");
+    @Name("Навыки")
+    private SelenideElement skills = $x("//div[contains(@id, 'content')]/div/form/div/fieldset/h2[text()=\"Навыки\"]/a");
+    @Name("Сертификаты")
+    private SelenideElement certification = $x("//div[contains(@id, 'content')]/div/form/div/fieldset/h2[text()=\"Сертификаты\"]/a");
+    @Name("Все квалификации")
+    private ElementsCollection AllQualifications = $$x("//ul[@id='id_qualification_skill']/li/label/input");
+    @Name("Все навыки")
+    private ElementsCollection allSkills = $$x("//ul[@id='id_key_skill']/li/label/input");
+    @Name("Сертификаты:")
+    private SelenideElement AllCertification = $x("//textarea[@id='id_certificates']");
+    @Name("Курсы:")
+    private SelenideElement AllCourses = $x("//textarea[@id='id_courses']");
+    @Name("Проект")
+    private SelenideElement project = $x("//fieldset/h2[text()=\"Проекты\"]/a");
+    @Name("Добавить проект")
+    private SelenideElement newProject = $x("//tr[@id=\"employeeproject_set-empty\"]/following-sibling::tr/td/a");
+    @Name("Новый проект")
+    private SelenideElement lastProject = $x("//div[@id='employeeproject_set-group']//fieldset/table/tbody/tr[@id = 'employeeproject_set-1']");
+    @Name("Выбор проекта")
+    private SelenideElement projectName = lastProject.find(By.xpath("./td[@class = 'field-project']/div/select"));
+    @Name("Вид тестирования")
+    private SelenideElement testingType = lastProject.find(By.xpath("./td[@class = 'field-testing_type']/div/select"));
+    @Name("Проектная роль")
+    private SelenideElement projectRole = lastProject.find(By.xpath("./td[@class = 'field-project_role']/div/select"));
+    @Name("Обратная связь")
+    private SelenideElement feedBack = lastProject.find(By.xpath("./td[@class = 'field-feedback']/textarea"));
+    @Name("Дата начала")
+    private SelenideElement startDate = lastProject.find(By.xpath("./td[@class = 'field-start_date']/input"));
+    @Name("Дата окончания: Сегодня")
+    private SelenideElement endDateToday = lastProject.find(By.xpath("./td[@class = 'field-end_date']/span/a"));
+    @Name("Обязанности")
+    private SelenideElement responsibilities = lastProject.find(By.xpath("./td[@class = 'field-responsibilities']/textarea"));
+    @Name("СТАЖЕР")
+    private SelenideElement trainee = lastProject.find(By.xpath("./td[@class = 'field-is_trainee']/input"));
 
     @Name("Удалено")
     private SelenideElement delete = $(".deletelink");
