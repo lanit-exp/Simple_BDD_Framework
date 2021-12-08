@@ -6,6 +6,7 @@ import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
+import io.qameta.allure.Step;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.lanit.at.web.pagecontext.PageManager;
@@ -64,6 +65,7 @@ public class WebCheckSteps {
      * @param value         значение атрибута
      * @param sec           ожидание сек.
      */
+    @Step("проверяем что {elementName} есть  атрибут {attributeName} с значением {value} подождав {int} сек.")
     @И("проверить что {string} есть  атрибут {string} с значением {string} подождав {int} сек.")
     public void elementAttributeValue(String elementName, String attributeName, String value, int sec) {
         SelenideElement element = pageManager

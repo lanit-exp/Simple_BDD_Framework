@@ -2,6 +2,7 @@ package steps;
 
 import authorization.AuthValues;
 import authorization.Authorization;
+import io.qameta.allure.Step;
 import utils.Deserializer;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
@@ -47,6 +48,7 @@ public class AuthorizationSteps {
         LOGGER.info("инициализация webdriver для потока: {}", Thread.currentThread().getId());
     }
 
+    @Step("Открываем сайт")
     @Дано("открыть сайт")
     public void openUrl() {
         loadProperties();
@@ -59,6 +61,7 @@ public class AuthorizationSteps {
         LOGGER.info("инициализация webdriver для потока: {}", Thread.currentThread().getId());
     }
 
+    @Step("нажать на чекбокс {elementName}")
     @Тогда("нажать на чекбокс {string}")
     public void clickOnCheckbox(String elementName) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
@@ -66,6 +69,7 @@ public class AuthorizationSteps {
         LOGGER.info("клик на элемент по тексту '{}'", elementName);
     }
 
+    @Step("заполнить поле {elementName} значением {value}")
     @Тогда("заполнить поле {string} значением {string}")
     public void fillField(String elementName, String value) {
         SelenideElement element = pageManager
@@ -93,6 +97,7 @@ public class AuthorizationSteps {
        LOGGER.info("Ожидаемое значение поля: '{}', актуальное значения поля: {}", expectedValue, actualValue);
     }
 
+    @Step("Инициализируем страницу {pageName}")
     @Тогда("инициализация страницы {string}")
     @И("переход на страницу {string}")
     public void setPage(String pageName) {
@@ -137,7 +142,7 @@ public class AuthorizationSteps {
     }
 
 //    @Тогда("нажать на {string}")
-    private void clickSignInButton(String elementName) {
+    public void clickSignInButton(String elementName) {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
