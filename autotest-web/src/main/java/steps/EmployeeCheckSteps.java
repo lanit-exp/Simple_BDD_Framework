@@ -170,7 +170,7 @@ public class EmployeeCheckSteps {
     }
 
     @Если("в текущем поле {string} отсутствует текст")
-          public void checkFieldWithoutText(String elementName) {
+    public void checkFieldWithoutText(String elementName) {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);

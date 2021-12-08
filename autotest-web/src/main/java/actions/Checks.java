@@ -160,9 +160,4 @@ public class Checks {
     public static void emptyElement(SelenideElement element) {
         element.shouldHave(Condition.empty);
     }
-  
-    public static void fieldVisibleAndNoSelected(SelenideElement element){
-        element.shouldBe(Condition.visible);
-        element.shouldBe(Condition.empty);
-    }
 }

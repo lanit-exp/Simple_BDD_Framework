@@ -136,8 +136,8 @@ public class AuthorizationSteps {
         LOGGER.info("авторизация под логином: '{}'", login);
     }
 
-//    @Тогда("нажать на {string}")
-public void clickSignInButton(String elementName) {
+    //    @Тогда("нажать на {string}")
+    public void clickSignInButton(String elementName) {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
