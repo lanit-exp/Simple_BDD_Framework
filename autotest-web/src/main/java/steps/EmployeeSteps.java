@@ -8,7 +8,9 @@ import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 import ru.lanit.at.utils.Sleep;
+
 import ru.lanit.at.web.pagecontext.PageManager;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -181,5 +183,32 @@ public class EmployeeSteps {
     @И("подождать {int} сек")
     public void waitSeconds(int timeout) {
         Sleep.pauseSec(timeout);
+    }
+    @Тогда("в поле {string} удалить {int} последних символа")
+    public void deleteCharacter(String elementName, int numberOfChars) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
+        String valueOfElement = element.getValue();
+        String resultString = valueOfElement.substring(0,valueOfElement.length()-numberOfChars);
+        element.setValue("");
+        WebActions.fillInputByCharacter(element,resultString);
+    }
+    @Тогда("активировать в чек-лист {string} чекбокс {string}")
+    public void activeCheckbox(String elementName, String checkboxName) {
+        String actual = "";
+        ElementsCollection elements = pageManager
+                .getCurrentPage()
+                .getElementsCollection(elementName);
+
+        for (SelenideElement el : elements) {
+            if (el.getText().equals(checkboxName)){
+                el.click();
+                actual = el.getText();
+                break;
+            }
+        }
+        Assert.assertEquals(actual, checkboxName,"Элемент не найден");
+        LOGGER.info("в чек-листе '{}' активирован чекбокс '{}' - '{}'", elementName, checkboxName, actual);
     }
 }

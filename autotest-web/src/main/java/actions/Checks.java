@@ -20,6 +20,10 @@ public class Checks {
         return timeoutt == null ? cfg.webDriverTimeoutSeconds() : timeoutt;
     }
 
+    public static void elementNotVisible(SelenideElement element) {
+        element.shouldHave(Condition.exactText(""));
+    }
+
     /**
      * Проверяет, что атрибут элемента равен ожидаемому
      *
@@ -154,8 +158,11 @@ public class Checks {
     }
 
     public static void emptyElement(SelenideElement element) {
-        System.out.println(element.getText() + "1asdf");
-        Assert.assertEquals(element.getText(), "");
-
+        element.shouldHave(Condition.empty);
+    }
+  
+    public static void fieldVisibleAndNoSelected(SelenideElement element){
+        element.shouldBe(Condition.visible);
+        element.shouldBe(Condition.empty);
     }
 }

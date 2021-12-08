@@ -15,6 +15,8 @@ public class DjangoAddCitizenshipPage extends WebPage {
     private SelenideElement save = $x("//input[@type='submit']");
     @Name("Добавить Гражданство")
     private SelenideElement addCitizenship = $("#content-main");
+    @Name("Изменить Гражданство")
+    private SelenideElement editCitizenship = $x("//div[@id='content']/child::h1");
 
 
 }
