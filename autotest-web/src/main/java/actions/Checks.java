@@ -4,8 +4,6 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
 import org.aeonbits.owner.ConfigFactory;
-import org.testng.Assert;
-import ru.lanit.at.utils.Sleep;
 import ru.lanit.at.web.properties.WebConfigurations;
 
 import java.time.Duration;
