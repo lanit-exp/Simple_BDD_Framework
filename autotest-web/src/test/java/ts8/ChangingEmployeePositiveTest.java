@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import ru.lanit.at.web.pagecontext.PageManager;
 import steps.*;
 
-public class ChangeEmployeePositiveTest extends WebHooks {
+public class ChangingEmployeePositiveTest extends WebHooks {
     private final PageManager pageManager = new PageManager();
 
     private final AuthorizationSteps authorizationSteps = new AuthorizationSteps(pageManager);
