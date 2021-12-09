@@ -1,6 +1,5 @@
 package steps;
 
-import com.codeborne.selenide.*;
 import authorization.AuthValues;
 import authorization.Authorization;
 import utils.Deserializer;
