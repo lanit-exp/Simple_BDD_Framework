@@ -104,7 +104,10 @@ public class EmployeeSteps {
 
     @Тогда("выбрать элемент {string} с текстом {string}")
     public void selectElementWithText(String elementName, String text) {
-        pageManager.getCurrentPage().getElement(elementName).selectOption(text);
+        pageManager
+                .getCurrentPage()
+                .getElement(elementName)
+                .selectOption(text);
         LOGGER.info("выбран элемент '{}'", elementName);
     }
 
