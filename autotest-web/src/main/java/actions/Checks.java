@@ -4,7 +4,6 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
 import org.aeonbits.owner.ConfigFactory;
-import org.testng.Assert;
 import ru.lanit.at.web.properties.WebConfigurations;
 
 import java.time.Duration;
@@ -159,10 +158,5 @@ public class Checks {
 
     public static void emptyElement(SelenideElement element) {
         element.shouldHave(Condition.empty);
-    }
-  
-    public static void fieldVisibleAndNoSelected(SelenideElement element){
-        element.shouldBe(Condition.visible);
-        element.shouldBe(Condition.empty);
     }
 }

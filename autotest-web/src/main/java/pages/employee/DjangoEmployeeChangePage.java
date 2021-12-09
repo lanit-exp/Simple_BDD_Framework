@@ -30,8 +30,24 @@ public class DjangoEmployeeChangePage extends WebPage {
 
     @Name("Дата приема на работу")
     private SelenideElement joiningDate = $x("//input[@id='id_joining_date']");
+    @Name("Выберите дату")
+    private SelenideElement calendarLink = $x("//a[@id='calendarlink0']");
+    @Name("Сегодня рядом 'Дата приема на работу'")
+    private SelenideElement todayNextJoiningDate = $x("//a[@id='calendarlink0']/preceding-sibling::a");
+    @Name("Календарь")
+    private SelenideElement calendar = $x("//div[@id='calendarbox0']");
+    @Name("Сегодня в виджете 'Календарь'")
+    private SelenideElement todayInCalendarWidget = $x("//div[@id='calendarin0']/following-sibling::div/a[text()='Сегодня']");
     @Name("День рождения")
     private SelenideElement birthday = $x("//input[@id='id_birth']");
+    @Name("Сегодня рядом с полем 'День рождения'")
+    private SelenideElement todayNextBirthday = $x("//a[@id='calendarlink1']/preceding-sibling::a");
+    @Name("Выберите дату в поле 'День рождения'")
+    private SelenideElement calendarLink1 = $("#calendarlink1");
+    @Name("Календарь в поле 'День рождения'")
+    private SelenideElement calendar1 = $("#calendarbox1");
+    @Name("Сегодня в виджете 'Календарь' поля 'День рождения'")
+    private SelenideElement todayInCalendarWidget1 = $x("//div[@id='calendarin1']/following-sibling::div/a[text()='Сегодня']");
     @Name("Телефон")
     private SelenideElement phone = $x("//input[@id='id_phone']");
 
@@ -103,8 +119,6 @@ public class DjangoEmployeeChangePage extends WebPage {
     private SelenideElement showCertificates = $x("//a[@id='fieldsetcollapser2']");
     @Name("Скрыть Сертификаты")
     private SelenideElement hideCertificates = $x("//a[@id='fieldsetcollapser2']");
-    @Name("Сертификаты")
-    private SelenideElement certificates = $x("//textarea[@id='id_certificates']");
     @Name("Курсы")
     private SelenideElement courses = $x("//textarea[@id='id_courses']");
 
@@ -187,7 +201,8 @@ public class DjangoEmployeeChangePage extends WebPage {
     private SelenideElement dateOfChange = $x("//th[@class='column-change_date required'][1]");
     @Name("Сегодня")
     private ElementsCollection todayCity = $$x("//span[@class='datetimeshortcuts']/a[text()='Сегодня']");
-//     private SelenideElement todayCity = $x("//input[@name='employeecity_set-0-change_date']/following-sibling::span/a[text()='Сегодня']");
+    @Name("Сегодня2")
+    private SelenideElement todayCity2 = $x("//input[@name='employeecity_set-0-change_date']/following-sibling::span/a[text()='Сегодня']");
 
     @Name("Фактические отпуска")
     private SelenideElement actualVacationsShow = $x("//div[@id='employeeactualvacation_set-group']/div//fieldset/h2/a");
