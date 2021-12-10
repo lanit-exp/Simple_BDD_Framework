@@ -2,7 +2,6 @@ package steps;
 
 import authorization.AuthValues;
 import authorization.Authorization;
-import io.qameta.allure.Step;
 import utils.Deserializer;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
@@ -48,7 +47,6 @@ public class AuthorizationSteps {
         LOGGER.info("инициализация webdriver для потока: {}", Thread.currentThread().getId());
     }
 
-    @Step("Открываем сайт")
     @Дано("открыть сайт")
     public void openUrl() {
         loadProperties();
@@ -61,7 +59,6 @@ public class AuthorizationSteps {
         LOGGER.info("инициализация webdriver для потока: {}", Thread.currentThread().getId());
     }
 
-    @Step("нажать на чекбокс {elementName}")
     @Тогда("нажать на чекбокс {string}")
     public void clickOnCheckbox(String elementName) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
@@ -69,7 +66,6 @@ public class AuthorizationSteps {
         LOGGER.info("клик на элемент по тексту '{}'", elementName);
     }
 
-    @Step("заполнить поле {elementName} значением {value}")
     @Тогда("заполнить поле {string} значением {string}")
     public void fillField(String elementName, String value) {
         SelenideElement element = pageManager
@@ -86,6 +82,26 @@ public class AuthorizationSteps {
         ContextHolder.put(field, randomString);
     }
 
+    @И("сохранить содержимое поля {string} в ContextHolder")
+    public void saveFieldContents(String fieldName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(fieldName);
+        String value = element.getValue();
+        ContextHolder.put(fieldName, value);
+        LOGGER.info("содержимое поля '{}' - '{}' сохранено в ContextHolder", fieldName,value);
+    }
+
+    @И("сохранить выделенное значение выпадающего списка {string} в ContextHolder")
+    public void saveDropDownListContents(String fieldName) {
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(fieldName);
+        String value = element.getSelectedText();
+        ContextHolder.put(fieldName, value);
+        LOGGER.info("содержимое поля '{}' - '{}' сохранено в ContextHolder", fieldName,value);
+    }
+
     @И("сравнить значение поля {string} и содержимое ContextHolder")
     public void checkField(String fieldName) {
         String expectedValue = ContextHolder.getValue(fieldName).toString();
@@ -94,10 +110,26 @@ public class AuthorizationSteps {
                 .getElement(fieldName);
         String actualValue = element.getValue();
         Assert.assertEquals(actualValue, expectedValue);
-       LOGGER.info("Ожидаемое значение поля: '{}', актуальное значения поля: {}", expectedValue, actualValue);
+        LOGGER.info("Ожидаемое значение поля: '{}', актуальное значения поля: {}", expectedValue, actualValue);
+    }
+  
+    @И("сравнить текст выделенного поля {string} и содержимое ContextHolder")
+    public void checkSelectedField(String fieldName) {
+        String expectedValue = ContextHolder.getValue(fieldName).toString();
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(fieldName);
+        String actualValue = element.getSelectedText();
+        Assert.assertEquals(actualValue, expectedValue);
+        LOGGER.info("Содержимое поля - {}", actualValue);
     }
 
-    @Step("Инициализируем страницу {pageName}")
+    public void clickSignInButton(String elementName) {
+        SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
+        element.click();
+        LOGGER.info("клик на элемент по тексту '{}'", elementName);
+    }
+
     @Тогда("инициализация страницы {string}")
     @И("переход на страницу {string}")
     public void setPage(String pageName) {
@@ -139,15 +171,6 @@ public class AuthorizationSteps {
             }
         }
         LOGGER.info("авторизация под логином: '{}'", login);
-    }
-
-//    @Тогда("нажать на {string}")
-    public void clickSignInButton(String elementName) {
-        SelenideElement element = pageManager
-                .getCurrentPage()
-                .getElement(elementName);
-        element.click();
-        LOGGER.info("клик на элемент по тексту '{}'", elementName);
     }
 
     private static void loadProperties() {

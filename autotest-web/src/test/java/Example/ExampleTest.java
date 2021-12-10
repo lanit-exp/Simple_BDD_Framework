@@ -14,7 +14,9 @@ public class ExampleTest extends WebHooks { //  Наследуемся от WebH
 
 
     private PageManager pageManager = new PageManager(); // Создаем экземпляр PageManager
-
+    AuthorizationSteps authorizationSteps = new AuthorizationSteps(pageManager);
+    WebActionSteps webActionSteps= new WebActionSteps(pageManager);
+    WebCheckSteps webCheckSteps = new WebCheckSteps(pageManager);
 
 
     @DataProvider
@@ -29,13 +31,19 @@ public class ExampleTest extends WebHooks { //  Наследуемся от WebH
     }
 
 
+    @Test
+    @Description(value = "2.1 Негативная авторизация без заполнения полей")
+    public void autorizationNegativeWithoutFilling(){
+        authorizationSteps.openUrl(); // открываем сайт
+        authorizationSteps.setPage("DjangoAuthorization"); // инициализируем страницу
+        authorizationSteps.clickSignInButton("войти"); // нажимаем на кнопку войти
+        webCheckSteps.elementAttributeValue("логин","validationMessage","Заполните это поле.",0); // проверяем информационное сообщение
+    }
+
+
     @Test(dataProvider = "testDataAutorizationNegativeWithoutFillingPassword" )
     @Description(value = "2.2 Негативная авторизация с пустым паролем")
     public void autorizationNegativeWithoutFillingPassword(String login){
-        AuthorizationSteps authorizationSteps = new AuthorizationSteps(pageManager);
-        WebActionSteps webActionSteps= new WebActionSteps(pageManager);
-        WebCheckSteps webCheckSteps = new WebCheckSteps(pageManager);
-
         authorizationSteps.openUrl(); // открываем сайт
         authorizationSteps.setPage("DjangoAuthorization");  // инициализируем страницу
         webActionSteps.fillTheField("логин",login); // заполняем поле логин
