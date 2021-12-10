@@ -4,7 +4,6 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
 import org.aeonbits.owner.ConfigFactory;
-import org.testng.Assert;
 import ru.lanit.at.web.properties.WebConfigurations;
 
 import java.time.Duration;
@@ -18,6 +17,10 @@ public class Checks {
                 System.getProperties(),
                 System.getenv());
         return timeoutt == null ? cfg.webDriverTimeoutSeconds() : timeoutt;
+    }
+
+    public static void elementNotVisible(SelenideElement element) {
+        element.shouldHave(Condition.exactText(""));
     }
 
     /**
@@ -154,8 +157,6 @@ public class Checks {
     }
 
     public static void emptyElement(SelenideElement element) {
-        System.out.println(element.getText() + "1asdf");
-        Assert.assertEquals(element.getText(), "");
-
+        element.shouldHave(Condition.empty);
     }
 }

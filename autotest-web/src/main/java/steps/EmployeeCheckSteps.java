@@ -32,6 +32,7 @@ public class EmployeeCheckSteps {
         LOGGER.info("на странице '{}' имеется элемент '{}', с текстом '{}'", pageManager.getCurrentPage().name(), elementName, text);
     }
 
+    @И("элемент {string} присутствует на странице")
     @И("поле {string} присутствует на странице")
     @И("кнопка {string} присутствует на странице")
     @Если("в поле The Сотрудник “ и ” was changed successfully. присутствует элемент {string}")

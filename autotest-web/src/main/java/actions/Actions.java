@@ -20,4 +20,11 @@ public class Actions {
         element.setValue(String.valueOf(getRandom(start, finish)));
         Sleep.pauseSec(0.2);
     }
+
+    public static void fillInputByCharacter(SelenideElement element, String text) {
+        for (char character : text.toCharArray()) {
+            element.sendKeys(String.valueOf(character));
+            Sleep.pauseSec(0.2);
+        }
+    }
 }

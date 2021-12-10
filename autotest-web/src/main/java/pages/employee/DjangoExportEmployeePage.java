@@ -14,12 +14,12 @@ public class DjangoExportEmployeePage extends WebPage {
     private SelenideElement tableHeader = $x("//div[@id='content']/h1");
 
     @Name("Формат")
-    private SelenideElement fieldFormat = $("#id_file_format");
+    private SelenideElement fieldFormat = $x("//select[@id='id_file_format']");
 
     @Name("Чекбокс")
     private ElementsCollection checkboxes = $$x("//label[contains(@for, 'id_employee_fields_')]");
 
     @Name("Отправить")
-    private SelenideElement buttonSend = $(".submit-row input");
+    private SelenideElement buttonSend = $x("//input[@type='submit']");
 }
 
