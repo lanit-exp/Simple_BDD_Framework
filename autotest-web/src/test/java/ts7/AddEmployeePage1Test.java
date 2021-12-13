@@ -157,4 +157,5 @@ public class AddEmployeePage1Test extends WebHooks {
         webSteps.clickRandom("ФИО");
         webSteps.setPage("DjangoEmployeeChange");
     }
+
 }
