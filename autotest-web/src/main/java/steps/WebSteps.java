@@ -90,16 +90,16 @@ public class WebSteps {
 
         for (AuthValues el : auth.getAuthValues()) {
             if (el.getLogin().equals(login) && el.isToken().equals(true)) {
-                clickOnCheckbox("Я желаю войти с админскими правами");
+                clickOnElement("Я желаю войти с админскими правами");
                 fillField("логин", el.getLogin());
                 fillField("пароль", el.getPassword());
                 fillTokenField("токен", el.getLogin(), el.getPassword());
-                clickSignInButton("войти");
+                clickOnElement("войти");
 
             } else if (el.getLogin().equals(login) && el.isToken().equals(false)) {
                 fillField("логин", el.getLogin());
                 fillField("пароль", el.getPassword());
-                clickSignInButton("войти");
+                clickOnElement("войти");
             }
         }
         LOGGER.info("авторизация под логином: '{}'", login);
@@ -134,23 +134,10 @@ public class WebSteps {
     }
 
     /**
-     * Активация чекбокса
-     *
-     * @param elementName - название чекбокса
-     */
-    @Step("нажатие на чекбокс {elementName}")
-    @Тогда("нажать на чекбокс {string}")
-    public void clickOnCheckbox(String elementName) {
-        SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
-        element.click();
-        LOGGER.info("активация чекбокса '{}'", elementName);
-    }
-
-    /**
      * Заполнение поля значением
      *
      * @param elementName - название поля
-     * @param value - значение
+     * @param value       - значение
      */
     @Step("заполнение поля {elementName} значением {value}")
     @Тогда("заполнить поле {string} значением {string}")
@@ -188,7 +175,7 @@ public class WebSteps {
                 .getElement(fieldName);
         String value = element.getValue();
         ContextHolder.put(fieldName, value);
-        LOGGER.info("содержимое поля '{}' - '{}' сохранено в ContextHolder", fieldName,value);
+        LOGGER.info("содержимое поля '{}' - '{}' сохранено в ContextHolder", fieldName, value);
     }
 
     /**
@@ -204,50 +191,16 @@ public class WebSteps {
                 .getElement(fieldName);
         String value = element.getSelectedText();
         ContextHolder.put(fieldName, value);
-        LOGGER.info("содержимое поля '{}' - '{}' сохранено в ContextHolder", fieldName,value);
+        LOGGER.info("содержимое поля '{}' - '{}' сохранено в ContextHolder", fieldName, value);
     }
 
     /**
-     * Сохранение значения выпадающего списка в ContextHolder
-     *
-     * @param fieldName - название списка
-     */
-    @Step("сравнение значения поля {fieldName} и содержимого ContextHolder")
-    @И("сравнить значение поля {string} и содержимое ContextHolder")
-    public void checkField(String fieldName) {
-        String expectedValue = ContextHolder.getValue(fieldName).toString();
-        SelenideElement element = pageManager
-                .getCurrentPage()
-                .getElement(fieldName);
-        String actualValue = element.getValue();
-        Assert.assertEquals(actualValue, expectedValue);
-        LOGGER.info("Ожидаемое значение поля: '{}', актуальное значения поля: {}", expectedValue, actualValue);
-    }
-
-    /**
-     * Сравнение текста выделенного поля и содержимого ContextHolder
-     *
-     * @param fieldName - название поля
-     */
-    @Step("сравнение текста выделенного поля {fieldName} и содержимое ContextHolder")
-    @И("сравнить текст выделенного поля {string} и содержимое ContextHolder")
-    public void checkSelectedField(String fieldName) {
-        String expectedValue = ContextHolder.getValue(fieldName).toString();
-        SelenideElement element = pageManager
-                .getCurrentPage()
-                .getElement(fieldName);
-        String actualValue = element.getSelectedText();
-        Assert.assertEquals(actualValue, expectedValue);
-        LOGGER.info("Содержимое поля - {}", actualValue);
-    }
-
-    /**
-     * Клик по кнопке
+     * Клик по элементу
      *
      * @param elementName - название кнопки
      */
-    @Step("клик по кнопке {elementName}")
-    private void clickSignInButton(String elementName) {
+    @Step("клик по элементу {elementName}")
+    public void clickOnElement(String elementName) {
         SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
         element.click();
         LOGGER.info("клик по кнопке '{}'", elementName);
@@ -257,7 +210,7 @@ public class WebSteps {
      * Клик по ссылке с текстом
      *
      * @param elementName - ссылка
-     * @param text - текст
+     * @param text        - текст
      */
     @Step("нажатие на ссылку {elementName} с текстом {text}")
     @И("нажать на ссылку {string} с текстом {string}")
@@ -288,7 +241,7 @@ public class WebSteps {
      * Активация нескольких кнопок в блоке
      *
      * @param elementName - название блока
-     * @param n - количество раз активации
+     * @param n           - количество раз активации
      */
     @Step("на текущей странице в блоке {elementName} происходит нажатие на любую кнопку {n} раз")
     @И("на текущей странице в блоке {string} нажать на любую кнопку {int} раз")
@@ -306,7 +259,7 @@ public class WebSteps {
      * Деактивация нескольких кнопок в блоке
      *
      * @param elementName - название блока
-     * @param n - количество раз деактивации
+     * @param n           - количество раз деактивации
      */
     @Step("на текущей странице в блоке {elementName} происходит деактивация любой кнопки {n} раз")
     @И("на текущей странице в блоке {string} отжать любую кнопку {int} раз")
@@ -328,15 +281,15 @@ public class WebSteps {
     /**
      * Очистка нескольких полей
      *
-     * @param surname - название поля
-     * @param name - название поля
-     * @param patronymic - название поля
-     * @param gender - название поля
+     * @param surname     - название поля
+     * @param name        - название поля
+     * @param patronymic  - название поля
+     * @param gender      - название поля
      * @param joiningDate - название поля
-     * @param birthday - название поля
-     * @param phone - название поля
+     * @param birthday    - название поля
+     * @param phone       - название поля
      * @param citizenship - название поля
-     * @param email - название поля
+     * @param email       - название поля
      */
     @Step("на текущей странице в блоке Общая информация очищаются поля: {surname}, " +
             "{name}, {patronymic}, {gender}, {joiningDate}, {birthday}, {phone}, " +
@@ -390,11 +343,11 @@ public class WebSteps {
      * Выбор элемента с текстом
      *
      * @param elementName - название элемента
-     * @param text - текст
+     * @param text        - текст
      */
     @Step("выбор элемента {elementName} с текстом {text}")
     @Тогда("выбрать элемент {string} с текстом {string}")
-    public void selectElementWithText(String elementName, String text) {
+    public void selectElementInDropDown(String elementName, String text) {
         pageManager.getCurrentPage().getElement(elementName).selectOption(text);
         LOGGER.info("выбран элемент '{}'", elementName);
     }
@@ -418,7 +371,7 @@ public class WebSteps {
      * Выбор значения в выпадающем списке по содержащемуся тексту
      *
      * @param listElements - название выпадающего списка
-     * @param elementName - значение
+     * @param elementName  - значение
      */
     @Step("в выпадающем списке {listElements} выбирается {elementName}")
     @И("в выпадающем списке {string} выбрать {string}")
@@ -434,7 +387,7 @@ public class WebSteps {
      * Выбор значения в выпадающем списке по содержащемуся тексту
      *
      * @param listOfValues - название выпадающего списка
-     * @param index - индекс
+     * @param index        - индекс
      */
     @Step("в выпадающем списке {listOfValues} выбирается значение по индексу {text}")
     @И("в блоке {string} выбрать значение {int} {string}")
@@ -453,11 +406,11 @@ public class WebSteps {
      */
     @Step("в списке {elementName} выбирается случайный элемент")
     @Если("в списке {string} выбрать случайный элемент")
-    public void listSelectRandElement(String elementName){
+    public void listSelectRandElement(String elementName) {
         SelenideElement element = pageManager
                 .getCurrentPage()
                 .getElement(elementName);
-        element.selectOption( 1 + (int) (Math.random() * element.findAll(By.cssSelector("option")).size()-1));
+        element.selectOption(1 + (int) (Math.random() * element.findAll(By.cssSelector("option")).size() - 1));
         String selectedText = element.getSelectedText();
         LOGGER.info("в списке '{}' выбран элемент со случайным значением - '{}'", elementName, selectedText);
     }
@@ -466,8 +419,8 @@ public class WebSteps {
      * Ввод в поле случайного значения в заданном диапазоне
      *
      * @param elementName - название поля
-     * @param start - начало диапазона
-     * @param finish - конец диапазона
+     * @param start       - начало диапазона
+     * @param finish      - конец диапазона
      */
     @Step("в поле {elementName} вводится случайное значение в диапазоне от {start} до {finish}")
     @Тогда("в поле {string} ввести случайное значение от {int} до {int}")
@@ -510,7 +463,7 @@ public class WebSteps {
     /**
      * Удаление в поле нескольких последних символов
      *
-     * @param elementName - название поля
+     * @param elementName   - название поля
      * @param numberOfChars - количество символов
      */
     @Step("в поле {elementName} удаляются {numberOfChars} последних символа")
@@ -520,7 +473,7 @@ public class WebSteps {
                 .getCurrentPage()
                 .getElement(elementName);
         String valueOfElement = element.getValue();
-        String resultString = valueOfElement.substring(0,valueOfElement.length()-numberOfChars);
+        String resultString = valueOfElement.substring(0, valueOfElement.length() - numberOfChars);
         element.setValue("");
         Actions.fillInputByCharacter(element, resultString);
         LOGGER.info("из поля '{}' удалено '{}' последних символов", elementName, numberOfChars);
@@ -529,7 +482,7 @@ public class WebSteps {
     /**
      * Активация чекбокса в чек-листе
      *
-     * @param elementName - название чек-листа
+     * @param elementName  - название чек-листа
      * @param checkboxName - название чекбокса
      */
     @Step("активация в чек-листе {elementName} чекбокса {checkboxName}")
@@ -541,13 +494,13 @@ public class WebSteps {
                 .getElementsCollection(elementName);
 
         for (SelenideElement el : elements) {
-            if (el.getText().equals(checkboxName)){
+            if (el.getText().equals(checkboxName)) {
                 el.click();
                 actual = el.getText();
                 break;
             }
         }
-        Assert.assertEquals(actual, checkboxName,"Элемент не найден");
+        Assert.assertEquals(actual, checkboxName, "Элемент не найден");
         LOGGER.info("в чек-листе '{}' активирован чекбокс '{}' - '{}'", elementName, checkboxName, actual);
     }
 
@@ -570,7 +523,7 @@ public class WebSteps {
      * Загрузка файла
      *
      * @param elementName - название поля
-     * @param path - название файла
+     * @param path        - название файла
      */
     @Step("на текущей странице в поле {elementName} загружается файл {path}")
     @Затем("на текущей странице в поле {string} загрузить файл {string}")
@@ -588,7 +541,7 @@ public class WebSteps {
      * Ввод значения в элемент по маске
      *
      * @param field - наименование элемента
-     * @param mask - значение
+     * @param mask  - значение
      */
     @Step("ввод в поле {field} случайное значение по маске {mask}")
     @Когда("ввести в поле {string} случайное значение по маске {string}")
@@ -604,13 +557,18 @@ public class WebSteps {
     }
 
     /**
-     * Закрытие страницы
+     * Взятие некоторого элемента в блоке
      *
+     * @param elementName - наименование блока
+     * @param index       - номер элемента
      */
-    @Step("закрытие страницы")
-    @Если("закрыть страницу")
-    public void closeDriver() {
-        WebDriverRunner.getWebDriver().close();
+    @Step("в текущем блоке {elementName} берется {index} элемент")
+    @И("в текущем блоке {string} взять {int} элемент")
+    public void getElementText(String elementName, int index) {
+        ElementsCollection elements = pageManager
+                .getCurrentPage()
+                .getElementsCollection(elementName);
+        ContextHolder.put("fio1", elements.get(index - 1).getText());
+        LOGGER.info("на странице '{}' в блоке '{}' запись '{}", pageManager.getCurrentPage().name(), elementName, ContextHolder.getValue("fio1").toString());
     }
-
 }

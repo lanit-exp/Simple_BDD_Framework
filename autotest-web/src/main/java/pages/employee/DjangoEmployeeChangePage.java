@@ -23,6 +23,8 @@ public class DjangoEmployeeChangePage extends WebPage {
     private SelenideElement photo = $x("//input[@id='id_photo']");
     @Name("Загруженное фото")
     private SelenideElement uploadedPhoto = $x("//div[contains(@class, 'field-photo_tag')]//div[@class='readonly']/img");
+    @Name("Корпоративная почта")
+    private SelenideElement corpEmail = $x("//div[contains(@class, 'field-internal_email')]/div[@class='readonly']");
     @Name("Инфоблок фото")
     private SelenideElement absentPhoto = $x("//div[contains(@class, 'field-photo_tag')]//div[@class='readonly']");
     @Name("Очистить фото")
@@ -192,6 +194,8 @@ public class DjangoEmployeeChangePage extends WebPage {
 
     @Name("Name")
     private SelenideElement nameOfHeader = $x("//li[@class='success']/a");
+    @Name("Сообщение о успешном редактировании")
+    private SelenideElement messageOfHeader = $x("//li[@class='success']");
 
     @Name("Города")
     private SelenideElement cities = $x("//a[@id='fieldsetcollapser11']");
