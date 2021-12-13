@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import ru.lanit.at.web.annotations.Name;
 import ru.lanit.at.web.pagecontext.Environment;
 import ru.lanit.at.web.pagecontext.WebPage;
-import steps.AuthorizationSteps;
+import steps.WebSteps;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -26,7 +26,7 @@ import static com.codeborne.selenide.Selenide.$x;
     public class DjangoAuthorization extends WebPage {
 
         private static Properties properties = new Properties();
-        private static final Logger LOGGER = LoggerFactory.getLogger(AuthorizationSteps.class);
+        private static final Logger LOGGER = LoggerFactory.getLogger(WebSteps.class);
         private static String currentToken = "";
 
 
@@ -50,32 +50,5 @@ import static com.codeborne.selenide.Selenide.$x;
 
         @Name("выслать инструкцию на почту")
         private SelenideElement sendByEmailButton = $x("//input[@value='Выслать инструкцию на почту']");
-
-        @Step("Открываем сайт")
-        @Дано("открыть сайт")
-        public void openUrl() {
-            loadProperties();
-            Selenide.open(properties.getProperty("base.url"));
-            WebDriver driver = Environment.getDriver();
-            if (driver == null) {
-                WebDriver currentThreadWebDriver = WebDriverRunner.getWebDriver();
-                Environment.setThreadDriver(currentThreadWebDriver);
-            }
-            LOGGER.info("инициализация webdriver для потока: {}", Thread.currentThread().getId());
-        }
-        private static void loadProperties() {
-            InputStream inputStream = null;
-            try {
-                inputStream = new FileInputStream("src/main/resources/application.properties");
-                properties.load(inputStream);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-
-
-
     }
 
