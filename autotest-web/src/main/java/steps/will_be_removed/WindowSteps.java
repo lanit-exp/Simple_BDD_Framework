@@ -2,12 +2,16 @@ package steps.will_be_removed;
 
 import actions.will_be_removed.WebActions;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
+import io.cucumber.java.ru.Тогда;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.lanit.at.api.testcontext.ContextHolder;
 import ru.lanit.at.web.pagecontext.Environment;
 import ru.lanit.at.web.pagecontext.PageManager;
+import steps.ApiSteps;
 
 @Deprecated
 public class WindowSteps {
@@ -79,5 +83,5 @@ public class WindowSteps {
     public void closeDriver() {
         WebDriverRunner.getWebDriver().close();
     }
-
 }
+
