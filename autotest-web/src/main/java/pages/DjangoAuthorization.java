@@ -8,27 +8,28 @@ import ru.lanit.at.web.pagecontext.WebPage;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
-    @Name(value = "DjangoAuthorization")
-    public class DjangoAuthorization extends WebPage {
-        @Name("логин")
-        private SelenideElement usernameField = $(By.id("id_username"));
+@Name(value = "DjangoAuthorization")
+public class DjangoAuthorization extends WebPage {
 
-        @Name("пароль")
-        private SelenideElement passwordField = $(By.id("id_password"));
+    @Name("логин")
+    private SelenideElement usernameField = $(By.id("id_username"));
 
-        @Name("токен")
-        private SelenideElement tokenField = $(By.id("id_otp_token"));
+    @Name("пароль")
+    private SelenideElement passwordField = $(By.id("id_password"));
 
-        @Name("Я желаю войти с админскими правами")
-        private SelenideElement isAdminCheckbox = $(By.id("id_i_am_admin"));
+    @Name("токен")
+    private SelenideElement tokenField = $(By.id("id_otp_token"));
 
-        @Name("Я здесь впервые")
-        private SelenideElement haveTokenCheckbox = $(By.id("id_i_have_no_token"));
+    @Name("Я желаю войти с админскими правами")
+    private SelenideElement isAdminCheckbox = $(By.id("id_i_am_admin"));
 
-        @Name("войти")
-        private SelenideElement signinButton = $x("//input[@value='Войти']");
+    @Name("Я здесь впервые")
+    private SelenideElement haveTokenCheckbox = $(By.id("id_i_have_no_token"));
 
-        @Name("выслать инструкцию на почту")
-        private SelenideElement sendByEmailButton = $x("//input[@value='Выслать инструкцию на почту']");
-    }
+    @Name("войти")
+    private SelenideElement signinButton = $x("//input[@value='Войти']");
+
+    @Name("выслать инструкцию на почту")
+    private SelenideElement sendByEmailButton = $x("//input[@value='Выслать инструкцию на почту']");
+}
 

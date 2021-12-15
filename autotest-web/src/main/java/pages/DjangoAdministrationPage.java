@@ -24,7 +24,7 @@ public class DjangoAdministrationPage extends WebPage {
     @Name("Запросы на отпуск")
     private SelenideElement employeeVacationRequest = $x("//a[text()='Запросы на отпуск']");
     @Name("Фактические отпуска")
-    private SelenideElement employeeActualVacation= $x("//a[text()='Фактические отпуска']");
+    private SelenideElement employeeActualVacation = $x("//a[text()='Фактические отпуска']");
     @Name("Больничные")
     private SelenideElement employeeSickLeaveOfficial = $x("//a[text()='Больничные']");
     @Name("Бюллютени без больничного листа")
