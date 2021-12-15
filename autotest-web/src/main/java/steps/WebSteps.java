@@ -349,7 +349,7 @@ public class WebSteps {
      */
     @Step("выбор элемента {elementName} с текстом {text}")
     @Тогда("выбрать элемент {string} с текстом {string}")
-    public void selectElementWithText(String elementName, String text) {
+    public void selectElementInDropDown(String elementName, String text) {
         pageManager
                 .getCurrentPage()
                 .getElement(elementName)

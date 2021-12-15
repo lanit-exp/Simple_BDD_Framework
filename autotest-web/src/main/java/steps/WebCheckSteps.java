@@ -103,16 +103,6 @@ public class WebCheckSteps {
         LOGGER.info("на странице '{}' имеется элемент '{}'", pageManager.getCurrentPage().name(), elementName);
     }
 
-    @Step("в текущем блоке поле {elementName} отсутствует")
-    @И("в текущем блоке поле {string} отсутствует")
-    public void checkElementNotVisible(String elementName) {
-        SelenideElement element = pageManager
-                .getCurrentPage()
-                .getElement(elementName);
-        Checks.elementNotVisibleOnPage(element, null);
-        LOGGER.info("элемент '{}' не отображается на странице", elementName);
-    }
-
     /**
      * проверка, что на странице отсуствует элемент
      *
@@ -456,6 +446,23 @@ public class WebCheckSteps {
         LOGGER.info("Ожидаемое значение поля: '{}', актуальное значения поля: {}", expectedValue, actualValue);
     }
 
+    /**
+     * Сохранение значения выпадающего списка в ContextHolder
+     *
+     * @param fieldName - название списка
+     */
+    @Step("сравнение значения поля {fieldName} и содержимого ContextHolder")
+    @И("сравнить значение поля {string} и содержимое ContextHolder")
+    public void checkField(String fieldName) {
+        String expectedValue = ContextHolder.getValue(fieldName).toString();
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(fieldName);
+        String actualValue = element.getValue();
+        Assert.assertEquals(actualValue, expectedValue);
+        LOGGER.info("Ожидаемое значение поля: '{}', актуальное значения поля: {}", expectedValue, actualValue);
+    }
+
     @Step("в текущем блоке поле {elementName} отсутствует текст")
     @И("в текущем поле {string} отсутствует текст")
     public void checkFieldWithoutText(String elementName) {
@@ -465,6 +472,4 @@ public class WebCheckSteps {
         Checks.emptyElement(element);
         LOGGER.info("элемент '{}' не содержит текст", elementName);
     }
-
-
 }

@@ -16,7 +16,8 @@ public class DjangoAdministrationPage extends WebPage {
     SelenideElement changePassword = $x("//a[@href='/admin/password_change/']");
     @Name("Выйти")
     SelenideElement logout = $x("//div[@id='user-tools']/a[@href='/admin/logout/']");
-
+    @Name("Войти снова")
+    SelenideElement loginAgain = $x("//div[@id=\"content\"]/p[2]/a");
     //MAIN
     @Name("Сотрудники")
     private SelenideElement employee = $x("//tr[@class='model-employee']/th/a");
