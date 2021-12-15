@@ -201,7 +201,9 @@ public class WebSteps {
      */
     @Step("клик по элементу {elementName}")
     public void clickOnElement(String elementName) {
-        SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
         element.click();
         LOGGER.info("клик по кнопке '{}'", elementName);
     }
@@ -347,8 +349,11 @@ public class WebSteps {
      */
     @Step("выбор элемента {elementName} с текстом {text}")
     @Тогда("выбрать элемент {string} с текстом {string}")
-    public void selectElementInDropDown(String elementName, String text) {
-        pageManager.getCurrentPage().getElement(elementName).selectOption(text);
+    public void selectElementWithText(String elementName, String text) {
+        pageManager
+                .getCurrentPage()
+                .getElement(elementName)
+                .selectOption(text);
         LOGGER.info("выбран элемент '{}'", elementName);
     }
 
@@ -440,7 +445,9 @@ public class WebSteps {
     @Step("проскролливание страницы до элемента {elementName}")
     @Когда("проскроллить страницу до элемента {string}")
     public void scrollToElement(String elementName) {
-        SelenideElement element = pageManager.getCurrentPage().getElement(elementName);
+        SelenideElement element = pageManager
+                .getCurrentPage()
+                .getElement(elementName);
         element.shouldBe(Condition.visible)
                 .scrollIntoView("{block: 'center'}");
         LOGGER.info("скролл страницы до элемента '{}'", elementName);

@@ -10,9 +10,6 @@ import static com.codeborne.selenide.Selenide.$x;
 @Deprecated
 public class DjangoPagesHeader extends WebPage {
 
-    @Name("Заголовок таблицы")
-    SelenideElement tableHeader = $x("//div[@id='content']/h1");
-
     @Name("Имя пользователя")
     SelenideElement userName = $x("//div[@id='user-tools']/strong");
     @Name("username")

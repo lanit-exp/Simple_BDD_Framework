@@ -16,5 +16,4 @@ public class DjangoEmployeeHistoryChangePage extends WebPage {
 
     @Name("Города")
     private SelenideElement cities = $("#fieldsetcollapser11");
-
 }

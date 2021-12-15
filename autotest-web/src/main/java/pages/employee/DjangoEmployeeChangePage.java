@@ -30,6 +30,13 @@ public class DjangoEmployeeChangePage extends WebPage {
     @Name("Очистить фото")
     private SelenideElement clearPhoto = $x("//input[@id='photo-clear_id']");
 
+    @Name("Заголовок таблицы")
+    private SelenideElement tableHeader = $x("//div[@id='content']/h1");
+    @Name("Действие")
+    private ElementsCollection dropDownAction = $$x("//select[@name='action']/option");
+    @Name("Действие меню")
+    private SelenideElement action = $x("//select[@name='action']");
+
     @Name("Дата приема на работу")
     private SelenideElement joiningDate = $x("//input[@id='id_joining_date']");
     @Name("Выберите дату")
@@ -348,6 +355,23 @@ public class DjangoEmployeeChangePage extends WebPage {
     private SelenideElement duties = $x("//textarea[@name='employeeproject_set-0-responsibilities']");
     @Name("Чекбокс Стажер")
     private SelenideElement checkBoxJun = $x("//input[@name='employeeproject_set-0-is_trainee']");
+
+    @Name("Таблица чек-бокс")
+    private ElementsCollection tableCheckboxes = $$x("//input[@class='action-select']");
+
+    @Name("Категории фильтров")
+    private ElementsCollection filtersCategory = $$x("//div[@id='changelist-filter']/h3");
+    @Name("Фильтр")
+    private ElementsCollection filters = $$x("//div[@id='changelist-filter']/ul/li");
+    @Name("Текущий город")
+    private ElementsCollection currentCity = $$x("//td[@class='field-current_city nowrap']");
+
+    @Name("Импорт")
+    private SelenideElement importLink = $x("//a[@class='import_link']");
+    @Name("Экспорт")
+    private SelenideElement exportLink = $x("//a[@class='export_link']");
+    @Name("Добавить сотрудник")
+    private SelenideElement addEmployeeLink = $x("//a[@class='addlink']");
 
     @Name("Фамилия Public")
     private SelenideElement surnamePublic = $x("//div[@class='fieldBox field-surname']/label/following-sibling::div");
