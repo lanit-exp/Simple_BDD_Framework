@@ -57,6 +57,7 @@ public class ApiSteps {
     public void extractVariables(Map<String, String> vars) {
         String responseBody = apiRequest.getResponse().body().asPrettyString();
         vars.forEach((k, jsonPath) -> {
+            jsonPath = replaceVarsIfPresent(jsonPath);
             String extractedValue = VariableUtil.extractBrackets(getFieldFromJson(responseBody, jsonPath));
             ContextHolder.put(k, extractedValue);
             Allure.addAttachment(k, "application/json", extractedValue, ".txt");

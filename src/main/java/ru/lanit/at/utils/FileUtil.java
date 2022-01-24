@@ -23,8 +23,8 @@ public class FileUtil {
         List<Path> paths;
         try {
             paths = Files.find(Paths.get(path),
-                    Integer.MAX_VALUE,
-                    (path1, basicFileAttributes) -> path1.toFile().getName().equals(fileName))
+                            Integer.MAX_VALUE,
+                            (path1, basicFileAttributes) -> path1.toFile().getName().equals(fileName))
                     .collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
